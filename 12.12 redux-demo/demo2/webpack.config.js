@@ -1,22 +1,23 @@
-var fs = require("fs");
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var WebpackOnBuildPlugin = require('on-build-webpack');
-var buildDir = './dist/';
+const fs = require('fs');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackOnBuildPlugin = require('on-build-webpack');
+const buildDir = './dist/';
 
 module.exports = {
   entry: {
-    app: path.resolve('./src/app.js'),
+    app: path.resolve('./src/app.js')
   },
   output: {
-    filename: '[name]-[hash].js',
-    path: path.resolve('dist'),
+    filename: '[name].[hash].js',
+    path: path.resolve('dist')
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -31,7 +32,8 @@ module.exports = {
       template: path.resolve('layout.html'),
       filename: 'index.html',
       minify: {
-        collapseWhitespace: true
+        collapseWhitespace: true,
+        minifyCSS: true
       }
     }),
     new WebpackOnBuildPlugin(function (stats) {
