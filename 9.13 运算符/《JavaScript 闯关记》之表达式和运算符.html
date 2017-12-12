@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>https://juejin.im/post/58116ca467f3560057d58bee</title>
+</head>
+<body>
+<style type="text/css">
+  .box {
+    position: absolute;
+    width: 100px;
+    height: 0px;
+    border: 1px solid #ddd;
+    transition: .3s;
+  }
+  .box:hover { position: relative; height: 200px; }
+</style>
+<button>按钮</button>
+<div class="box">fdasjklfdjs<br>jfksalfjslka<br>jfksalfjslka<br>jfksalfjslka<br>jfksalfjslka<br>jfksalfjslka<br>jfksalfjslka<br>jfksalfjslka<br></div>
+
+<script>
+// 一、一元运算符
+// 1、delete 运算符
+  // delete 运算符用来删除对象属性或者数组元素，如果删除成功或所删除的目标不存在，delete 将返回 true。然而，并不是所有的属性都可删除，一些内置核心和客户端属性是不能删除的，通过 var、let 语句声明的变量不能删除，通过 function 语句定义的函数也是不能删除的。例如：
+
+  // var o = { x: 1, y: 2 };          // 定义一个对象
+  // console.log(delete o.x);         // true, 删除一个属性
+  // console.log(o);                  // 对象长度变化
+  // console.log(delete o.z);         // true，什么都没做，x 在上一步被删除
+  // console.log('x' in o);           // false，这个属性在对象中不存在
+  // console.log(delete o.valueOf);   // true, 什么也没做，toString是继承来的
+  // console.log(delete 1);           // true，无意义
+  // console.log(delete o);
+  // console.log(o);
+
+  // var a = [1, 2, 3];                // 定义一个数组
+  // console.log(delete a[2]);         // true，删除最后一个数组元素
+  // console.log(a);                   // 数组长度没变
+  // console.log(2 in a);              // 2 转为 '2'。就是 属性: '2
+  
+  // console.log(a[2]);                // undefined，元素2所在的位置被空了出来
+  // console.log(delete a);            // false，通过 var、let 语句声明的变量不能删除
+  // console.log(a);
+  // let b = [1,2,3];
+  // console.log(delete b);
+  // console.log(b);
+
+// 2、void 运算符 -- https://segmentfault.com/a/1190000000474941
+  // void 运算符可以应用于任何表类型的表达式，表达式会被执行，但计算结果会被忽略并返回undefined。例如
+
+  // console.log(void 0);
+  // console.log(void 'you');
+  // console.log(void false);
+  // console.log(void []);
+  // console.log(void /(useless)/ig);
+  // console.log(void {});
+  // console.log(void function (){});
+
+// 3、typeof 运算符 ??
+
+
+// 4、++ -- 运算符
+
+  // var a = 5;
+  // console.log(a++);   // 5
+  // console.log(++a);   // 7
+  // console.log(a--);   // 7
+  // console.log(--a);   // 5
+
+
+// 5、+ - 运算符
+  // 当 + - 作为一元运算符时，应用于数值，表示数值的正负。应用于非数值，先按 Number() 转型函数对这个值执行转换，再表示该值的征服。
+
+
+// ~ ! 运算符
+
+
+// 二、乘性运算符
+  // JavaScript定义了3个乘性运算符：乘法、除法和求模。这些运算符与C语言的相应运算符用途类似，只不过在操作数为非数值的情况下会执行自动的类型转换。如果参与乘法计算的某个操作数不是数值，后台会先使用 Number() 转型函数将其转换为数值。也就是说，空字符串将被当做 0，布尔值 true 将被当做 1。
+
+// 1、* 乘法运算符
+  // 用于计算两个数值的乘积，在处理特殊值的情况下，乘法运算符遵循下列特殊的规则。
+  // - 如果操作数都是数值，执行常规的乘法计算，即两个正数或两个负数相乘的结果还是正数，而如果只有一个操作数有符号，那么结果就是负数。如果乘积超过了 JavaScript 数值的范围，则返回 Infinity 或 -Infinity。
+  // - 如果有一个操作数是 NaN，则结果是 NaN
+  // - 如果是 Infinity 与 0 相乘，则结果是 NaN
+  // - 如果是 Infinity 与非 0 数值相乘，则结果是 Infinity 或 -Infinity，取决于有符号操作数的符号
+  // - 如果是 Infinity 与 Infinity 相乘，则结果是 Infinity;
+  // - 如果有一个操作数不是数值，则在后台调用 Number() 将其转换为数值，然后再应用上面的规则。
+
+// 2、/ 除法运算符
+  // 用于计算两个数值的商，与乘法运算符类似，除法运算符对特殊的值也有特殊的处理规则。这些规则如下：
+  // - 如果操作数都是数值，执行常规的除法计算，即两个正数或两个负数相除的结果还是正数，而如果只有一个操作数有符号，那么结果就是负数。如果商超过了 JavaScript 数值的表示范围，则返回 Infinity 或 -Infinity;
+  // - 如果有一个操作数是 NaN，则结果是 NaN;
+  // - 如果是 Infinity 被 Infinity 除了，则结果是 NaN;
+  // - 如果是0/0，则结果是NaN;
+  // - 如果是零除非零的有限数，则结果是 Infinity 或 -Infinity ，取决于有符号操作数的符号;
+  // -
+
+
+// 三、关系运算符
+// in 运算符
+  // in 运算符希望它的左操作数是一个字符串或可以转换为字符串，希望它的右操作是一个对象。如果右侧的对象拥有一个名为左操作数值的属性名，那么表达式返回 true，例如：
+
+  // var point = { x: 1, y: 1 };           
+  // console.log('x' in point);            // true，对象有一个名为'x'的属性
+  // console.log('z' in point);            // false，对象中不存在名为'z'的属性
+  // console.log('toString' in point);     // true，对象继承了toString()方法
+
+  // var data = [1,2,3];
+  // console.log('0' in data);             // true，数组包含元素'0'
+  // console.log(1 in data);               // true，数字转换为字符串
+  // console.log(3 in data);               // false，没有索引为3的元素
+
+
+// instanceof 运算符
+  // instanceof 运算符希望做操作数是一个对象，右操作数表示对象的类。如果左侧的对象是右侧类的实例，则表达式返回 true; 否侧返回 false。后面会将 JavaScript 中对象的类是通过初始化它们的构造函数来定义的。这样的话，instanceof 的右操作数应当是一个函数。比如：
+
+
+  // var d = new Date();                     // 通过 Date() 构造函数来创建一个新对象
+  // console.log(d instanceof Date);         // true, d 是由 Date() 创建的
+  // console.log(d instanceof Object);       // true, 所有的对象都是 Object 的实例
+  // console.log(d instanceof Number);       // false, d 不是一个 Number 对象
+
+  // var a = [1, 2, 3];                       // 通过数组字面量的写法创建一个数组
+  // var AAA = function (){};
+  // console.log(a instanceof Array);         // true, a 是一个数组
+  // console.log(a instanceof Object);        // true, 所有的数组都是对象
+  // console.log(a instanceof RegExp);        // false, 数组不是正则表达式
+  // console.log(1 instanceof AAA);
+  
+  // 需要注意的是，所有的对象都是 Object 的实例。当通过 instanceof 判断一个对象是否是一个类的实例的时候，这个判断也会包含对 |父类| 的检测。如果 instanceof 的左操作数不是对象的话，instanceof 返回 false。如果右操作数不是函数，则抛出一个类型错误异常。
+
+// 4、位运算符
+  // 在JavaScript中，当对数值应用位运算符时，后台会发生如下装换过程：64位的数值被转换成32位数值，然后执行位操作，最后再将32位的结果转换回64位数值。这个转换过程导致了一个严重的副效应，即在对特殊的 NaN 和 Infinity 值应用位操作时，这两个值都会被当成 0 来处理。如果对非数值应用位运算符，会先使用 Number() 函数将该值转换为一个数值，然后再应用位操作，得到的结果将是一个数值。
+
+
+// ~ 按位非 (取整)
+  // 简单的理解，对任意数值 x 进行按位操作的结果为 -(x+1), 会先把 x 向下取整。例如
+  console.log(~null);         // -1
+  console.log(~undefined);    // -1
+  console.log(~0);            // -1
+  console.log(~{});           // -1
+  console.log(~[]);           // -1
+  console.log(~(1/0));        // -1
+  console.log(~false);        // -1
+  console.log(~true);         // -2
+  console.log(~1.2543);       // -2
+  console.log(~4.9);          // -5
+  console.log(~(-2.9999));    // 1
+</script>
+</body>
+</html>

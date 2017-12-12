@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>斜切角</title>
+	<style type="text/css">
+		body {
+			display: flex;
+			justify-content: space-around;
+		}
+	</style>
+</head>
+<body>
+<!-- 测试一	 -->
+<style type="text/css">
+[class*='test'] {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 300px;
+	height: 200px;
+	padding: 20px;
+	box-sizing: border-box;
+	color: #fff;
+	background-color: #58a;
+}
+.test01 {	
+	background: linear-gradient(-45deg, transparent 15px, #58a 15px);
+}
+</style>
+<div class="test01">
+	第一个解决方案是万能的CSS渐变。我们假设我们暂时只完成一个斜切角——右下角那个。其诀窍在于渐变可以接受一个角度值作为参数（如45deg），色标位置是绝对长度，这两个都不会因为元素和背景尺寸的改变受到影响。
+</div>
+
+<!-- 测试二 -->
+<style type="text/css">
+.test02 {
+	background-image: linear-gradient(-45deg, #fff 15px, transparent 15px),
+	                  linear-gradient(45deg, #fff 15px, transparent 15px),
+	                  linear-gradient(135deg, #fff 15px, transparent 15px),
+	                  linear-gradient(225deg, #fff 15px, transparent 15px);
+}
+</style>
+<div class="test02">
+	第一个解决方案是万能的CSS渐变。我们假设我们暂时只完成一个斜切角——右下角那个。其诀窍在于渐变可以接受一个角度值作为参数（如45deg），色标位置是绝对长度，这两个都不会因为元素和背景尺寸的改变受到影响。
+</div>
+</body>
+</html>

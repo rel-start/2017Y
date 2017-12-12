@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<div id="box"></div>
+
+<body>
+
+  <script src="./tool-2017.10.12.js"></script>
+  <script>
+    // function shake(props) {
+    //   // 元素
+    //   var el = props.el;
+
+    //   // 动画执行中的话跳出
+    //   if (el.shake) return;
+
+    //   var
+    //     // 抖动方向。X：横向，Y：纵向
+    //     dir = props.dir || 'X',
+    //     // 抖动次数
+    //     times = props.times || 40,
+    //     // 回调
+    //     cb = props.cb;
+
+    //   // 抖动次数 times [20, 100]
+    //   if (times < 20) times = 20;
+    //   if (times > 100) times = 100;
+
+    //   // 状态数组。[-40,40,...,-1,1,0]
+    //   var arr = [];
+    //   for (var i = times; i > 0; i--) {
+    //     arr[arr.length] = -i;
+    //     arr[arr.length] = i;
+    //   }
+    //   arr[arr.length] = 0;
+
+
+    //   // 用于记录定时器 执行次数与数组下标对应
+    //   var n = 0;
+    //   // 起始位置
+    //   var start = 0;
+
+    //   (function fn() {
+    //     el.shake = window.requestAnimationFrame(fn);
+        
+    //     // 如果条件成立。表示数组中没值了(抖完了-该停止了)，那么跳出循环
+    //     if (n === arr.length) {
+    //       window.cancelAnimationFrame(el.shake);
+    //       el.shake = null;
+          
+    //       // 回调函数
+    //       if (typeof cb === 'function') {
+    //         return cb.call(el);
+    //       }
+
+    //       return;
+    //     }
+
+    //     // 元素当前位置
+    //     transform(box, 'translate' + dir, start + arr[n++]);
+    //   })();
+    // }
+
+    function shake(props){
+      var el = props.el;
+      
+      if (el.shake) return;
+      
+      var times = props.times || 40,
+          dir = props.dir || 'X',
+          cb = props.cb;
+      
+      var arr = [];
+      for (var i = times; i>0; i--) {
+        arr[arr.length] = -i;
+        arr[arr.length] = i;
+      }
+      arr[arr.length] = 0;
+
+      var start = 0;
+      var n = 0;
+          
+      (function fn(){
+        el.shake = window.requestAnimationFrame(fn);
+
+        if (n === arr.length) {
+          window.cancelAnimationFrame(el.shake);
+          el.shake = null;
+
+          if (typeof cb === 'function') {
+            cb.call(el);
+          }
+          return;
+        }
+
+        transform(box, 'translate'+dir, start + arr[n++]);
+      })();
+      
+    }
+
+    document.onclick = function () {
+      shake({
+        el: box,
+        dir: 'Y',
+        times: 50
+      });
+    };
+
+  </script>
+</body>
+
+</html>

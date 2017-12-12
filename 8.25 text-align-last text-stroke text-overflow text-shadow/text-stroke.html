@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文字描边</title>
+</head>
+<body>
+<!--
+	-webkit-text-stroke 的属性：
+		-webkit-text-stroke-width
+		-webkit-text-stroke-color
+-->
+<style type="text/css">
+.stroke {
+	font-size: 50px;
+	font-weight: bold;
+	/*-webkit-text-stroke: 2px red;*/
+	
+	-webkit-text-stroke-width: 2px;  	/* 必须要设置 width */
+	-webkit-text-stroke-color: red;		/*也要设置颜色, 不然 text-stroke-color 与 color 无区别 */
+
+}
+</style>
+<p class="stroke">-webkit-text-stroke文字描边简介</p>
+
+<!--
+	-webkit-text-stroke是居中描边。
+-->
+<style type="text/css">
+.p1,
+.p2,
+.p3 {
+	font: menu;
+	font-size: 40px;
+	margin: 0;
+}
+.p2 {
+	-webkit-text-stroke: 2px red;
+}
+.p3 {
+	position: relative;
+	z-index: 0;
+	/*-webkit-text-stroke: 2px red;*/
+}
+.p3::before {
+	content: attr(data-text);
+	position: absolute;
+	-webkit-text-stroke: 2px red;
+	z-index: -1;
+}
+</style>
+<p class="p1">没有描边</p>
+<p class="p2">有描边</p>
+<p class="p3" data-text="重叠描边">重叠描边</p>
+
+
+<!-- -webkit-text-stroke与多重描边效果 -->
+<style type="text/css">
+.multiple {
+	-webkit-text-stroke: 1px #fff;
+	font-size: 40px;
+	position: relative;
+	z-index: 0;
+}
+.multiple:before,
+.multiple:after {
+	content: attr(data-text);
+	position: absolute;
+	left: 0;
+	z-index: -1;
+}
+.multiple:before { -webkit-text-stroke: 7px yellow; }
+.multiple:after { -webkit-text-stroke: 4px red; }
+</style>
+<p class="multiple" data-text="webkit-text-stroke与多重描边效果">webkit-text-stroke与多重描边效果</p>
+</body>
+</html>

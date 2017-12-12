@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.isDefaultPrevented</title>
+</head>
+<body>
+<input type="button" id="btn" value="按钮" />
+
+  
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function()
+{
+$('#btn').click(function(e){
+  alert(e.isDefaultPrevented());
+  e.preventDefault();
+  alert(e.isDefaultPrevented());
+});
+
+
+$('form:first').trigger('submit');
+});
+</script>
+</body>
+</html>

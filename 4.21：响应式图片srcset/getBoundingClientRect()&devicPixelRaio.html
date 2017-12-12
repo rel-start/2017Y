@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>getBoundingClientRect\devicPixelRaio</title>
+    <style type="text/css">
+    	* { margin: 0; padding: 0; }
+    	body { padding: 100px; }
+    	img { position: absolute; top: 100px; left: 100px; margin: 10px 20px 30px 40px; }
+    </style>
+</head>
+<body>
+                                                           
+<!-- 
+	设备像素比：devicePixelRatio
+    			getBoundingClientRect
+    -->
+
+
+<script>
+	var rect = document.getElementsByTagName('img')[0].getBoundingClientRect();// 元素相对于窗口左上角的 距离。top right bottom left
+	console.log(rect.top+'==='+rect.right+'--'+rect.bottom+'///'+rect.left);
+</script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    body {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: auto-fill;
+      justify-content: space-evenly;
+    }
+  </style>
+</head>
+<body>
+<!-- 案例01 -->
+<style type="text/css">
+  .border_image01 {
+    grid-column: 1;
+    grid-row: 1;
+    width: 300px;
+    height: 200px;
+    border: 16px solid transparent;
+    border-image: url(img/border_image01.jpg) 16 16 16 16/16px round;
+  }
+</style>
+<div class="border_image01">fdsafds</div>
+
+<!-- 案例02 -->
+<style type="text/css">
+  .border_image02 {
+    grid-column: 2;
+    grid-row: 1;
+    width: 199px;
+    height: 199px;
+    border: 16px solid transparent;
+    border-right-width: 27px;
+    border-bottom-width: 23px;
+    border-image-source: url(img/border_image01.jpg);
+    border-image-slice: 16 27 23 16;
+    border-image-repeat: round;
+  }
+</style>
+<div class="border_image02">fdsafds</div>
+
+<!-- 案例07 -->
+<style type="text/css">
+  .border_image07 {
+    grid-column: 3;
+    grid-row: 1;
+    width: 300px;
+    height: 200px;
+    border: 20px solid transparent;
+    border-image: url(img/border_image01.jpg) 16/5px 10px 15px 20px round;
+  }
+</style>
+<div class="border_image07">fdsafds</div>
+
+<!-- 案例03 -->
+<style type="text/css">
+  .border_image03 {
+    grid-column: 1;
+    grid-row: 2;
+    width: 300px;
+    height: 200px;
+    border: 1em double transparent;
+    /*-webkit-border-image: url(img/border.png) 27;*/
+    /*border-image: url(img/border.png) 27;*/
+    border-image-source: url(img/border.png);
+    border-image-slice: 27 27 27 27;
+    /*border-image-width: 1;*/
+    /*border-image-outset: 10px;*/
+  }
+</style>
+<div class="border_image03">fdsafds</div>
+
+<!-- 案例04 -->
+<style type="text/css">
+  .border_image04 {
+    grid-column: 2;
+    grid-row: 2;
+    width: 300px;
+    height: 200px;
+    border: 27px double transparent;
+    border-image: url(img/border.png) 27 round;
+  }
+</style>
+<div class="border_image04">fdsafds</div>
+
+<!-- 案例05 -->
+<style type="text/css">
+  .border_image05 {
+    grid-column: 3;
+    grid-row: 2;
+    width: 300px;
+    height: 200px;
+    border: 1em double transparent;
+    border-image: url(img/border.png) 27 repeat;
+  }
+</style>
+<div class="border_image05">fdsafds</div>
+
+<!-- 案例06 -->
+<style type="text/css">
+  .border_image06 {
+    grid-column: 4;
+    grid-row: 2;
+    width: 300px;
+    height: 200px;
+    border: solid #000;
+    border-image: url(img/border.png) 27/1em round;
+  }
+</style>
+<div class="border_image06">fdsafds</div>
+
+<!-- 案例08 -->
+<style type="text/css">
+  .border_image08 {
+    grid-column: 4;
+    grid-row:1;
+    width: 300px;
+    height: 200px;
+    border: 1em solid transparent;
+    border-right-width: 27px;
+    border-bottom-width: 23px;
+    border-image-source: url(img/border_image01.jpg);
+    border-image-slice: 16 27 23 16 fill;
+    border-image-repeat: round;
+  }
+</style>
+<div class="border_image08">fdsafds</div>
+
+<!-- 案例09 -->
+<style type="text/css">
+  .border_image09 {
+    grid-column: 4;
+    grid-row:3;
+    width: 300px;
+    height: 200px;
+    border: 1em solid transparent;
+    border-right-width: 27px;
+    border-bottom-width: 23px;
+    border-image-source: url(img/border_image01.jpg);
+    border-image-slice: 25% 43.548% 35.9375% 25.806% fill;
+    border-image-repeat: round;
+  }
+</style>
+<div class="border_image09">fdsafds</div>
+
+<!-- 案例10 -->
+<style type="text/css">
+  .border_image10 {
+    grid-column: 3;
+    grid-row:4;
+    width: 300px;
+    height: 200px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .border_image10 a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    padding: 8px 20px;
+    border: 4px solid transparent;
+    border-width: 0 4px;
+    border-image-source: url(img/btn.png);
+    border-image-slice: 0 4 36 4 fill;
+    border-image-repeat: round;
+  }
+
+  .border_image10 a:hover {
+    border-image-slice: 34 4 2 4 fill;
+  }
+</style>
+<div class="border_image10"><a href="">按钮</a></div>
+
+<!-- DEMO一：制作Button -->
+<style type="text/css">
+  .border-image-btn {
+    /*grid-column: 1;*/
+    /*grid-row: 3;*/
+  }
+  .border-image-btn a {
+    display: inline-block;
+    border: 18px solid green;
+    border-width: 0 18px;
+    border-image: url('img/button_sprite.png') 0 18 50 18 fill;
+    padding: 13px 10px 17px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 1;
+    text-shadow: black 1px 1px 2px;
+  }
+
+  .border-image-btn a:hover {
+    border-image-slice: 50 18 0 18 fill;
+    color: #333;
+    text-shadow: white 1px 1px 2px;
+  }
+</style>
+<div class="border-image-btn"><a href="">Border-image Button</a></div>
+
+<!-- DEMO二：制作Tabs button -->
+<style type="text/css">
+  .tabs_box {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  .tabs_box ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-bottom: 3px solid #9eaab6;
+  }
+  .tabs_box li {
+    display: inline-block;
+    border-left: 5px solid;
+    border-right: 5px solid;
+    border-image: url(img/border-image-tab.png) 0 5 0 5 fill;
+    padding: 5px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #333;
+  }
+</style>
+<div class="tabs_box">
+  <ul>
+    <li class="on">Home</li>
+    <li>Blog</li>
+    <li>Contact Us</li>
+  </ul>
+</div>
+
+<!-- DEMO三：圆角+Drop box shadow效果 -->
+<style type="text/css">
+.border-image-drop-boxshadow {
+  border-width: 7px 7px 16px;
+  border-style: solid;
+  border-image: url(img/border-image-box-shadow.png) 7 7 16 7 fill;
+  /*
+  border-style: solid;
+  border-image: url(img/border-image-box-shadow.png) 7 7 16 7 fill/7px 7px 16px 7px;
+  */
+}
+</style>
+<div class="border-image-drop-boxshadow"></div>
+
+<!-- DEMO四：相框效果 -->
+<style type="text/css">
+  .xiangkuang {
+    gird-column: 1;
+    grid-row: 4;
+    border: 22px solid transparent;
+    border-image: url(img/border-image-small-1.png) 22;
+  }
+</style>
+<div class="xiangkuang">
+  <img src="img/img_01.jpg" width="100%" />
+</div>
+
+
+
+<style type="text/css">
+  .borders {
+    border: 10px solid;
+    -moz-border-top-colors: red red red red green green green blue blue blue;
+    -moz-border-bottom-colors: red red red red green green green blue blue blue;
+    -moz-border-right-colors: red red red red green green green blue blue blue;
+    -moz-border-left-colors: red red red red green green green blue blue blue;
+  }
+</style>
+<div class="borders">fdsfa</div>
+</body>
+</html>

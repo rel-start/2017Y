@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <title>Document</title>
+
+    <style type="text/css">
+        .test { width: 300px; height: 200px; writing-mode: tb-rl;
+        }
+                                                    /* 宽高调整下 */
+        .test span { display: inline-block; width: 22px; height: 22px; line-height: 22px; vertical-align: text-top; text-align: center; }
+        .test span.non_chinese {
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+        }
+
+
+        .test2 { -webkit-writing-mode: vertical-rl; writing-mode: tb-rl; writing-mode: vertical-rl; }
+    </style>
+
+</head>
+<body>
+<!--http://www.zhangxinxu.com/wordpress/2016/04/css-writing-mode/-->
+<div class="test"></div>
+<div class="test2">请教正则表达式如何判断输入的字符是全英文或者是英数混合document.getElementsByClassName\/|qwrquop比如:aaa;a12;12a,但不能是全数字的,也不能有特殊符号fdsafds</div>
+
+<script>
+    // 数据
+    var html = '',
+        data = '请教正则表达式如何判断输入的字符是全英文或者是英数混合document.getElementsByClassName|qwrquop比如:aaa;a12;12a,但不能是全数字的,也不能有特殊符号fdsafds';
+    for(var i = 0, len = data.length; i < len; i++)
+    {   /* /^([a-zA-Z]*?)((?:[0-9]+(?:[0-9]|[a-zA-Z])*)*)$/ 英文 数字 */
+        if( !(/[\u4e00-\u9fa5]/).test(data[i]) )
+        {
+            html += '<span class="non_chinese">' + data[i] + '</span>';
+        }
+        else
+        {
+            html += '<span>' + data[i] + '</span>';
+        }
+    };
+
+    // 填充数据
+    document.getElementsByClassName('test')[0].innerHTML = html;
+    
+
+
+</script>
+</body>
+</html>

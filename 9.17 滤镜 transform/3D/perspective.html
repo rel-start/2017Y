@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body {
+			margin: 0;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			justify-content: space-evenly;
+			
+		}
+	</style>
+</head>
+<body>
+<!-- 3D 形状1 -->
+<style type="text/css">
+	.box_01 {
+		position: relative;
+		perspective: 500px; /* 距离屏幕多少像素 */
+		width: 200px;
+		height: 200px;
+		margin: 100px;
+		background-color: rgba(0,0,0,.5);
+		transition: 3s;
+		transform-style: preserve-3d;
+	}
+	.box_01:hover { transform: rotateY(1turn); }
+	.box_01 [class*='item'] {
+		position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+		margin: auto;
+		width: 100px;
+		height: 100px;
+		text-align: center;
+		line-height: 100px;
+		
+		/*X正值（下往外拉） X负值（上往外拉）。Y正值（左往外拉）Y负值（右往外拉）：左侧往外倾斜。Z正值：顺时针旋转*/
+	}
+	.box_01 .item1 {
+		transform: rotateY(-90deg);
+		transform-origin: left center;
+		background-color: #faf;
+	}
+
+	.box_01 .item2 {
+		transform: rotateY(90deg);
+		transform-origin: right center;
+		background-color: #faf;
+	}
+
+	.box_01 .item3 {
+		transform: translateZ(0px);
+		background-color: #afa;
+	}
+
+	.box_01 .item4 {
+		transform: rotateX(90deg);
+		background-color: #f60;
+		transform-origin: center top;
+	}
+
+	.box_01 .item5 {
+		transform: rotateX(-90deg);
+		background-color: #f60;
+		transform-origin: center bottom;
+	}
+
+	.box_01 .item6 {
+		transform: translateZ(100px);
+		background-color: #afa;
+	}
+</style>
+<div class="box_01">
+	<div class="item1">1</div>
+	<div class="item2">2</div>
+	<div class="item3">3</div> 
+	<div class="item4">4</div>
+	<div class="item5">5</div>
+	<div class="item6">6</div>
+</div>
+
+
+<!-- 正方体1 -->
+<style type="text/css">
+	.box_02 {
+		text-align: center;
+		perspective: 500px;
+	}
+
+	.box_02 .main {
+		display: inline-block;
+		background-color: rgba(0,0,0,.2);
+		transition: 2s;
+		transform-style: preserve-3d;
+		margin: 100px;
+		width: 200px;
+		height: 200px;
+	}
+
+	.box_02 .main:hover {
+		transform: translateZ(200px) rotateY(150deg) rotateX(360deg) rotateZ(140deg) ;
+	}
+
+	.box_02 span {
+		position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+		width: 100px;
+		height: 100px;
+		margin: auto;
+		border: 2px solid #000;
+		line-height: 100px;
+		opacity: .8;
+	}
+
+
+	.box_02 span:nth-child(1) {
+		transform: translateZ(-50px) rotateY(-90deg);
+		transform-origin: left center;
+		background-color: #faf;
+	}
+
+	.box_02 span:nth-child(2) {
+		transform: translateZ(-50px) rotateY(90deg);
+		transform-origin: right center;
+		background-color: #faf;
+	}
+
+	.box_02 span:nth-child(3) {
+		transform: translateZ(-50px) rotateX(90deg);
+		transform-origin: center top;
+		background-color: #f60;
+	}
+
+	.box_02 span:nth-child(4) {
+		transform: translateZ(-50px) rotateX(-90deg);
+		transform-origin: center bottom;
+		background-color: #f60;
+	}
+
+	.box_02 span:nth-child(5) {
+		transform: translateZ(-50px);
+		background-color: #afa;
+	}
+
+	.box_02 span:nth-child(6) {
+		transform: translateZ(50px);
+		background-color: #afa;
+	}
+</style>
+<div class="box_02">
+	<div class="main">
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+		<span>6</span>
+	</div>
+</div>
+
+<!-- 正方体2 -->
+<style type="text/css">
+	.box_03 {
+		perspective: 500px;
+		text-align: center;
+	}
+
+	.box_03 .main {
+		position: relative;
+		display: inline-block;
+		margin: 100px;
+		width: 200px;
+		height: 200px;
+		transform-style: preserve-3d; /*让子级可以使用3d变换*/
+		transition: 2s;
+		background-color: rgba(0,0,0,.3);
+	}
+
+	.box_03 .main:hover {
+		/*transform: translateZ(200px) rotateZ(180deg) rotateX(-220deg) rotateY(60deg);*/
+		transform: translateZ(200px) rotateY(150deg) rotateX(360deg) rotateZ(140deg);
+	}
+
+	.box_03 em {
+		border: 2px solid #000;
+		position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+		width: 100px;
+		height: 100px;
+		line-height: 100px;
+		background-color: #faf;
+		margin: auto;
+		opacity: .9;
+	}
+
+	.box_03 em:nth-child(1) {
+		transform: translateX(-50%) rotateY(-90deg);
+		background-color: red;
+	}
+
+	.box_03 em:nth-child(2) {
+		transform: translateX(50%) rotateY(90deg);
+		background-color: red;
+	}
+
+	.box_03 em:nth-child(3) {
+		transform: translateY(-50%) rotateX(90deg);
+	}
+
+	.box_03 em:nth-child(4) {
+		transform: translateY(50%) rotateX(-90deg);
+	}
+
+	.box_03 em:nth-child(5) {
+		transform: translateZ(-50px);
+		background-color: #f60;
+	}
+
+	.box_03 em:nth-child(6) {
+		transform: translateZ(50px);
+		background-color: #f60;
+	}
+</style>
+<div class="box_03">
+	<div class="main">
+		<em>1</em>
+		<em>2</em> 
+		<em>3</em>
+		<em>4</em>
+		<em>5</em>
+		<em>6</em>
+	</div>
+</div>
+</body>
+</html>

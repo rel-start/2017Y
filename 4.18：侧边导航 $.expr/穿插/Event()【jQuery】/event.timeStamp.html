@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.timeStamp</title>
+</head>
+<body>
+
+<!-- event.timeStamp：浏览器创建事件的时间 -->
+<p onmousedown="showTimestamp(event)">点击我！</p>
+<div>点击。</div>
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+//p 元素点击事件
+function showTimestamp(event) {
+  var sec = 1000,
+  x = event.timeStamp;
+  console.log(x / sec);
+}
+
+var last, diff;
+$('div').click(function(event)
+{
+  if(last)
+  {
+    diff = event.timeStamp - last;
+    $('div').append('距离上次点击时间（毫秒）：' + diff + '<br/>');
+  }
+  else
+  {
+    $('div').append('准备就绪.<br/>');
+  }
+  last = event.timeStamp;
+});
+
+</script>
+</body>
+</html>

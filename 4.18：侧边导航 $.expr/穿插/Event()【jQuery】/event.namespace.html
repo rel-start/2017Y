@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.namespace</title>
+</head>
+<body>
+
+<button>显示event.namespace</button>
+<p>d</p>
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+//	触发事件时指定的命名空间
+$(function(){
+$('p').on('click.test.something', function(event, name1, name2){
+  alert(event.namespace +','+ name1 +','+ name2);
+});
+
+$('button').click(function(event){
+  $('p').trigger('click.test.something', ['kuan','cl']);
+});
+});
+</script>
+</body>
+</html>

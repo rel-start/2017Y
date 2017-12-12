@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.relatedTarget</title>
+</head>
+<body>
+
+<!-- event.relatedTarget 属性返回当鼠标移动式哪个元素进入或退出 -->
+<div style="height: 200px; border: 2px dashed burlywood;">
+	<p>p 事件中设计的其他DOM元素</p>
+	<a>div 事件中设计的其他DOM元素</a>
+</div>
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+//	事件中设计的其他DOM元素（如果有）
+$(function(){
+// $('div, p').mouseenter(function(e){
+//   console.log('关联的目标为：' + e.relatedTarget.nodeName +', 目标：' +e.currentTarget.tagName +', 目标2：' + e.target.tagName)
+// });
+
+$('div, p').mouseleave(function(e){
+  console.log('关联的目标为：' + e.relatedTarget.nodeName +', 目标：' +e.currentTarget.tagName +', 目标2：' + e.target.tagName)
+});
+});
+</script>
+</body>
+</html>

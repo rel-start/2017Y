@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.currentTarget</title>
+</head>
+<body>
+<div class="box">
+  <button>按钮</button>
+</div>
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+//  附加在正在处理的元素的祖先处。
+  $('.box').on('click', 'button', function(event) {
+    $(event.delegateTarget).css('background', 'red');
+  });
+
+</script>
+</body>
+</html>

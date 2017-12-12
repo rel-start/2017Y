@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.box {
+			position: relative;
+			width: 1200px;
+			height: 500px;
+			border: 5px solid rgba(0, 0, 0, .3)
+		}
+
+		.moveEl {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+		}
+
+		.moveEl i {
+			display: block;
+			line-height: 24px;
+			margin: 0 auto;
+			background-color: green;
+			cursor: default;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+		<span class="moveEl">22
+			<i>标题</i>
+		</span>
+	</div>
+
+	<script>
+		// 移动元素
+		var moveEl = document.querySelector('.moveEl');
+		var titleEl = document.querySelector('.moveEl i');
+
+		mDrag({
+			moveEle: moveEl,
+			scrope: false,
+			disableY: true
+		});
+
+		
+	</script>
+</body>
+
+</html>

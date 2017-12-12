@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title><input>标签</title>
+</head>
+<body>
+<form action="http://www.baidu.com/s" method="get" id="form1">
+	<p>
+		<!--type属性-->
+		<input type="button" value="按钮" />
+		
+		<input type="radio" name="sex" checked />
+		<input type="checkbox" name="hobby" disabled />
+		
+		<input type="color" /><!--IE不支持-->
+		
+		<!--https://developer.mozilla.org/zh-CN/search?page=2&q=%3Cinput+type%3D%22-->
+		<input type="date" name="date" /><!--移动端基本都支持-->
+		<input type="datetime" name="datetime" /><!--过时-->
+		<input type="datetime-local" name="datetime-local" /><!--移动端基本都支持-->
+		<input type="month" name="month" />
+		<input type="week" name="week" />
+		<input type="time" name="time" />
+		
+		<input type="email" name="email" size="1" /><!--移动端基本都支持-->
+		
+		<input type="file" name="file" /><!--IE6+-->
+		
+		<input type="hidden" /><!--提交些东西，比如post_id-->
+		
+		<input type="image" name="img" /><!--IE不支持-->
+		
+		<input type="number" name="num" /><!--IE10+ 移动端基本都支持-->
+		
+		<input type="password" name="password" />
+		
+		<input type="range" /> <!--IE10+-->
+		
+		<input type="submit" /><!--IE6+-->
+		<input type="reset" /><!--IE6+-->
+		
+		<input type="search" /><!--IE10+-->
+		
+		<input type="tel" name="tel" /><!--IE10+-->
+		
+		<input type="url" /><!--IE10+-->
+	</p>
+	<p>
+		<!--accept属性-->
+		<input type="file" name="img" accept="audio/*,video/*" />
+	</p>
+	<p>
+		<!--alt属性(作为提交按钮) width、height-->
+		<input type="image" src="btn_register.jpg" alt="标题" width="119" height="37" />
+	</p>
+	<p>
+		<!--autocomplete属性-->
+		<input type="text" autocomplete="on" name="wd" />
+		<!--注意：autocomplete属性适用于下面的<input>类型：text、search、url、tel、email、password、datepickers、range和color-->
+	</p>
+	<p>
+		<!--autofocus属性-->
+		<input type="button" value="焦点" autofocus />
+	</p>
+	<p>
+		<!--checked属性-->
+		<input type="checkbox" checked /> <input type="radio" checked />
+		<!--适用于[type="checkbox"] 和 [type="radio"]-->
+	</p>
+	<p>
+		<!--disabled属性-->
+		<input type="url" disabled />
+		<input type="url" />
+		<!--
+			定义和用法：
+				被禁用的input元素是无法使用和无法点击的。
+				disabled属性进行设置，使用户在满足某些条件时（比如选中复选框，等等）才能使用<input>元素。然后，可使用JavaScript来删除disabled值，使该<input>元素变为可用的状态
+			提示：表单中被禁用的<input>元素不会被提交
+			注意：disabled属性不适用于<input type="hidden">
+		-->
+	</p>
+	<p>
+		<!--form属性-->
+		<input type="text" form="form2 form3" name="dd" />
+		<!--除了IE，几乎所有主流浏览器都支持
+			定义和用法：
+				form属性规定<input>元素所述的一个或多个表单。只能用两个吧，空格隔开是假的把
+		-->
+	</p>
+	<p>
+		<!--formaction属性-->
+		<input type="submit" formaction="http://www.sina.com" value="formaction" />
+		<input type="image" src="btn_register.jpg" alt="formaction" width="119" height="37" formaction="http://miaov.com" />
+		
+		<!--
+			定义和用法：
+				formaction属性规定当表单提交时处理输出控件的文件的URL。
+				formaction覆盖<form>元素的action属性。一个表单中可以调转多个 .php
+			注释：formaction属性适用于type="submit"和type="image"
+		-->
+	</p>
+	<p>
+		<!--formmethod属性-->
+		<input type="submit" formmethod="post" formaction="/" value="post提交" />
+		<input type="image" formmethod="post" formaction="#" src="btn_register.jpg" alt="formaction" width="119" height="37" />
+		
+	</p>
+	<p>
+		<!--formenctype属性-->
+		<input type="submit" value="提交">
+  		<input type="submit" formenctype="multipart/form-data" value="以 Multipart/form-data 提交">
+	</p>
+	<p>
+		<!--formnovalidate属性-->
+		<input type="email" name="emails" />
+		<input type="submit" value="提交">
+  		<input type="submit" formnovalidate value="不验证提交">
+	</p>
+	<p>
+		<!--formtarget属性-->
+		<input type="submit" value="本页面">
+  		<input type="submit" formtarget="_blank" value="新页面">
+	</p>
+	<p>
+		<!--list属性-->
+		<input list="browsers" />
+		
+		<datalist id="browsers">
+			<option value="Internet Explorer10+">
+			<option value="Firefox">
+			<option value="Google Chrome">
+			<option value="Opera">
+		</datalist>
+	</p>
+	<p>
+		<!--max、min属性-->
+		<input type="number" name="goods_num" max="10" min="1" value="-1" />
+		
+		<input type="range" name="progressbar" max="100" min="0" value="50" onchange="range_slider(this.name, this.value)" />
+		
+		<input type="date" name="date" max="2017-07-23" min="1994-11-22" />
+	</p>
+	<p>
+		<!--multiple属性-->
+		<select multiple>
+			<option>1</option>
+			<option>2</option>
+		</select>
+		
+		<input type="email" />
+		<input type="email" multiple /> <!--aa@qq.com,bb@qq.com可以跟 ,-->
+		<input type="file" />
+		<input type="submit" formaction="#" />
+	</p>
+	<p>
+		<!--pattern属性-->
+		<input type="text" pattern="" title="" />
+		<!--
+			注意：pattern属性适用于的input类型：text、search、url、tel、email和password
+			提示：请使用全局的 title 属性来描述模式以帮助用户
+		-->
+	</p>
+	<p>
+		<!--placeholder属性-->
+		<input type="text" placeholder="占位符" />
+		<!--
+			注意：placeholder属性适用于下面的input类型：text、search、url、tel、email和password
+			
+			为placeholder设置颜色：(该特性是非标准的，请尽量不要在生产环境中使用它！)
+		-->
+		<style>
+		::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+			color: #909;
+		}
+		:-moz-placeholder { /* FF 4 to 18 */
+			color: #909;
+			opacity: 1;
+		}
+		::-moz-placeholder{ /* FF 19+ */
+			color: #909;
+			opacity: 1;
+		}
+		:-ms-input-placeholder { /* IE 10-11 */
+			color: #909;
+		}
+		</style>
+		<input type="text" placeholder="占位符" />
+	</p>
+	<p>
+		<!--readonly属性-->
+		<input type="text" readonly value="只读文本框" />
+	</p>
+	<p>
+		<!--required属性-->
+		<input type="text" required />
+		<input type="image" src="btn_register.jpg" alt="required" width="119" height="37" required />
+		<!--
+        	注意： required属性适用于下面的input类型：text、search、url、tel、email、password、date pickers、number、checkbox、radio和file
+        -->
+	</p>
+	<p style="font-size: 14px;" >
+		<!--size、maxlength属性-->
+		<input type="text" size="6" maxlength="6"/>
+		<!--1: 36px。 2:43px。  3: 50px-->
+	</p>
+	<p>
+		<!--step属性-->
+		<input type="datetime-local" step="3600" /><!--60s*60 从小时开始-->
+		<!--IE10+ 火狐不能用-->
+	<d>
+</form>
+
+
+<form id="form2">
+	<input type="submit" value="form2" />
+</form>
+<form id="form3">
+	<input type="submit" value="form3" />
+</form>
+
+<!--只有radio能有多个name吗？？？-->
+<script>
+	function range_slider(name, value) {
+//		var el = document.getElementsByName(name)[0];
+		console.log(value);
+	}
+</script>
+</body>
+
+
+</html>

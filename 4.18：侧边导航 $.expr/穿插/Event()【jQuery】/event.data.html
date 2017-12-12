@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.data</title>
+</head>
+<body>
+<button> 按钮0 </button>
+<button> 按钮1 </button>
+<button> 按钮2 </button>
+<button> 按钮3 </button>
+<button> 按钮4 </button>
+<div id="log"></div>
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function()
+{
+// event.data: 绑定当前执行的处理程序时，传递给事件方法的可选数据对象
+  
+  var oLog = $('#log');
+  
+// 测试1
+  /*for(var i = 0; i < 5; i++)
+  {
+    $('button').eq(i).on('click', {value: i}, function(event)
+    {
+      var msgs = [
+        'button =' + $(this).index(),
+        'event.data.value =' + event.data.value,
+        'i =' + i
+      ];
+      oLog.append(msgs.join(',') + '<br/>');
+    });
+  }*/
+  
+// 测试2
+  /*for(var i = 0; i < 5; i++)
+  {
+    (function(i){
+      $('button').eq(i).on('click', {value: i}, function(event)
+      {
+        var msgs = [
+          'button =' + $(this).index(),
+          'event.data.value =' + event.data.value,
+          'i =' + i
+        ];
+        oLog.append(msgs.join(',') + '<br/>');
+      });
+    })(i);
+  }*/
+  
+// 测试3
+  for(var i = 0; i < 5; i++)
+  {
+    $('body').on('click', 'button:eq('+i+')', {value: i}, function(event)
+    {
+      var msgs = [
+        'button =' + $(this).index(),
+        'event.data.value =' + event.data.value,
+        'i =' + i
+      ];
+      oLog.append(msgs.join(',') + '<br/>');
+    });
+  }
+});
+</script>
+</body>
+</html>

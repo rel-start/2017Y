@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复合</title>
+	<style type="text/css">
+		body { margin: 0; }
+		ul { position: relative; margin: 0; padding: 0; list-style: none; }
+		.box li { position: absolute; width: 100px; height: 100px; background-color: black; }
+		.box li:nth-child(1) { transform: translate(200px, 200px) rotate(45deg); }
+		.box li:nth-child(2) { transform: rotate(45deg) translate(200px, 200px); }
+		.box li:nth-child(3) { transform: translate(300px, 300px) skew(10deg); }
+		.box li:nth-child(4) { transform: skew(10deg) translate(300px, 300px); }
+		.box li:nth-child(5) { transform: translate(300px, 300px) scale(2); }
+		.box li:nth-child(6) { transform: scale(2) translate(300px, 300px); }
+	</style>
+</head>
+<body>
+<ul class="box">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+      body {
+        margin: 0;
+        width: 1000px;
+        height: 800px;
+        margin: 0 auto;
+        background: url(bg.png) no-repeat center center;
+      }
+      
+      .wrap {
+        width: 290px;
+        height: 490px;
+        background: url(bg1.png) no-repeat center center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -245px 0 0 -145px;
+        position: absolute;
+        box-shadow: 0 0 8px rgba(0,0,0,.3);
+        border-radius: 5px;
+      }
+      
+      .box {
+        width: 250px;
+        height: 250px;
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        margin-left: -125px;
+      }
+      
+      .btn {
+        width: 114px;
+        height: 36px;
+        border: 1px solid #68bcfa;
+        border-radius: 3px;
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        margin-left: -57px;
+        text-align: center;
+        font: 16px/36px arial;
+        color: #68bcfa;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: #68bcfa;
+        color: #fff;
+      }
+      
+      .box div {
+        width: 50px;
+        height: 50px;
+        background: #fff;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        color: #68bcfa;
+        border-radius: 2px;
+        position: absolute;
+        /*opacity: 0;*/
+      }
+    </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="box" id="box">
+    <!--
+      <div style="left:0px;top:0px;">1</div>         left: 0*50; top: 0*50   
+      <div style="left:50px;top:50px;">2</div>       left: 1*50; top: 1*50
+      <div style="left:100px;top:100px;">3</div>     left: 2*50; top: 2*50
+      <div style="left:150px;top:50px;">4</div>      left: 3*50; top: 1*50
+      <div style="left:200px;top:0px;">5</div>       left: 4*50; top: 0*50
+    -->
+    
+    <!--
+      <div style="top:0px;right:0px;">1</div>        top: 0*50; right: 0*50;
+      <div style="top:50px;right:50px;">2</div>      top: 1*50; right: 1*50;
+      <div style="top:100px;right:100px;">3</div>    top: 2*50; right: 2*50;
+      <div style="top:150px;right:50px;">4</div>     top: 3*50; right: 1*50;
+      <div style="top:200px;right:0px;">5</div>      top: 4*50; right: 0*50;
+    -->
+    
+    <!--
+      <div style="right:0px;bottom:0px;">1</div>     right: 0*50; bottom: 0*50;
+      <div style="right:50px;bottom:50px;">2</div>   right: 1*50; bottom: 1*50;
+      <div style="right:100px;bottom:100px;">3</div> right: 2*50; bottom: 2*50;
+      <div style="right:150px;bottom:50px;">4</div>  right: 3*50; bottom: 1*50;
+      <div style="right:200px;bottom:0px;">5</div>   right: 4*50; bottom: 0*50;
+    -->
+    
+    <!--                                                                                i < (num / 2)
+      <div style="bottom:0px;left:0px;">1</div>      bottom: 0*50; left: 0*50;    i = 0;
+      <div style="bottom:50px;left:50px;">2</div>    bottom: 1*50; left: 1*50;    i = 1;
+                                                                                        num - (i + 1)
+      <div style="bottom:100px;left:100px;">3</div>  bottom: 2*50; left: 2*50;    5 - (2 + 1) = 2;
+      <div style="bottom:150px;left:50px;">4</div>   bottom: 3*50; left: 1*50;    5 - (3 + 1) = 1;
+      <div style="bottom:200px;left:0px;">5</div>    bottom: 4*50; left: 0*50;    5 - (4 + 1) = 0;
+    -->
+  </div>
+  <div class="btn" id="btn">生成</div>
+
+<script>
+  // var dir = [
+  //   ['left', 'top'],
+  //   ['top', 'right'],
+  //   ['right', 'bottom'],
+  //   ['bottom', 'left']
+  // ],
+  // size = 50,
+  // num = 5, n = index = 0;
+
+
+  // btn.onclick = function (){
+  //   // 清除
+  //   var str = '';
+
+  //   btn.innerHTML = '变换';
+    
+  //   // 创建项目
+  //   createItem();
+    
+  //   // 点击次数++
+  //   index++;
+  //   index %= dir.length; // 区间 [0-3]
+  //   // if (index > dir.length -1) index = 0;
+
+  //   // 输出
+  //   box.innerHTML = str;
+  // };
+
+  // function createItem() {
+  //   for (var i=0; i<num; i++) {
+  //     // 如果 i 小于 方块数量的一半那么，n = i。反之 num - (i + 1)。 [0 1 2 1 0]
+  //     if ( i < (num/2) ) {
+  //       n = i;
+  //     } else {
+  //       n = num - (i + 1);
+  //     };
+
+  //     str += `<div style="${ dir[index][0] }: ${ i * size }px; ${ dir[index][1] }: ${ n * size }px">${ i+1 }</div>`;
+  //   }
+  // };
+
+
+  // var dir = [
+  //   ['left', 'top'],
+  //   ['top', 'right'],
+  //   ['right', 'bottom'],
+  //   ['bottom', 'left']
+  // ],
+  // size = 50, num = 5, n = click = 0;
+
+  // btn.onclick = function (){
+  //   var str = '';
+  //   btn.innerHTML = '变换';
+    
+  //   for (var i=0; i<num; i++) {
+  //     if ( i < (num/2) ) {
+  //       n = i;
+  //     } else {
+  //       n = num - (i+1);
+  //     };
+  //     str += `<div style="${ dir[click][0] }: ${ i * size }px; ${ dir[click][1] }: ${ n * size }px;">${ i + 1 }</div>`;
+  //   }
+
+  //   click++;
+  //   click %= dir.length;
+    
+  //   // 输出
+  //   box.innerHTML = str;
+  // };
+
+  // var dir = [
+  //   ['left', 'top'],
+  //   ['top', 'right'],
+  //   ['right', 'bottom'],
+  //   ['bottom', 'left']
+  // ],
+  // size = 50, n = click = 0, num = 7;
+
+  // btn.onclick = function (){
+  //   // 清除
+  //   var str = '';
+    
+  //   // 创建项目
+  //   createItem();
+  //   // 点击次数
+  //   click++;
+  //   click %= dir.length; // 区间 [0-3]
+  //   // if (click > dir.length - 1) click = 0;
+    
+  //   // 输出
+  //   box.innerHTML = str;
+  // };
+
+  // function createItem(){
+  //   for (var i=0; i<num; i++) {
+  //     // if ( i < (num/2) ) {
+  //     //   n = i;
+  //     // } else {
+  //     //   n = num - (i+1);
+  //     // };
+  //     n = i < (num/2) ? i : num - (i+1);
+  //     str += `<div style="${ dir[click][0] }: ${ i * size }px; ${ dir[click][1] }: ${ n * size }px;">${ i+1 }</div>`;
+  //   }
+  // };
+
+  var dir = [
+    ['left', 'top'],
+    ['top', 'right'],
+    ['right', 'bottom'],
+    ['bottom', 'left']
+  ],
+  n = index = 0,
+  num = 5,
+  size = 50;
+
+  btn.onclick = function (){
+    var str = '';
+
+    for (var i=0; i<num; i++) {
+      if (i < (num/2)) {
+        n = i;
+      } else {
+        n = num - (i+1);
+      };
+      str += `<div style="${ dir[index][0] }: ${ i * size }px; ${ dir[index][1] }: ${ n * size }px;">${ i+1 }</div>`;
+    }
+
+    index++;
+    index %= dir.length;
+
+    box.innerHTML = str;
+  };
+</script>
+</div>
+</body>
+</html>

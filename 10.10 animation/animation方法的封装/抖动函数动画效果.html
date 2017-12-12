@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      left: 200px;
+      top: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+
+
+  <script src="./tool-2017.10.12.js"></script>
+  <script>
+    // css.init3d(box);
+
+    // document.onclick = function (){
+    //   if (box.timer) return;
+    //   var n = 0;
+
+    //   var arr = [];
+    //   for (var i=40; i>=0; i--) {
+    //     arr[arr.length] = -i;
+    //     arr[arr.length] = i;
+    //   }
+    //   arr.length--;
+
+    //   var start = css(box, 'translateX');
+
+    //   (function fn(){
+    //     box.timer = window.requestAnimationFrame(fn.bind(null,n));
+
+    //     if (n === arr.length) {
+    //       window.cancboxAnimationFrame(box.timer);
+    //       box.timer = null;
+    //       return;
+    //     }
+
+    //     css(box, 'translateX', start + arr[n++]);
+    //   })();
+    // };
+
+
+    var box = document.getElementById('box');
+    box._transform = {
+      translateX: 0
+    }
+
+    document.onclick = function () {
+      if (box.timer) return;
+
+      var
+        n = 0,
+        arr = [],
+        start = transform(box, 'translateX');
+        
+      for (var i=40; i>0; i--) {
+        arr[arr.length] = -i;
+        arr[arr.length] = i;
+      }
+      arr[arr.length] = 0;
+      
+
+      box.timer = setInterval(function (){
+        if (n === arr.length) {
+          clearInterval(box.timer);
+          box.timer = undefined;
+          return;
+        }
+
+        transform(box, 'translateX', start + arr[n++]);
+      }, 1000/60);
+      
+    };
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<textarea id="ta" rows="10" cols="50"></textarea>
+<script>
+// JS控制往textarea文本框里赋值，当超过一定的范围后会出现下拉滚动条，但是需要手动去拉才能看到最新的数据，如何实现用JS来控制textarea的下拉滚动条始终默认拉到最底，这样我就能看到实时加入进来的最新数据了。
+window.onload = function () {
+    var ta = document.getElementById('ta')
+    ta.onkeyup = function(){
+    	ta.scrollTop = ta.scrollHeight;
+    }
+}
+</script>
+
+</body>
+</html>

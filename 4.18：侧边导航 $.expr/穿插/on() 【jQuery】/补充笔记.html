@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>on() 补充笔记</title>
+</head>
+<body>
+	<div id="test">测试1</div>
+	
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function()
+{
+//	测试1
+	var $test = $('#test');
+	function handler1() {
+		console.log('handler1');
+		$test.off('click', handler2);
+	}
+	
+	function handler2() {
+		console.log('handler2');
+	}
+	
+	$test.on('click', handler1);
+	$test.on('click', handler2);
+	
+	
+//	测试2
+	/*var $test = $('#test');
+	function handler1(e) {
+		console.log('handler1');
+		e.stopImmediatePropagation();// 阻止click 队列里面的冒泡吧！违反w3c事件规范[https://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-EventTarget-removeEventListener]
+	}
+	
+	function handler2() {
+		console.log('handler2');
+	}
+	
+	$test.on('click', handler1);
+	$test.on('click', handler2);*/
+});
+</script>
+</body>
+</html>

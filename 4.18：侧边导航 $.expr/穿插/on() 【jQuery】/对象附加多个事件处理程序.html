@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>对象附加多个事件处理程序</title>
+  <style>
+  	.test { padding: .5em; border: 1px solid #444; color: #000; }
+  	.active { color: #900; }
+  	.inside { background: aqua; }
+  </style>
+</head>
+<body>
+<div class="test">test div</div>
+	
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function()
+{
+	$('div.test').on({
+		click: function(){
+			$(this).toggleClass('active');
+		}, mouseenter: function(){
+			$(this).addClass('inside');
+		}, mouseleave: function(){
+			$(this).removeClass('inside');
+		}
+	});
+});
+</script>
+</body>
+</html>

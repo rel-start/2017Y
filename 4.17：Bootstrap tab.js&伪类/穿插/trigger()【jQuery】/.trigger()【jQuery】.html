@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$.Event() 【jQuery】</title>
+</head>
+<body>
+<a href="http://www.baidu.com" id="foo">内容</a href="http://www.baidu.com">
+
+	
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function()
+{
+	$('#foo').on('click', function()
+	{
+		alert($(this).text());
+	});
+	$('#foo').trigger('click');
+});
+
+
+</script>
+</body>
+</html>

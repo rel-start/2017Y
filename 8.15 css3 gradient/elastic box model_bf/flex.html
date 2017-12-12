@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹性盒模型</title>
+	<style>
+		.flex {
+			width: 1000px;
+			height: 500px;
+			border: 5px solid #ddd;
+			display: -webkit-flex;			/* 只针对子级 (子级不会自己换行) */
+			display: flex;
+			flex-direction: column-reverse;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.item {
+			width: 100px;
+			height: 100px;
+			text-align: center;
+		}
+
+		.item:nth-child(odd) { background-color: red; }
+		.item:nth-child(even) { background-color: green; }
+		
+		.item:nth-child(1) { flex: 3; }
+		.item:nth-child(2) { order: 3; }
+		.item:nth-child(3) { flex: 1; }
+		.item:nth-child(4) { flex: 4; }
+	</style>
+</head>
+<body>
+<div class="flex">
+	<div class="item">1<!-- 【1】的点点滴滴多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多 --><span class="span"></span></div>
+	<div class="item">2<span class="span"></span></div>
+	<div class="item">3<span class="span"></span></div>
+	<div class="item">4<span class="span"></span></div>
+</div>
+
+<!--
+	display: flex;	弹性盒模型基类
+
+	flex-direction: row(默认);	(-webkit-box-orient: horizontal)
+		定义主轴方向(元素排列方向)
+		row				横向
+		row-reverse
+		column			纵向
+		column-reverse
+
+	【1】（align-items的效果）父级的高度、宽度不够的时候，会挤压子级(除非子集内容[孙子]撑开)
+
+	justify-content: center;	主轴对齐	（-webkit-box-pack）
+		定义元素排列的位置
+			flex-start			项目位于容器的开头(相当于默认值 normal)
+			flex-end			结尾
+			center				中心
+			space-around		空白区域环绕元素
+			space-between		空白区域出现在元素的中间
+
+	align-items: center;	侧轴对齐
+		stretch			项目被拉伸以适应容器(相当于默认值 normal)
+		flex-start		开头
+		flex-end		结尾
+		center			中心
+		baseline		位于容器的基线
+
+	flex: 2				定义元素的弹性空间
+	order: 0(默认)		定义元素的排列顺序(值越大越靠后)
+-->
+
+
+</body>
+</html>

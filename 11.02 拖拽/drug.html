@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      position: relative;
+      width: 1200px;
+      height: 500px;
+      border: 5px solid rgba(0,0,0,.3)
+    }
+    .moveEl { position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: orange; }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <span class="moveEl">22</span>
+  </div>
+
+  <script>
+    // 移动元素
+    var box = document.querySelector('.moveEl');
+
+    mDrag({
+      moveEle: box,
+      scrope: true
+    });
+
+    function mDrag(props) {
+      var
+        // 移动的元素
+        moveEle = props.moveEle,
+        // 鼠标按下元素。该元素中鼠标按下，可以拖拽 moveEle 
+        downEle = props.downEle || moveEle,
+        beforeFn = props.beforeFn,
+        moveFn = props.moveFn,
+        afterFn = props.afterFn,
+        // beforeFn、moveFn、afterFn内 this 指向
+        called = props.called || downEle,
+        // 默认是限制范围
+        scrope = true;
+
+      // 是否限制范围
+      if (typeof props.scrope !== 'undefined') scrope = props.scrope;
+
+      var dx, dy,
+        // 移动元素的定位父级
+        offsetParent = moveEle.offsetParent,
+        // 父级的 DOMRect对象
+        parentRect = offsetParent.getBoundingClientRect();
+
+      // ---------------------------------------------------------
+      // 用户交互
+      downEle.addEventListener('mousedown', function (e) {
+        e.preventDefault();
+
+        // 拖拽之前的 Fn
+        if (typeof beforeFn === 'function') beforeFn.call(called, e);
+
+        // 移动元素的 DOMRect对象
+        var moveEleRect = moveEle.getBoundingClientRect();
+
+        // 鼠标按下点距离 移动元素左上角的x、y
+        dx = e.pageX - moveEleRect.left;
+        dy = e.pageY - moveEleRect.top;
+
+        document.addEventListener('mousemove', startMove);
+        document.addEventListener('mouseup', cancelMove);
+      });
+
+
+      // ---------------------------------------------------------
+      // 方法区域
+      // ==========
+      // 元素移动
+      function startMove(e) {
+        // 移动元素相对于定位父级的位置 x、y
+        var x = e.pageX - dx;
+        var y = e.pageY - dy;
+
+        // 限制拖拽范围
+        if (scrope) {
+          if (x < 0) x = 0;
+          if (x > window.innerWidth - moveEle.offsetWidth) x = window.innerWidth - moveEle.offsetWidth;
+
+          if (y < 0) y = 0;
+          if (y > window.innerHeight - moveEle.offsetHeight) y = window.innerHeight - moveEle.offsetHeight;
+        }
+
+        moveEle.style.left = x + 'px';
+        moveEle.style.top = y + 'px';
+
+        // 拖拽中的 Fn
+        if (typeof moveFn === 'function') moveFn.call(called, e);
+      }
+
+
+      // ==========
+      // 取消元素移动方法
+      function cancelMove() {
+        document.removeEventListener('mousemove', startMove);
+        document.removeEventListener('mouseup', cancelMove);
+
+        // 拖拽结束后的 Fn
+        if (typeof afterFn === 'function') afterFn.call(called, e);
+      }
+    }
+  </script>
+</body>
+
+</html>

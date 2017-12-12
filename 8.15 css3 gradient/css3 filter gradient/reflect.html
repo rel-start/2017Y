@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒影</title>
+	<style type="text/css">
+		body { padding: 200px; }
+		ul, ol { list-style: none; padding: 0; margin: 0; width: 500px; height: 400px; }
+		.reflect_01 {
+			display: flex;
+			flex-direction: column-reverse;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #f1f1f1;
+		}
+		.reflect_01 li {
+			width: 100px;
+			height: 100px;
+			
+		}
+
+		.reflect_01 li:nth-child(1) {
+			/*flex: 1;*/
+			order: 1;
+			background: -webkit-linear-gradient(left, red, yellow);
+			-webkit-box-reflect: below 1px -webkit-linear-gradient(bottom, black, transparent);
+		}
+
+		.reflect_01 li:nth-child(3) {
+			/*flex: 1;*/
+			order: -1;
+			background: -webkit-linear-gradient(left, red, yellow);
+			-webkit-box-reflect: above 1px -webkit-linear-gradient(top, black, transparent);
+		}
+
+		.reflect_02 {
+			margin-top: 50px;
+			display: -webkit-box;
+			display: -moz-box;
+			display: box;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: reverse;
+			-webkit-box-pack: justify;
+			-webkit-box-align: center;
+			background-color: #eee;
+		}
+		.reflect_02 li {
+			width: 100px;
+			height: 100px;
+			background: -webkit-radial-gradient(circle, transparent 55%, orange 55%, orange 57%, transparent 57%);
+		}
+	</style>
+</head>
+<body>
+
+<ul class="reflect_01">
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+<ol class="reflect_02">
+	<li>1</li>
+	<li>2</li>
+</ol>
+</body>
+</html>

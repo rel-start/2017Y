@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>圆角</title>
+</head>
+<body>
+<!-- 案例一 -->
+<style type="text/css">
+.radius_01 {
+  width: 300px;
+  height: 200px;
+  border-radius: 50px/40px 25px 15px 5px;
+  background-color: #ddd;
+  border: 30px solid #faf;
+}
+</style>
+<div class="radius_01"></div>
+
+<!-- 案例二 -->
+<style type="text/css">
+.p {
+  width: 70px;
+  height: 70px;
+  border: solid 30px;
+  border-color: orange orange silver silver;
+  border-top-right-radius: 100%;
+}
+</style>
+<p class="p"></p>
+
+<!-- 颜色和风格转型 -->
+<style type="text/css">
+[class*="style"]{
+  width: 300px;
+  height: 200px;
+  margin-top: 20px;
+  border: 20px solid #ddd;
+  box-sizing: border-box;
+}
+.style_a {
+  border-radius: 80px / 40px;
+}
+.style_b {
+  border-width: 40px 20px;
+  border-radius: 80px / 60px;
+}
+.style_c {
+  border-width: 40px 80px;
+  border-radius: 80px / 40px;
+}
+.style_d {
+  border-width: 60px 40px;
+  border-radius: 80px / 40px;
+}
+</style>
+<div class="style_a"></div>
+<div class="style_b"></div>
+<div class="style_c"></div>
+<div class="style_d"></div>
+
+<style type="text/css">
+.table {
+  background-color: red;
+  border-collapse: collapse;
+  border-radius: 15px/ 5px;
+}
+</style>
+<table class="table">
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+  </tr>
+</table>
+</body>
+</html>

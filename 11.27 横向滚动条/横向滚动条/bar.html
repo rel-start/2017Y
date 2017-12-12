@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .displayArea {
+      position: relative;
+      width: 200px;
+      height: 400px;
+      border: 1px solid #ddd;
+      overflow: hidden
+    }
+    .contentArea {
+      position: absolute;
+      width: 500px;
+    }
+    .ybarWrap {
+      position: absolute;
+      top: 5px;
+      right: 3px;
+      bottom: 5px;
+      width: 8px;
+      z-index: 5;
+    }
+    .ybar {
+      position: absolute;
+      width: 8px;
+      height: 30px;
+      background-color: rgba(0,0,0,.8);
+      border-radius: 4px;
+    }
+    .xbarWrap {
+      position: absolute;
+      left: 5px;
+      right: 5px;
+      bottom: 3px;
+      height: 8px;
+      z-index: 5;
+    }
+    .xbar {
+      position: absolute;
+      height: 8px;
+      width: 30px;
+      background-color: rgba(0,0,0,.8);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="displayArea">
+    <div class="ybarWrap"> <div class="ybar"></div> </div>
+    <div class="xbarWrap"> <div class="xbar"></div> </div>
+
+    <div class="contentArea">
+      　央广网高邮11月19日消息 据中国之声《新闻晚高峰》报道，我国现行的医疗保险制度是缓解城镇居民“看病贵”的手段之一，被老百姓称为“救命卡”。但有不法分子却利用医保卡存在的信息漏洞，违规购物、套现、骗保，导致医保资金的流失。近日，江苏高邮市人民法院审结了一起“骗保”案件。法院判决书披露，医保卡的持有人已去世近半年，他名下的医保卡却还“活着”，在他死后的五个月时间里，这张卡频频出现在两个医院的门诊窗口，暴刷131次，金额13万元。这是谁干的呢？
+      　　去年9月，高邮警方接到一起报案。报案人是人社局的工作人员，他们称，在日常检查中，发现一名参保者已经去世近半年，他名下的医保卡却在死后的五个月内暴刷131次。警方及时介入，两名犯罪嫌疑人归案。高邮法院审理此案的审判长雍志飞介绍说：“第一被告钟某是开药店的，对病种的医保卡比较熟悉，第二被告朱某认识他，朱某的弟弟得了癌症，就跟钟某说看病花了很多钱。钟某就告诉朱某，你把医保卡拿过来，我给他刷一些药，然后卖出去，赚差价。朱某也同意。”
+      　　记者了解到，朱某弟弟名下的特殊病种医保卡，到医药拿药，只要交不到40%的费用，就可以把药从医院开出来，报销61%左右。朱某的弟弟出院后，朱某将弟弟的医保卡交给钟某，但很快，朱某的弟弟就因病去世。
+      　　雍志飞法官介绍：“朱某的弟弟出院一两天就去世了，朱某也告诉了钟某。钟某明知他弟弟去世了还刷卡，3月到8月份，刷了131笔，骗取医保统筹基金8万多元，抓的药价值总共13万9千多元。”
+      　　据介绍，此案是社保部门发现的线索，并主动向公安机关报案的。那么，医保部门是如何发现这一盗刷骗局的？高邮社保局医保部相关负责人告诉记者，他们对所有的参保病人正常的费用有审核机制，后台会对相关的数字定期或者不定期的检查，起初并没有把这事往歪处想，“就在这个过程中，我们发现这个人（朱某的弟弟）很短的时间内费用就是几万块钱，如果不是很注意的话，也就过去了，因为他是个癌症患者。”
+      　　癌症患者的花销，几个月花上几万块钱，也是常见的事。医保部门怎么从这其中发现猫腻呢？相关负责人说，他们是在延伸调查的时候，真相一点点浮出水面的，“我们发现他用了一种费用比较高的抗癌药物，本来也可以过的，但我们讨论认为，既然用的抗癌药物，就有严格的用药规定。吃药是有规律的，但我们发现他的用药量反而是少了。”
+      　　从表面上看，一切都合乎情理。但医保部门的检查人员并没有轻易放弃，而是一定要查个清楚，问个明白。相关负责人说，调查结果也出乎他们的意料，“开始的时候想，是不是前段时间对治疗不满意，可能调整了药，才换成这个药的。这平均算下来会有看起来用药少的现象。就到医院把这个人所有病例都调出来，结果发现这个人早在半年前就去世了。”
+      　　调查至此，医保部门之前假设的所有合理或者不合理的用药，全部都可以推翻。所有的用药记录，都是在朱某去世以后开出的。他们因此可以得出结论，这就是骗保行为。人死了，卡还“活着”。大病医疗保险的刷卡取药、报销等环节，是否存在一定漏洞？在雍志飞法官看来，通过这个案件可以看出来，这个卡不管是谁，都可以刷，拿到药。直接就报销61%左右，这证明存在漏洞。
+      　　按理说，参保人去世了，这一信息应该第一时间反馈给人社部门，及时更新参保人名下的医保卡等社保状态。这个案例，为何做不到这一点？高邮社保局医保部相关负责人解释说，死者参保的并不是职工医疗保险，而是居民医疗保险，“居民医疗保险的特点，是一年缴纳一次费用，次年缴费的时候，人员信息才可能更新。这也的确是系统中存在的一个漏洞。他死亡是没有义务向我们报告生死情况，我们也不能及时掌握，这就导致死亡不报，卡可以继续使用。”
+      　　记者了解到，被告钟某从医院开取药品后，低价转卖赚取差价，并存在和被告朱某私分的情节。公诉机关认为，两被告以非法占有为目的，骗取他人财物，数额巨大，应当以诈骗罪追究其刑事责任，且属共同犯罪。
+      　　但在法院审理期间，从犯朱某因病去世，法院依法对他中止审理。法院最终判决：被告人钟某犯诈骗罪，判处有期徒刑三年，缓刑四年，并处罚金人民币五万元。
+      　　雍志飞法官介绍，被告人钟某是主犯，多次诈骗，8万多，达成数额巨大，要从重处罚，归案以后，他主动退出了全部赃款，认罪态度比较好，可以从轻处罚。
+      　　目前，高邮社保局正在采取措施，堵住此案暴露出的制度漏洞。当地社保局已和民政部门达成意见，由殡仪馆每个月将死亡人员名单交由社保部门比对。高邮社保局还表示，将加强日常检查力度，严查骗保行为。
+    </div>
+  </div>
+
+  <script src="./tools.js"></script>
+  <script>
+    var displayArea = document.querySelector('.displayArea');
+    var contentArea = document.querySelector('.contentArea');
+    var ybarWrap = document.querySelector('.ybarWrap');
+    var ybar = document.querySelector('.ybar');
+    var xbarWrap = document.querySelector('.xbarWrap');
+    var xbar = document.querySelector('.xbar');
+    scrollBarFx({
+      displayArea: displayArea,
+      contentArea: contentArea,
+      y_barWrap: ybarWrap,
+      y_bar: ybar,
+      maxHeight: ybarWrap.clientHeight,
+      x_barWrap: xbarWrap,
+      x_bar: xbar,
+      maxWidth: xbarWrap.clientWidth,
+      xAxis: true,
+      selfAdaption: true
+    });
+  </script>
+</body>
+</html>

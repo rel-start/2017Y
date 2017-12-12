@@ -1,0 +1,24 @@
+{
+  "name": "ttembed-js",
+  "version": "0.1.0",
+  "description": "Set embedding level of TrueType fonts to 'installable embedding allowed'",
+  "main": "ttembed.js",
+  "keywords": [
+    "font",
+    "ttf",
+    "embed"
+  ],
+  "author": "Greg Littlefield",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thegregorator/ttembed-js.git"
+  },
+  "license": "unlicense",
+  "bin": {
+    "ttembed-js": "bin/ttembed-js"
+  },
+  "dependencies": {
+    "fs-ext": "0.5.0",
+    "posix-getopt": "1.0.0"
+  }
+}

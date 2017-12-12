@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>.end()【jQuery】</title>
+  <style>
+  	p, div { margin: 1px; padding: 1px; font-size: 16px; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<p>
+	Hi there <span>how</span> are you <span>doing</span>?
+</p>
+
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$('p').find('span')
+			.end()
+			.css('border', '2px red solid');
+</script>
+</body>
+</html>

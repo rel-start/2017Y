@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul class="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  
+  <script>
+    /**
+     * ele.insetAdjacentHTML(position, text)
+     * 
+     * position
+     *  - 'beforebegin'：元素自身的前面。
+     *  - 'afterbegin'：插入元素内部的第一个子节点之前。
+     *  - 'beforeend'：插入元素内部的最后一个子节点之后。
+     *  - 'afterend'：元素自身的后面。
+     */
+
+
+    var list = document.querySelector('.list');
+    // ---------------------------------------------
+    // 用户交互
+    // list.addEventListener('click', function (e){
+    //   var target = e.target;
+
+    //   if (target.nodeName === 'LI') {
+    //     console.log(target.innerHTML);
+    //   }
+    // });
+    var item = document.querySelectorAll('.list li');
+    item.forEach(function (c, i){
+      c.addEventListener('click', function (e){
+        e.stopPropagation();
+        console.log(this.innerHTML);
+      });
+      
+    });
+
+    document.onclick = function (){
+      // createItemHtml();
+      createItemEle();
+    };
+
+
+    // ---------------------------------------------
+    // 方法区域
+    function createItemHtml(){
+      var str = '<li>333</li>';
+
+      var aa = list.insertAdjacentHTML('beforeend', str);
+      console.log(aa);
+    }
+
+    function createItemEle(){
+      var item = document.createElement('li');
+      var aaa = null;
+      item.innerHTML = '23333';
+
+      var aa = list.insertAdjacentElement('beforeend', aaa);
+      console.log(aa);
+    }
+  </script>
+</body>
+</html>

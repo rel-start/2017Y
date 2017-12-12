@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+	<title>Document</title>
+	<style>
+		ul { list-style: none; }
+		.box li { display: inline-block; padding: 0 20px; background-color: black; color: #fff; }
+		.box li:first-child { line-height: 50px; }
+		.box li:nth-child(2) { padding: 14px 20px; }
+		.box li:nth-child(2):before { content: 'padding: 14 20, chrome=1'; position: absolute;top: 200px; color: #000; white-space: nowrap; }
+	</style>
+</head>
+<body>
+	<ul class="box">
+		<li>按钮</li>
+		<li>按钮</li>
+	</ul>
+</body>
+</html>

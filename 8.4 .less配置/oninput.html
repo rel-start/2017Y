@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <progress>标签 -->
+  <progress value="76" max="100">
+    <span>76</span>%
+  </progress>
+  
+  <!-- <small>标签 -->
+  <style>
+  	.smallbar { font: 100px '宋体'; }
+  </style>
+  <span class="smallbar">正常字体<small>正常字体</small></span>
+
+<!-- 设置id 在标准浏览器下会成为全局对象 -->
+<input type="range" id="range">
+<script type="text/javascript">
+range.oninput = function(){
+  console.log(this.value)
+}
+</script>
+
+  <!-- text-align: justify;兼容写法 -->
+  <style type="text/css">
+    .justify { text-align: justify; text-align-last: justify; }
+    .justify a { display: inline-block; width: 150px; }
+    .justify a:after { display: block; content: ''; width: 100%; height: 0; overflow: hidden; }
+  </style>
+  <div class="justify">
+    <a href="">发动机撒开了附加到</a>
+    <a href="">发动机撒开了附</a>
+    <a href="">发动机撒开了附</a>
+    <a href="">发动机撒开了附加到</a>
+    <a href="">发动机撒开了附加到</a>
+  </div>
+</body>
+</html>

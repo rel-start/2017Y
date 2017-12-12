@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.isImmediatePropagationStopped()</title>
+</head>
+<body>
+<a id="one">按钮</a>
+<div id="stop-log"></div>
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+document.getElementById('one').addEventListener('click', function(event){
+  alert('事件句柄 3');
+});
+
+document.getElementById('one').addEventListener('click', function(event){
+  alert('事件句柄 1');
+  event.stopImmediatePropagation();// 阻止click 队列冒泡, 前面的还是可以执行
+});
+
+document.getElementById('one').addEventListener('click', function(event){
+  alert('事件句柄 2');
+});
+
+//  返回是否在此事件对象上调用了 event.stopImmediatePropagation()
+// function immediatePropStopped(event) {
+//   var msg = "";
+//   if(event.isImmediatePropagationStopped()) {
+//     msg = 'called';
+//   }else {
+//     msg = 'not called';
+//   }
+  
+//   $('#stop-log').append('<div>' + msg + '</div>');
+// };
+// $('#one').click(function(event){
+//   immediatePropStopped(event);
+//   event.stopImmediatePropagation();
+//   immediatePropStopped(event);
+// });
+</script>
+</body>
+</html>

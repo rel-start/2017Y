@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.result</title>
+</head>
+<body>
+
+<!-- event.result：由事件触发的事件处理程序返回的最后一个值，除非该值为undefined -->
+<button>显示结果1</button><a>显示结果2</a>
+<p></p>
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$('button').click(function(event) {
+  return 'hey';
+});
+$('button').click(function(event) {
+  $('p').html(event.result);
+});
+</script>
+</body>
+</html>

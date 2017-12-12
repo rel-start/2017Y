@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>trigger demo</title>
+</head>
+<body>
+<button>Button #1</button>
+<button>Button #2</button>
+<div><span>0</span> Button #1</div>
+<div><span>0</span> Button #2</div>
+
+	
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function()
+{
+	$('button:first').click(function()
+	{
+		update( $('span:first') );
+	});
+	
+	$('button:last').click(function()
+	{
+		$('button:first').trigger('click');
+		update( $('span:last') );
+	});
+	
+	function update(o)
+	{
+		var n = parseInt(o.text(), 10);// n：十进制整数
+		o.text(n+1);
+	}
+});
+
+
+</script>
+</body>
+</html>

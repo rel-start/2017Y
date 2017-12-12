@@ -1,0 +1,38 @@
+
+/* 颜色 */
+.color {
+	color: color('#aaa');
+}
+
+/* 节点环境 母鸡啊 */
+.image_size {
+	// width: image-width('../img/login.jpg');
+	.color;
+}
+
+/* 兑换 */
+@9000sToMs: convert(9000s, 'ms');
+@turnToDeg: convert(1turn, 'deg');
+.exchange {
+	animation-delay: @9000sToMs;
+	// 不是替换二是转换
+	transform: rotate(@turnToDeg);
+}
+
+/* @数据URI */
+@base64_01: data-uri('../img/copy.jpg');
+@base64_02: data-uri('image/jpeg;base64','../img/copy.jpg');
+@base_svg: data-uri('image/svg+xml;charset=UTF-8', '../img/gj.svg');
+.data_uri_01 { width: 19px; height: 20px; background: @base64_01 no-repeat; }
+.data_uri_02 { width: 19px; height: 20px; background: @base64_02 no-repeat; }
+.data_uri_03 { width: 200px; height: 200px; background: @base_svg no-repeat; }
+
+
+
+
+
+
+
+
+
+

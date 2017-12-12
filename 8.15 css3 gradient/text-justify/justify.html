@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>text-justify实现两端对齐</title>
+    <style type="text/css">
+    body {
+        margin: 0;
+        font: 14px '微软雅黑';
+        padding-bottom: 400px;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        vertical-align: top;
+        border: 0;
+    }
+
+    .wrap {
+        width: 1180px;
+        margin: 100px auto;
+        line-height: 0;
+        text-align: justify;
+        background-color: #faf;
+    }
+    /*  font-size: 0; IE下size必须>0 */
+
+    .wrap .item {
+        display: inline-block;
+        width: 300px;
+        height: 200px;
+        line-height: 1.4;
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        vertical-align: top;
+    }
+    </style>
+</head>
+
+<body>
+    <ul class="wrap">
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <!-- 首尾标签留空(或换行) -->
+        <li class="item">3</li>
+        <li class="item">4</li>
+        <li class="item">5</li>
+        <li class="item">6</li>
+        <li class="justify_fix">&nbsp;</li>
+    </ul>
+    <style type="text/css">
+    .box {
+        width: 50%;
+        padding: 20px;
+        margin: 20px auto;
+        background-color: #f0f3f9;
+        text-align: justify;
+    }
+
+    .list {
+        width: 120px;
+        display: inline-block;
+        padding-bottom: 20px;
+        text-align: center;
+        vertical-align: top;
+        background-color: #afa;
+    }
+
+    .list em {
+        font-style: normal;
+        display: block;
+        width: 98px;
+        margin: 0 auto;
+    }
+
+    .justify_fix {
+        display: inline-block;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+    }
+    /* 好像这里还会撑开点高度，是不是换行解析的空格？ */
+    </style>
+    <div class="box">
+        <span class="list">
+        <img src="mm9.jpg" />
+        <em>发动机撒开了飞机萨洛克放大镜卡里的</em>
+    </span>
+        <span class="list">
+        <img src="mm9.jpg" />
+        <em>发动机撒开了飞机萨洛克放大镜卡里的</em>
+    </span>
+        <span class="list">
+        <img src="mm9.jpg" />
+        <em>发动机撒开了飞机萨洛克放大镜卡里的</em>
+    </span>
+        <span class="list">
+        <img src="mm9.jpg" />
+        <em>发动机撒开了飞机萨洛克放大镜卡里的</em>
+    </span>
+        <span class="list">
+        <img src="mm9.jpg" />
+        <em>发动机撒开了飞机萨洛克放大镜卡里的</em>
+    </span>
+        <span class="list">
+        <img src="mm9.jpg" />
+        <em>发动机撒开了飞机萨洛克放大镜卡里的</em>
+    </span>
+        <span class="list">
+        <img src="mm9.jpg" />
+        <em>发动机撒开了飞机萨洛克放大镜卡里的</em>
+    </span>
+        <span class="list">
+        <img src="mm9.jpg" />
+        <em>发动机撒开了飞机萨洛克放大镜卡里的</em>
+    </span>
+        <span class="list">
+        <img src="mm9.jpg" />
+        <em>发动机撒开了飞机萨洛克放大镜卡里的</em>
+    </span>
+        <span class="justify_fix"></span>
+    </div>
+    <style type="text/css">
+    .video-list {
+        width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: justify;
+        line-height: 0;
+        background-color: #faf;
+    }
+    .video-list img { width: 97px; }
+    /*列表父容器*/
+
+    .text-justify-list {
+        display: inline-block;
+        width: 97px;
+        padding-bottom: 15px;
+        line-height: 1.4;
+        text-align: left;
+        vertical-align: top;
+        background-color: #afa;
+    }
+    /*列表元素*/
+
+    .justify_fix {
+        display: inline-block;
+        width: 97px;
+        height: 0;
+        vertical-align: top;
+        overflow: hidden;
+    }
+    /*末行悲剧变喜剧*/
+    </style>
+    <div class="video-list">
+        <span class="text-justify-list">
+            <a class="share-figure" href="##">
+                <img src="0100641F464D71D0519C6C00081213F6BEE1FF-B2F6-CD62-0D68-A5B03854B67F.jpg" />
+                <span class="play-icon"> </span>
+            </a>
+            <span class="share-name"><a title="对着飞机你能尿多远。" href="##">对着飞机你能尿多远。</a></span>
+            <span class="share-num">分享:<em>51894</em></span>
+            <span class="float-right"><a href="##">分享</a></span>
+        </span>
+        <span class="text-justify-list">
+            <a class="share-figure" href="##">
+                <img src="0100641F464D71D0519C6C00081213F6BEE1FF-B2F6-CD62-0D68-A5B03854B67F.jpg" />
+                <span class="play-icon"> </span>
+            </a>
+            <span class="share-name"> <a href="##">赵本山和范围的《说情》，可算找到了，太TM的...</a></span>
+            <span class="share-num">分享:<em>53223</em></span>
+            <span class="float-right"><a href="##">分享</a></span>
+        </span>
+        <span class="text-justify-list">
+            <a class="share-figure" href="##">
+                <img src="0100641F464D71D0519C6C00081213F6BEE1FF-B2F6-CD62-0D68-A5B03854B67F.jpg" />
+                <span class="play-icon"> </span>
+            </a>
+            <span class="share-name"> <a href="##">赵本山和范围的《说情》，可算找到了，太TM的...</a></span>
+            <span class="share-num">分享:<em>53223</em></span>
+            <span class="float-right"><a href="##">分享</a></span>
+        </span>
+        <span class="text-justify-list">
+            <a class="share-figure" href="##">
+                <img src="0100641F464D71D0519C6C00081213F6BEE1FF-B2F6-CD62-0D68-A5B03854B67F.jpg" />
+                <span class="play-icon"> </span>
+            </a>
+            <span class="share-name"> <a href="##">赵本山和范围的《说情》，可算找到了，太TM的...</a></span>
+            <span class="share-num">分享:<em>53223</em></span>
+            <span class="float-right"><a href="##">分享</a></span>
+        </span>
+        <span class="text-justify-list">
+            <a class="share-figure" href="##">
+                <img src="0100641F464D71D0519C6C00081213F6BEE1FF-B2F6-CD62-0D68-A5B03854B67F.jpg" />
+                <span class="play-icon"> </span>
+            </a>
+            <span class="share-name"> <a href="##">赵本山和范围的《说情》，可算找到了，太TM的...</a></span>
+            <span class="share-num">分享:<em>53223</em></span>
+            <span class="float-right"><a href="##">分享</a></span>
+        </span>
+        <span class="text-justify-list">
+            <a class="share-figure" href="##">
+                <img src="0100641F464D71D0519C6C00081213F6BEE1FF-B2F6-CD62-0D68-A5B03854B67F.jpg" />
+                <span class="play-icon"> </span>
+            </a>
+            <span class="share-name"> <a href="##">赵本山和范围的《说情》，可算找到了，太TM的...</a></span>
+            <span class="share-num">分享:<em>53223</em></span>
+            <span class="float-right"><a href="##">分享</a></span>
+        </span>
+        <span class="text-justify-list">
+            <a class="share-figure" href="##">
+                <img src="0100641F464D71D0519C6C00081213F6BEE1FF-B2F6-CD62-0D68-A5B03854B67F.jpg" />
+                <span class="play-icon"> </span>
+            </a>
+            <span class="share-name"> <a href="##">赵本山和范围的《说情》，可算找到了，太TM的...</a></span>
+            <span class="share-num">分享:<em>53223</em></span>
+            <span class="float-right"><a href="##">分享</a></span>
+        </span>
+
+
+        <span class="justify_fix">&nbsp;</span>
+        <span class="justify_fix">&nbsp;</span>
+        <span class="justify_fix">&nbsp;</span>
+        <span class="justify_fix">&nbsp;</span>
+        <span class="justify_fix">&nbsp;</span>
+        <span class="justify_fix">&nbsp;</span>
+        <span class="justify_fix">&nbsp;</span>
+        <span class="justify_fix">&nbsp;</span>
+        <span class="justify_fix">&nbsp;</span>
+    </div>
+</body>
+
+</html>

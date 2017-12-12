@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var pixelRatio = 1/window.devicePixelRatio;
+		document.write('<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale='+ pixelRatio +', minimum-scale='+ pixelRatio +', maximum-scale='+ pixelRatio +'">');
+
+		window.onload = function() {
+			document.documentElement.style.fontSize = document.documentElement.clientWidth/20 + 'px';
+		}
+	</script>
+	<link rel="stylesheet" type="text/css" href="p3.css">
+</head>
+<body>
+	<ul class="box">
+		<li>按钮</li>
+		<li>按钮</li>
+	</ul>
+</body>
+</html>

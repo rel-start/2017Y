@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+  	dfn { font-style: normal; }
+  	/*正常 单行文字垂直居中 下面会多出一像素*/
+  	.border { margin-bottom: 10px; border: 1px solid #ddd; font: 12px '宋体'; }
+    .box { height: 20px; line-height: 20px; }
+    .box em { display: inline-block; vertical-align: middle; }
+
+    /*<em>是个有高度的元素*/
+    .box2 { height: 50px; line-height: 50px; }
+    .box2 em { display: inline-block; height: 50px; vertical-align: middle; }
+
+    /*多个不同高度*/
+    .box3 { height: 100px; }
+    .box3 .mid { display: inline-block; vertical-align: middle; }
+   	.box3 em { height: 100%; }
+   	.box3 b.txt_mid { _height: 100%; _display: inline-block; _vertical-align: middle; }
+  	.box3 .ibk { width: 20px; height: 20px; background: red; }
+  	.box3 .txt { line-height: 20px; background-color: green; }
+  	.box3 .btn_group { width: 200px; height: 70px; background-color: blue; }
+  	.box3 .btn_group a { height: 30px; line-height: 30px; border: 1px solid yellow; padding: 0 8px; background-color: #fff; }
+
+    /*多行文字垂直居中*/
+    .box4 { display: block; width: 500px; height: 500px; border: 1px solid #ddd; }
+    .box4 em { display: inline-block; height: 100%; vertical-align: middle; }
+    .box4 span { display: inline-block; vertical-align: middle; background: red; }
+  </style>
+</head>
+<body>
+  <!-- 正常 单行文字垂直居中 -->
+  <div class="box border">
+    <em></em>我输入的文字
+  </div>
+<button style="line-height: 20px;">按钮2</button>
+  <!-- <em>是个有高度的元素 -->
+  <div class="box2 border">
+  	<em></em><span>我输入的文字</span>
+  </div>
+
+
+  <!-- 多个不同高度，并且文字也垂直居中 -->
+  <div class="box3 border">
+  	<em class="mid"></em>
+  	<span class="ibk mid"></span>
+  	<dfn class="txt mid"><b class="txt_mid"></b>我输入的文字</dfn>
+  	<dfn class="btn_group mid">
+  		<em class="mid"></em>
+  		<a class="mid"><b class="txt_mid"></b>按钮</a>
+  		<!-- 标准浏览器<em>vertical-align:middle 可能不是垂直居中的。必须要<em> 与后面的元素也加 vertical-align:middle(如果说是文字 可以加行高)。
+  		当前<em>垂直居中 是为了让<button>在ie6下的文字垂直居中 -->
+  		<a class="mid"><b class="txt_mid"></b>按钮2</a>
+  	</dfn>
+  </div>
+
+  <!-- 多行文字垂直居中 -->
+  <div class="box4">
+    <em></em>
+    <span>我输入的文本<br>另一行文本</span>
+  </div>
+</body>
+</html>

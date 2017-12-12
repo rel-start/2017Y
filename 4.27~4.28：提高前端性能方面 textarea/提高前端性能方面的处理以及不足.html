@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- 一、最基本的 [http://www.zhangxinxu.com/wordpress/2013/04/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/]
+		1.CSS顶部, JS底部
+		2.YUI compressor/Gzip
+		3.CDN有
+		4.必要的CSS Sprite
+		5.Ajax可缓存
+
+	 二、CSS渲染、页面重绘以及回流
+	 	1.尽量避免类似 p[miao~='ty'] 以及其他一些复杂选择器, 以提高整站整体CSS渲染。
+	 	2.避免某些expression 表达式, 避免IE6的AlphaImageLoader png 透明滤镜, 可以试试使用fireworks 生成png8 alpha透明。
+
+	 	3.适当定稿, 例如如果div内容可能有高度差异的动态内容载入. 什么意思? 例如右上角的个人用户信息是页面渲染完毕之后动态载入的。但是, 有可能会出现20px的小图标, [http://www.zhangxinxu.com/wordpress/2013/04/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/], 而文字所占据高度为12px * 1.4 = 16.8px, IE6又存在行高被拒的悲剧. 因此, 如果这部分div不定高, 就会出现个人信息载入后, 整个页面下沉几像素(3.2px?)页面重绘的问题。
+
+	 	4.图片设定不响应重绘的尺寸, 如果你的<img>不设定尺寸、同时外部容器没有定死高宽, 则图片在首次载入时候, 占据空间会从0到完全出现, 左右上下都可能位移, 发生大规模的重绘. 可以参见新浪微博载入时候页面高度随着图片显示不断变高的问题, 这些都让浏览器重绘了, 一是体验可能不好, 二是烧CPU的. 你可以使用width/height 控制, 或者在CSS中设置。
+
+	 	5.<textarea> 或者使用<script type="text/html"> 存储动态载入HTML或模板HTML, 降低首屏加载的渲染事件。
+	 	6.具有复杂动画的元素绝对定位-脱离文档流, 避免强烈的回流. 现代浏览器可以渐进使用CSS3 transition实现动画效果, 比如改变像素值来的高性能。
+	 	7.不适用iframe, 据说开销最大的DOM元素
+
+	 三、降低静态资源请求数
+	 	1.开始提到的CSs sprite, 目前因降低后期维护成本, sprite的规模有所降低
+	 	2.字符与图形生成, 如: >【图片1】  该图效果之前[http://www.zhangxinxu.com/wordpress/2012/12/tip-character-cover-shape/]有介绍。
+	 	3.CSS图形生成, 如三角[http://www.zhangxinxu.com/wordpress/2010/05/css-border%E4%B8%89%E8%A7%92%E3%80%81%E5%9C%86%E8%A7%92%E5%9B%BE%E5%BD%A2%E7%94%9F%E6%88%90%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B/]【图片2】
+	 	4.CSS模拟, 几像素的投影效果【图片3】
+	 	5.CSS3技术, 例如渐变效果CSS3 gradient + filter. 投影效果[http://www.zhangxinxu.com/wordpress/2010/07/css%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84box-shadow%E7%9B%92%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C2/]CSS3 box-shadow + filter blur。【图片4】
+	 	6.base64 url[http://www.zhangxinxu.com/wordpress/2012/04/base64-url-image-%E5%9B%BE%E7%89%87-%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/]技术, 例如虚点效果【图片5】
+
+	 四、资源的复用
+	 	1.团队CSS样式库, 跨苏构建网站-Bootstrap有点类似这个味道, .span1, .span2, .span3,...
+	 	2.高宽自适应-无论选项卡、按钮等还是各个大小模块都是高宽自适应的, 以适用于各种环境、需求【图片6】
+	 	3.CSS3 font-face技术-纯色图标大小以及颜色可以随意控制, 增强复用【图片7】
+
+	 五、js/HTML交互相关
+	 	1.localStorage本地存储与优化. 两种实践。
+		 	一是: 大数据量交互, 数据不怎么更新的, 含版本控制机制, 一次请求, 之后高枕无忧【图片8~8.2】
+			二是: 代替cookie实现某些功能(localStorage记住展开收起状态), 带过期时间管理, 降低页面cookie大小（IE6-7依然使用Cookie）【图片9】
+
+		2.图片/广告位的显屏加载, 也就是滚动显示加载
+		3.下拉/弹框等默认隐藏资源使用textarea隐藏. 需要显示时候才真正显露
+		4.特殊交互JS资源再使用的时候才异步加载(上传图片, 显示地图等)
+		5.无关紧要资源避开加载渲染高峰显示, 例如外站iframe等载入完毕后1秒再DOM创建载入处理
+		6.复杂事件监听与初始化(鼠标移动或加入到该区域才初始化复杂事件)
+		7.键盘事件延迟, 例如搜索的Autocomplete效果, 或hover延迟浮动层显示
+		8.MVC-数据、展现、交互分离
+		9.面向数据编程
+		10.避免DOM操作, 遍历数据而非DOM
+		11.事件委托, 避免过多的DOM元素的事件绑定
+		12.其他N多JS编写细节等
+
+	 六、浏览器自身的潜力
+	 	1.ol列表的数字、table的自适应性
+	 	2.<strong> <h1-6>粗体效果
+	 	3.form相关特性, 元素自身特性实现submit以及reset等效果
+	 	4.HTML5 placeholder以及其他N多现代浏览器支持特性等
+
+	 七、问题所在
+	 	1.没有模块加载机制, 20个模块脚本参杂在一起, 一个页面可能只使用了4个
+	 	2.图片的拉伸很常见
+	 	3.各种广告跟踪代码, 把网站前端性能拉低了一个等级
+	 	4.HTML没有顶边显示, 去除冗余空白字符以及注释, 因此HTML页面大小为优化. 不难, 程序那边一直没做相关处理【图片10】
+	 	5.头部无用的一段专为IE6的script输出
+-->
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .box { width: 100px; height: 100px; border: 1px solid #ddd; transition: 1s; }
+    .hover { height: 200px; }
+  </style>
+</head>
+<body>
+<div class="box" id="box">fdsafds</div>
+
+<script>
+  box.onmouseover = function (){
+    this.classList.add('hover');
+  };
+  box.onmouseout = function (){
+    this.classList.remove('hover');
+  };
+</script>
+</body>
+</html>

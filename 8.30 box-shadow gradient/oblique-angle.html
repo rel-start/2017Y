@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>斜切角 http://www.w3cplus.com/css3/css-secrets/cutout-corners.html</title>
+	<style type="text/css">
+		body {
+			display: grid;
+			justify-content: space-evenly;
+			grid-gap: 20px;
+		}
+		[class*="test"] {
+			width: 160px;
+			height: 160px;
+			padding: 20px;
+			font-size: 15px;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+
+<!-- 测试一： -->
+<style type="text/css">
+.test01 {
+	grid-column: 1;
+	grid-row: 1;
+	background: linear-gradient(-45deg, transparent 15px, #58a 15px);
+}
+</style>
+<div class="test01">从技术上说，我们甚至不需要第一条声明。我们只是把它作为一个降级引入：当CSS渐变不被支持时，也就是第二条声明失效的时候。所以我们还是需要一个纯色背景。</div>
+
+<!-- 测试二： -->
+<style type="text/css">
+.test02 {
+	grid-column: 2;
+	grid-row: 1;
+	background: linear-gradient(-45deg, transparent 15px, #58a 0) right,
+				linear-gradient(45deg, transparent 15px, #655 0) left;
+	background-size: 50% 100%;
+}
+</style>
+<div class="test02">从技术上说，我们甚至不需要第一条声明。我们只是把它作为一个降级引入：当CSS渐变不被支持时，也就是第二条声明失效的时候。所以我们还是需要一个纯色背景。</div>
+
+<!-- 测试三： -->
+<style type="text/css">
+.test03 {
+	grid-column: 3;
+	grid-row: 1;
+	background: linear-gradient(-45deg, transparent 15px, #58a 0) right,
+				linear-gradient(45deg, transparent 15px, #655 0) left;
+	background-size: 50% 100%;
+	background-repeat: no-repeat;
+}
+</style>
+<div class="test03">从技术上说，我们甚至不需要第一条声明。我们只是把它作为一个降级引入：当CSS渐变不被支持时，也就是第二条声明失效的时候。所以我们还是需要一个纯色背景。</div>
+
+<!-- 测试四： -->
+<style type="text/css">
+.test04 {
+	grid-column: 4;
+	grid-row: 1;
+	background: linear-gradient(-45deg, transparent 15px, #58a 0) top right,
+				linear-gradient(45deg, transparent 15px, #58a 0) top left,
+				linear-gradient(-135deg, transparent 15px, #58a 0) bottom right,
+				linear-gradient(135deg, transparent 15px, #58a 0) bottom left;
+	background-size: 50% 50%;
+	background-repeat: no-repeat;
+}
+</style>
+<div class="test04">从技术上说，我们甚至不需要第一条声明。我们只是把它作为一个降级引入：当CSS渐变不被支持时，也就是第二条声明失效的时候。所以我们还是需要一个纯色背景。</div>
+
+<!-- 测试五： -->
+<style type="text/css">
+.test05 {
+	grid-column: 4;
+	grid-row: 2;
+	background-color: #58a;
+	background-image: linear-gradient(-45deg, #fff 15px, transparent 15px),
+					  linear-gradient(45deg, #fff 15px, transparent 15px),
+					  linear-gradient(-135deg, #fff 15px, transparent 15px),
+					  linear-gradient(135deg, #fff 15px, transparent 15px);
+}
+</style>
+<div class="test05">从技术上说，我们甚至不需要第一条声明。我们只是把它作为一个降级引入：当CSS渐变不被支持时，也就是第二条声明失效的时候。所以我们还是需要一个纯色背景。</div>
+
+<!-- 测试六： -->
+<style type="text/css">
+.test06 {
+	grid-column: 3;
+	grid-row: 2;
+	background: radial-gradient(circle at top left, transparent 15px, #58a 0) top left,   /* cricle at 10px 20px */
+				radial-gradient(circle at top right, transparent 15px, #58a 0) top right,
+				radial-gradient(circle at bottom right, transparent 15px, #58a 0) bottom right,
+				radial-gradient(circle at bottom left, transparent 15px, #58a 0) bottom left;
+	background-size: 50% 50%;
+	background-repeat: no-repeat;
+</style>
+<div class="test06">从技术上说，我们甚至不需要第一条声明。我们只是把它作为一个降级引入：当CSS渐变不被支持时，也就是第二条声明失效的时候。所以我们还是需要一个纯色背景。</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>附加和触发自定义事件</title>
+  <style>
+  	p { color: red; }
+  	span { color: blue; }
+  </style>
+</head>
+<body>
+<p>有一个附加的自定义事件。</p>
+<button>触发自定义事件</button>
+<span style="display: none;"></span>
+	
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function()
+{
+	$('p').on('myCustomEvent', function(event, myName){
+		$(this).text(myName + ', hi there!');
+		$('span').stop().css('opacity', 1).text('myName =' + myName)
+						 .fadeIn(30).fadeOut(1000);
+	});
+	
+	$('button').click(function(){
+		$('p').trigger('myCustomEvent', ['kuan']);
+	});
+	
+});
+</script>
+</body>
+</html>

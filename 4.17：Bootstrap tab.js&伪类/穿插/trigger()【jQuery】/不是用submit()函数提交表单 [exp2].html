@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>trigger demo</title>
+</head>
+<body>
+<form action="http://www.baidu.com"></form>
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function()
+{
+//	 要提交第一个表单而不适用submit()函数
+//	$('form:first').trigger('submit');
+	var event = jQuery.Event('submit');
+	$('form:first').trigger(event);
+	
+	if(event.isDefaultPrevented()){
+//		执行一个动作
+	}
+});
+
+</script>
+</body>
+</html>

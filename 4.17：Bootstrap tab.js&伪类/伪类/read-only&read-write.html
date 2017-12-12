@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>read-only\read-write [只读\只写]</title>
+<style type="text/css">
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-size: 14px; font-family: '微软雅黑'; background-color: #fff; }
+
+/* read-only\read-write [只读\只写] */
+.read input:read-only { background: red; }
+.read input:read-write { border: 1px dashed #000; }
+</style>
+</head>
+<body>
+	<!-- read-only\read-write [只读\只写] -->
+	<div class="read">
+		<input type="text" readonly value="fdsa" />
+		<input type="text" value="fdas" />
+	</div>
+</body>
+</html>

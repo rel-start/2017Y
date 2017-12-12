@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>盒阴影(https://www.w3.org/TR/css3-background/#box-shadow)</title>
+	<style type="text/css">
+		.body {
+			display: grid;
+			justify-content: space-evenly;
+		}
+		[class*=box] {
+			position: relative;
+			display: table-cell;
+			vertical-align: middle;
+			width: 300px;
+			height: 300px;
+			border: 1px solid #ccc;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<!-- box1 -->
+<style type="text/css">
+.box1 {
+	background: -webkit-gradient(linear, 0% 20%, 0% 100%, from(#fff), to(#fff), color-stop(.1,#f3f3f3));
+}
+</style>
+<div class="box1">Effect1</div>
+</body>
+</html>

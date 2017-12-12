@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    /*该属性的首词组 以a开始的*/
+    [data-list^="a"] { background-color: #000; color: #fff; }
+    /*该属性的末词组 以g结束的*/
+    [data-list$="g"] { font-size: 20px; text-shadow: 5px 5px 5px rgba(255,255,255,.3); color: red; }
+    /*该属性的首词组 以a-开头的 或 就一词组值为 a或a-*/
+    [data-list|="a"] { border: 2px solid blue; }
+    /*该属性值就一词组为 box 或 包含box词组*/
+    [name~="box"] { padding: 50px; }
+    /*改属性值就一词组为 i 或 包含i的属值*/
+    [data-list*="i"] { margin: 20px;;}
+  </style>
+</head>
+<body>
+  <div class="box" id="man" data-list="after">class</div>
+  <div name="box" id="man" data-list="abbr child rang">name</div>
+  <div name="box aa" id="man" data-list="abbr child rang">name2</div>
+  <div first="box" id="man" data-list="big  attr">first</div>
+  <div second="box" id="man" data-list="a_time a-large">second</div>
+  <div third="box" id="man" data-list="a-name">third</div>
+  <div data-list="a">单 A</div>
+  <div data-list="a">单 A-</div>
+  <div data-list="a b">A and B</div>
+  <div data-list="i">单 i</div>
+</body>
+</html>

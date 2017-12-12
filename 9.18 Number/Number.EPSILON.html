@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<!-- 网址：http://www.cnblogs.com/mmkan/p/6409005.html -->
+<script>
+  // 属性
+  // ===========================================
+  // （一）Number.EPSILON
+  // 引入这么小的一个常量的目的在于，为浮点数计算设置一个误差范围。因为浮点数的计算是不精确的。如果误差小于Number.EPSILON,我们就可以认为得到了正确的结果
+
+  // 例子
+  // var
+  //     x = 0.2,
+  //     y = 0.3,
+  //     z = 0.1,
+  //     equal = (Math.abs(x - y + z) < Number.EPSILON);
+  // console.log(equal);
+
+  // 源码
+  // if (Number.EPSILON === undefined)
+  //   Number.EPSILON  =  Math.pow(2, -52);
+
+  // -------------------------------------------------------------------------------
+
+  // （二）Number.MAX_SAFE_INTEGER
+  // 表示JavaScript中的最大安全整数 2(53次方) - 1。只有Number.MAX_SAFE_INTEGER + 2=== Number.MAX_SAFE_INTEGER + 1 将评估为true
+
+  // 例子
+  // console.log(Number.MAX_SAFE_INTEGER);   // 9007199254740991
+  // console.log(2 ** 53 - 1);               // 9007199254740991
+  
+
+
+
+
+
+  // 方法
+  // ===========================================
+  // （一）Number.isFinite()方法确定传递的值是否为有限数
+  // 与全局isFinite()函数相比，此方法不会将参数强制转换为数字。这意味着只有类型数字的值也是有限的，返回true
+
+  // 例子
+  // Number.isFinite(Infinity);  // false
+  // Number.isFinite(NaN);       // false
+  // Number.isFinite(-Infinity); // false
+  // Number.isFinite(0);         // true
+  // Number.isFinite(2e64);      // true
+  // Number.isFinite('0');       // false
+  // Number.isFinite(null);      // false
+  // isFinite('0');              // true
+
+  // 源码
+  // Number.isFinite = Number.isFinite || function (value){
+  //   return typeof value === 'number' && isFinite(value);
+  // }
+
+  // （二）Number.isInteger()方法确定传递的值是否为整数
+  // 描述
+  // 如果目标值为整数，则返回true，否则返回false。如果只为NaN或无限，返回false。
+
+  // 例子
+  // Number.isInteger(0);          // true
+  // Number.isInteger(1);          // true
+  // Number.isInteger(-1000);      // true
+  // Number.isInteger(0.1);        // false
+  // Number.isInteger(Math.PI);    // false
+  // Number.isInteger(NaN);        // false
+  // Number.isInteger(Infinity);   // false
+  // Number.isInteger(-Infinity);  // false
+  // Number.isInteger('10');       // false
+  // Number.isInteger(true);       // false
+  // Number.isInteger(false);      // false
+  // Number.isInteger([1]);        // false
+  
+  // 源码
+  Number.isInteger = Number.isInteger || function (value){
+    return typeof value === 'number' &&
+        isFinite(value) &&
+        Math.floor(value) === value;
+  };
+</script>
+
+</body>
+</html>

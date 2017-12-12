@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>nth-of-type</title>
+<style type="text/css">
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-size: 14px; font-family: '微软雅黑'; background-color: #fff; }
+
+/* nth-of-type(n) [系列] */
+.nt p:first-of-type { background: red; }
+.nt p:last-of-type { background: green; }
+.nt p:nth-of-type(4) { background: blue; }
+.nt p:nth-last-of-type(2) { background: yellow; }
+.nt p:only-of-type { color: rosybrown; }
+
+</style>
+</head>
+<body>
+	<!-- nth-of-type(n) [系列] -->
+	<div class="nt">
+		<h1>1This is a heading</h1>
+		<p>The first paragraph.</p>
+		<p>The second paragraph.</p>
+		<p>The third paragraph.</p>
+		<p>The fourth paragraph.</p>
+		<div style="margin-top: 50px;">
+			<p>2The third paragraph.</p>
+			<p>The fourth paragraph.</p>
+		</div>
+		<span><p>3fdsafsd</p></span>
+	</div>
+
+</body>
+</html>

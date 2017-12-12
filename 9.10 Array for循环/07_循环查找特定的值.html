@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body id="body">
+
+<!--
+	break：退出switch语句或循环
+	continue：跳出当前的循环
+-->
+
+<script>
+// var cars = ['BMW', 'Volvo', 'Saab', 'Ford'];
+// var text = '';
+
+// 引用标签 'list' IE5+
+// list: {
+//   text += cars[0] + '<br>';
+//   text += cars[1] + '<br>';
+//   text += cars[2] + '<br>';
+//   break list;
+//   text += cars[3] + '<br>';
+// }
+
+// body.innerHTML = text;
+
+// var text = '';
+// var i, j;
+// Loop1: // 第一个循环标签 'Loop1'
+// for (i = 0; i < 3; i++) {
+// 	text += '<br> i =' + i + '，j = ';
+
+// 	Loop2: // 第二个循环标签 'Loop2'
+// 	for (j = 10; j < 15; j++) {
+// 		if (j == 12) {
+// 			break Loop2;
+// 		};
+// 		body.innerHTML = text += j + ' ';
+// 	}
+// };
+
+
+// 测试一
+outer_block: {
+  inner_block: {
+    console.log('1');
+    break outer_block;		// break 打破了两 inner_block and outer_block
+    console.log(':-(');		// 跳过
+  }
+	
+  console.log(2);				// 跳过
+};
+
+// 测试二
+// 下面的代码中同样适用了 break 语句和被标记的块语句(labeled blocks), 但是产生了一个语法错误, 因为它的 break 语句在 block_1 中, 但是引用了 block_2。break 语句必须内嵌在它引用的label中。
+block_1: {
+  console.log(1);
+  break block_2;		// 标签未找到
+}
+
+block_2: {
+  console.log(2);
+}
+
+</script>
+</body>
+</html>

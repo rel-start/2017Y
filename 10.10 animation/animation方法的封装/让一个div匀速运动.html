@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  .start_move {
+    width: 100px;
+    height: 60px;
+    margin: 30px 0;
+  }
+  .wrap {
+    position: relative;
+    width: 500px;
+    height: 80px;
+    border: 2px solid #000;
+  }
+  .box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80px;
+    height: 80px;
+    background-color: rgb(54,90,222);
+  }
+  </style>
+</head>
+<body>
+  <button class="start_move">开始</button>
+  <div class="wrap">
+    <div class="box"></div>
+  </div>
+
+<script>
+  var startMove = document.querySelector('.start_move');
+  var wrap = document.querySelector('.wrap');
+  var box = document.querySelector('.box');
+
+  /**
+   *  让一个物体运动必须要知道的几个量：
+   *
+   *  - time: 已经运动的时间
+   *  - begin: 起始位置
+   *  - change: 总路程
+   *  - duration: 总时间
+   *
+   *  比如匀速运动，可以表示单钱物体的位置为：
+   *    current = begin + change / duration *time
+   *
+   */
+
+  // 获取这个要运动的元素的起始位置
+  var begin = box.offsetLeft;
+  // 获取元素哟啊运动的总距离
+  var change = wrap.clientWidth - box.offsetWidth;
+  // 设定一个运动的总时间
+  var duration = 1000;
+
+  
+  startMove.onclick = function (){
+    // 定时器管理：就是在开始定时器之间，先清除定时器
+    // clearInterval(box.timer);
+
+    if (box.timer) return;
+    
+    // 设定起始时间
+    var startTime = Date.now();
+
+    box.timer = setInterval(function (){
+      // 已经用过的时间
+      var time = Date.now() - startTime;
+
+      // 限制在终点
+      if (time > duration) {
+        time = duration;
+        clearInterval(box.timer);
+        box.timer = null;
+      }
+
+      // 当前最新的位置
+      var currentPos = change / duration * time + begin;
+
+      box.style.left = currentPos + 'px';
+    });
+  };
+</script>
+</body>
+</html>

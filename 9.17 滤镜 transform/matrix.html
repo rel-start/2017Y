@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  /* 偏移 */
+  /*transform: matrix(1, 0, 0, 1, 100, 100);*/
+  /* 缩放 */
+  /*transform: matrix(2, 0, 0, 2, 100, 100);*/
+  /* 旋转 */
+  /*transform: matrix(0.866025, 0.5, -0.5,0.866025, 0, 0);*/
+  /* 斜切 */
+  transform: matrix(1, 0.700207, 0.700207, 1, 0, 0);
+  /*transform: skewY(35deg);*/
+}
+  </style>
+</head>
+<body>
+
+<div class="box" id="box"></div>
+<script>
+
+/*
+  matrix(a, b, c, d, e, f);
+
+  x' = ax + cy + e;
+  y' = bx + dy + f;
+*/
+
+// 偏移
+// x' = x + e;
+// y' = y + f
+
+// 缩放
+// x' = ax;
+// y' = dy;
+
+// 顺时针旋转
+// x' = cos(a)x - sin(c)y;
+// y' = sin(b)x + cos(d)y;
+
+// 逆时针旋转
+// x' = cos(a)x + sin(c)y;
+// y' = -sin(b)x + cos(d)y;
+
+// 斜切
+// x' = x + tan(c)y;
+// y' = tan(b)x + y;
+
+console.log(getComputedStyle(box).transform)
+
+// var i = 0;
+// function fn(){
+//   console.log(i);
+//   i++;
+//   if (i<3) fn();
+// }
+// fn();
+
+// 阶乘
+function fn(i){
+  if (i === 1)
+    return 1;
+  else 
+    return i * fn(--i);
+}
+console.log(fn(10));
+</script>
+</body>
+</html>

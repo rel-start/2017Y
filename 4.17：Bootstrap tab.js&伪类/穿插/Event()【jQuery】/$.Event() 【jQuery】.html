@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$.Event() 【jQuery】</title>
+</head>
+<body>
+<input type="text" id="input_1" />
+<a id="btn">按钮</a>
+	
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function()
+{
+	var down = $.Event('keydown', {name: 65});
+	$('#input_1').on('keydown', function(e)
+	{
+		console.log(e.name);
+	});
+//	$('#input_1').trigger(down);
+	$('#btn').click(function(){
+		$('#input_1').trigger(down);
+	});
+});
+</script>
+</body>
+</html>

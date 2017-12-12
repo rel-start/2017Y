@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>http://blog.163.com/yu_1988_happy/blog/static/5611067720123231040763/</title>
+</head>
+<body>
+<script>
+	var obj = {};
+	var i = 99999999;
+	while(i--){ obj["test"+i] = "test"; }
+
+	var start = new Date().getTime();
+	for(x in obj){}
+	console.log('for in' + (new Date().getTime() - start));
+/*
+最终结论：
+
+速度最快的循环：while--、while++（它们的速度不相上下）
+
+速度最慢的循环：for++
+*/
+</script>
+</body>
+</html>

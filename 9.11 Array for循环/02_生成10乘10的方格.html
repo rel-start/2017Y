@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    button {
+      width: 150px;
+      height: 40px;
+      margin: 10px;
+    }
+    .box { position: relative; }
+    .box div {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background-color: red;
+      text-align: center;
+      line-height: 50px;
+    }
+  </style>
+</head>
+<body>
+<button>按钮</button>
+<div class="box"></div>
+
+<script>
+  // 生成10*10的div矩阵，并且颜色是一次排开的
+  // 第一次点击按钮可以生成，生成后再点击按钮无效
+
+  var
+      // 尺寸
+      size = 60, str ='',
+      // 颜色数组
+      colors = ['red', 'yellow', 'blue', 'green'],
+      // 按钮
+      btn = document.querySelector('button'),
+      // 盒子
+      box = document.querySelector('.box');
+
+  // 方法一：
+  // ================================
+  // for (var i=0; i<10; i++) {
+  //   for (var j=0; j<10; j++) {
+  //     str += `<div style="left: ${j*size}px; top: ${i*size}px; background-color: ${colors[(j + 10 * i) % colors.length]}">${j + 10 * i}</div>`
+  //   }
+  // };
+
+  // 方法二：
+  // ================================
+  // var br = -1;
+  // for (var i=0; i<100; i++) {
+  //   if ((i % 10) === 0) br++;
+  //   str += `<div style="left: ${ (i % 10) * size }px; top: ${ br   * size }px">${i}</div>`;
+  // };
+
+  // 方法三：
+  // ================================
+  var mark = true;
+
+  btn.onclick = function (){
+    if (mark) {
+    console.log(1)
+      for (var i=0; i<100; i++) {
+        str += `<div style="left: ${ (i % 10) * size }px; top: ${ ~~(i / 10) * size }px">${i}</div>`;
+      };
+
+      // 输出
+      box.innerHTML = str;
+      // 按钮点击一次，关闭
+      mark = !mark;
+    }
+  };
+
+
+  // box.innerHTML = str;
+</script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    button {
+      width: 150px;
+      height: 40px;
+      margin: 10px;
+    }
+    .box { position: relative; }
+    .box div {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background-color: red;
+      text-align: center;
+      line-height: 50px;
+    }
+    .box span {
+      width: 100px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      display: inline-block;
+      border: 1px solid #000;
+      margin: 2px;
+    }
+  </style>
+</head>
+<body>
+<button id="btn">按钮</button>
+<div class="box" id="box"></div>
+
+<script>
+  // 生成10*10的div矩阵，并且颜色是一次排开的
+  // 第一次点击按钮可以生成，生成后再点击按钮无效
+/*
+00：top: 0*50  left: 0*50
+01：top: 0*50  left: 1*50
+02：top: 0*50  left: 2*50
+03：top: 0*50  left: 3*50
+
+04：top: 1*50  left: 0*50
+05：top: 1*50  left: 1*50
+06：top: 1*50  left: 2*50
+07：top: 1*50  left: 3*50
+
+08：top: 2*50  left: 0*50
+09：top: 2*50  left: 1*50
+10：top: 2*50  left: 2*50
+11：top: 2*50  left: 3*50
+
+12：top: 3*50  left: 0*50
+13：top: 3*50  left: 1*50
+14：top: 3*50  left: 2*50
+15：top: 3*50  left: 3*50
+*/
+
+
+  // var str = '';
+  // var size = 50;
+  // var t = -1;
+  // var colors = ['red', 'yellow', 'blue', 'green'];
+  // for (var i=0; i<10; i++) {
+  //   for (var j=0; j<10; j++) {
+  //     var num = j + i * 10;
+  //     str += `<div style="top: ${ i * 50 }px; left: ${ j * 50 }px; background-color: ${ colors[num % colors.length] };">${num}</div>`;
+  //   }
+  // };
+
+  // for (var i=0; i<100; i++) {
+  //   str += `<div style="top: ${ ~~(i/10) * size }px; left: ${ (i%10) * size }px; background-color: ${ colors[i % colors.length] };">${ i }</div>`;
+  // };
+
+  // for (var i=0; i<100; i++) {
+  //   if (i%10 === 0) t++;
+  //   str += `<div style="top: ${ t * size }px; left: ${ (i % 10) * size }px; background-color: ${ colors[i % colors.length] };">${ i }</div>`;
+  // };
+
+  // var str = '';
+  // var size = 50;
+  // var t = -1;
+  // var colors = ['red', 'yellow', 'blue', 'green'];
+
+  // for (var i=0; i<10; i++) {
+  //   for (var j=0; j<10; j++) {
+  //     str += `<div style="top: ${i * size}px; left: ${j * size}px; background-color: ${ colors[( j + i * 10) % colors.length] };">${ j + i*10 }</div>`;
+  //   }
+  // };
+
+  // for (var i=0; i<100; i++) {
+  //   if (i % 10 === 0) t++;
+  //   str += `<div style="top: ${ t * size }px; left: ${ (i % 10)*size }px; background-color: ${ colors[i % colors.length] };">${ i }</div>`;
+  // }
+
+  // for (var i=0; i<100; i++) {
+  //   str += `<div style="top: ${ ~~(i/10)*size }px; left: ${ (i%10)*size }px; background-color: ${ colors[i % colors.length] }">${ i }</div>`;  // 会先操作 ~~。在乘除
+  // }
+
+  // var str = '';
+  // var size = 50;
+  // var colors = ['red', 'yellow', 'blue', 'green'];
+  // var half = -1;
+
+  // for (var i=0; i<10; i++) {
+  //   for (var j=0; j<10; j++) {
+  //     str += `<div style="top: ${ i * size }px; left: ${ j * size }px; background-color: ${ colors[ (j+i*10) % colors.length ] };">${ j + i * 10 }</div>`;
+  //   }
+  // };
+
+  // for (var i=0; i<100; i++) {
+  //   str += `<div style="top: ${ ~~(i / 10) * size }px; left: ${ (i % 10) * size }px; background-color: ${ colors[ i % colors.length ] };">${ i }</div>`;
+  // };
+
+  // for (var i=0; i<100; i++) {
+  //   if ( (i%10) === 0 ) half++;
+  //   str += `<div style="top: ${ half * size }px; left: ${ (i % 10) * size }px; background-color: ${ colors[ i % colors.length ] };">${ i }</div>`;
+  // };
+
+  // var str = '';
+  // var colors = ['red', 'yellow', 'blue', 'green'];
+  // var size = 66;    // 4行9列
+  // var t = -1;
+
+  // for (var i=0; i<4; i++) {
+  //   for (var j=0; j<9; j++) {
+  //     str += `<div style="top: ${ i * size }px; left: ${ j * size }px; background-color: ${ colors[ (j+i*9) % colors.length ] };">${ j + i*9 }</div>`;     // i 乘以 j循环次数
+  //   }
+  // };
+
+  // for (var i=0; i<36; i++) {
+  //   str += `<div style="top: ${ ~~(i / 9) * size }px; left: ${ (i % 9) * size }px; background-color: ${ colors[ i % colors.length ] };">${ i }</div>`;
+  // };
+
+  // for (var i=0; i<36; i++) {
+  //   if ( (i%9) === 0 ) t++;
+  //   str += `<div style="top: ${ t * size }px; left: ${ (i % 9) * size }px; background-color: ${ colors[ i % colors.length ] }">${ i }</div>`;
+  // };
+
+  // var str = ''; // 5行8列
+  // var colors = ['red', 'yellow', 'blue', 'green'];
+  // var size = 50;
+  // var n = -1;
+
+  // for (var i=0; i<8; i++) {
+  //   for (var j=0; j<5; j++) {
+  //     str += `<div style="top: ${ i * size }px; left: ${ j * size }px; background-color: ${ colors[ (j+i*5) % colors.length ] };">${ j + i * 5 }</div>`;
+  //   }
+  // };
+
+  // for (var i=0; i<40; i++) {
+  //   str += `<div style="top: ${ ~~(i / 5) * size }px; left: ${ (i % 5) * size }px; background-color: ${ colors[ i % colors.length ] };">${ i }</div>`;
+  // };
+
+  // for (var i=0; i<40; i++) {
+  //   if (i % 5 === 0) {
+  //     n++;
+  //   };
+  //   str += `<div style="top: ${ n * size }px; left: ${ (i % 5) * size }px; background-color: ${ colors[ i % colors.length ] };">${ i }</div>`;
+  // }
+
+  // var arr = [
+  //   [1],
+  //   [2, 3],
+  //   [4, 5, 6]
+  // ];
+
+  // for (var i=0; i<arr.length; i++) {
+  //   for (var j=0; j<=i; j++) {
+  //     console.log(arr[i][j]);
+  //   }
+  // };
+  
+  var str = '';
+
+  for (var i=1; i<=9; i++) {
+    for (var j=1; j<=i; j++) {
+      str += `<span>${j} * ${i} = ${ i * j }</span>`;
+    }
+    str += '<br>';
+    // console.log(str);
+  box.innerHTML = str;
+  };
+
+</script>
+</body>
+</html>

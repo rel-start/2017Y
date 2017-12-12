@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>on() 例子1</title>
+</head>
+<body>
+	<p class="p1">方法三等奖阿里</p>
+	<p class="p2">方法三等奖阿里</p>
+	
+	<form class="one" action="http://www.baidu.com"><input type="submit" /></form>
+	<form class="two" action="http://api.jquery.com/on/"><input type="submit" /></form>
+	
+	<div class="one">one</div>
+	<div class="two">two</div>
+	
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function()
+{
+//	 单击时在alert 中显示段落的文本
+	$('p.p1').on('click', function() {
+		alert($(this).text());
+	});
+	
+	
+//	将数据传递给事件处理程序,这里由name指定
+	/*function myHandler(event) {
+		alert(event.data.foo);
+	}
+	$('p.p2').on('click', {foo: 'bar'}, myHandler);*/
+	
+	
+//	取消表单提交操作,并通过返回来防止事件冒泡false
+	$('form.one').on('submit', false);
+	
+	
+//	仅使用默认操作取消.preventDefault()
+	$('form.two').on('submit', function(event){
+		alert(1)
+		event.preventDefault();
+		event.stopPropagation();
+	});
+	
+	
+//	使用第二个参数将数据传递给事件处理程序.trigger()
+	/* exp1 
+	$('div.one').on('click', function(event, person){
+		alert('Hello, ' + person.name);
+	});
+	$('div.one').trigger('click', {name: 'Jim'});*/
+	
+	/* exp2 
+	$('div.one').on('click',{name: 'ad'}, function(event){
+		alert('Hello, ' + event.data.name);
+	});
+	$('div.one').trigger('click');*/
+	
+	/* exp3 */
+	var ck = $.Event('click', {name: 'ty'});
+	$('div.one').on('click', function(event){
+		alert('Hello, ' + event.name);
+	});
+	$('div.one').trigger(ck);
+	
+	/* exp4
+	$('div.one').on('click', function(event, a, b){
+		alert(a + ',' + b);
+	});
+	$('div.one').trigger('click', ['Goodbye', 'Jim']);// 好吧 必须数组| */
+});
+</script>
+</body>
+</html>

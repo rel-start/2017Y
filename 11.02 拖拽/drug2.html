@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.box {
+			/* position: relative; */
+			width: 1200px;
+			height: 500px;
+			border: 5px solid rgba(0, 0, 0, .3)
+		}
+
+		.moveEl {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+		}
+
+		.moveEl i {
+			display: block;
+			line-height: 24px;
+			margin: 0 auto;
+			background-color: green;
+			cursor: default;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+		<span class="moveEl">22
+			<i>标题</i>
+		</span>
+	</div>
+
+	<script>
+		// 移动元素
+		var moveEl = document.querySelector('.moveEl');
+		var titleEl = document.querySelector('.moveEl i');
+
+		mDrag({
+			moveEle: moveEl,
+			moveScrop: document
+		});
+
+		function mDrag(props) {
+			var
+				moveEle = props.moveEle,	// 要拖拽的元素
+				downEle = props.downEle || moveEle,	// 鼠标按下元素
+				beforeFn = props.beforeFn,	// 按下拖拽之前执行的函数
+				moveFn = props.moveFn,	// 在拖拽时执行的函数
+				afterFn = props.afterFn,	// 拖拽结束之后执行的函数
+				called = props.called || downEle,	// 设定执行函数体内的this指向
+				outDisable = true,	// 鼠标超出 moveScrop 范围是否取消拖拽操作，默认否
+				scrope = true;	// 是否限制在 moveScrop 范围，默认是限制范围
+
+			// 是否限制范围
+			if (typeof props.scrope !== 'undefined') scrope = props.scrope;
+			// 鼠标超出范围是否取消拖拽操作
+			if (typeof props.outDisable !== 'undefined') outDisable = props.outDisable;
+
+			var dx, dy,
+				// 移动元素的定位父级
+				offsetParent = moveEle.offsetParent,
+
+				moveScrop = scrope ? (props.moveScrop || offsetParent) : document,	// 鼠标移动事件触发对象，默认就是拖拽对象的定位父级
+				upScrop = scrope ? (props.upScrop || moveScrop) : document,  // 鼠标抬起的事件触发对象，默认是拖拽对象的定位父级
+
+				// 父级的 DOMRect对象
+				parentRect = moveScrop === document ? {left: 0, top: 0} : moveScrop.getBoundingClientRect(),
+				// 父级的样式
+				parentStyle = moveScrop === document ? {borderLeftWidth: 0, borderTopWidth: 0} : getComputedStyle(moveScrop);
+
+				
+
+			// ---------------------------------------------------------
+			// 用户交互
+			downEle.addEventListener('mousedown', function (e) {
+				e.preventDefault();
+
+				// 拖拽之前的 Fn
+				if (typeof beforeFn === 'function') beforeFn.call(called, e);
+
+				// 移动元素的 DOMRect对象
+				var moveEleRect = moveEle.getBoundingClientRect();
+
+				// 鼠标按下点距离 移动元素左上角的x、y
+				dx = e.pageX - moveEleRect.left;
+				dy = e.pageY - moveEleRect.top;
+
+				if (outDisable) moveScrop.addEventListener('mouseleave', clearEventFromParent);
+				moveScrop.addEventListener('mousemove', startMove);
+				upScrop.addEventListener('mouseup', cancelMove);
+			});
+
+			
+			// ---------------------------------------------------------
+			// 方法区域
+			// ==========
+			// 元素移动
+			function startMove(e) {
+				// 移动元素相对于定位父级的位置 x、y
+				var x = e.pageX - dx - parentRect.left - parseFloat(parentStyle['borderLeftWidth']);
+				var y = e.pageY - dy - parentRect.top - parseFloat(parentStyle['borderTopWidth']);
+				
+				// 限制拖拽范围
+				if (scrope) {
+					if (x < 0) x = 0;
+					if (x > (moveScrop.clientWidth || window.innerWidth) - moveEle.offsetWidth) x = (moveScrop.clientWidth || window.innerWidth) - moveEle.offsetWidth;
+
+					if (y < 0) y = 0;
+					if (y > (moveScrop.clientHeight || window.innerHeight) - moveEle.offsetHeight) y = (moveScrop.clientHeight || window.innerHeight) - moveEle.offsetHeight;
+				}
+
+				moveEle.style.left = x + 'px';
+				moveEle.style.top = y + 'px';
+
+				// 拖拽中的 Fn
+				if (typeof moveFn === 'function') moveFn.call(called, e);
+			}
+
+
+			// ==========
+			// 取消元素移动方法
+			function cancelMove(e) {
+
+				if (outDisable) moveScrop.removeEventListener('mouseleave', clearEventFromParent);
+				moveScrop.removeEventListener('mousemove', startMove);
+				upScrop.removeEventListener('mouseup', cancelMove);
+
+				// 拖拽结束后的 Fn
+				if (typeof afterFn === 'function') afterFn.call(called, e);
+			}
+
+
+			// ==========
+			// 离开父级清除事件
+			function clearEventFromParent(e) { cancelMove(); }
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,2 @@
+重复行和列：	grid-template-columns: 24px repeat(4, 120px [col-start] 250px [col-end]);
+    		grid-template-rows: repeat(3, 1fr [row-start], 24px [row-end]);

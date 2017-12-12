@@ -1,0 +1,342 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Zebra_Tooltips examples</title>
+    <link rel="stylesheet" href="reset.css" type="text/css">
+    <link rel="stylesheet" href="test1.css" type="text/css">
+    <style type="text/css">
+        * { box-sizing: border-box; }
+        
+        .box { text-align: center; }
+        .box .zebra_tips3 { display: inline-block; margin-top: 10px; margin-right: 20px; }
+
+        .status_warp { width: 265px; padding: 15px 20px; border: 1px solid #ddd; background-color: #fff; }
+        .status_warp .status_tit { padding-bottom: 10px; line-height: 1; border-bottom: 1px solid #eee; color: #6c6c6c; }
+        .status_warp .status_list li { position: relative; padding-top: 10px; }
+        .status_warp .status_list li:before { position: absolute; top: 15px; left: 0; content: ''; display: block; width: 4px; height: 4px; border-radius: 100%; background-color: #333; }
+        .status_warp .status_list li p { width: 100%; padding-left: 15px; line-height: 1.2; overflow: hidden; text-align: justify; }
+        .status_warp .status_list li.on:before { background-color: #ff6101; }
+        .status_warp .status_list li.on p { color: #ff6101; }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <div class="zebra_tips3">区块1</div>
+    <div class="zebra_tips3">区块2</div>
+    <div class="zebra_tips3">区块3</div>
+</div>
+
+
+
+    
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script>
+    $(function()
+    {
+        $('.zebra_tips3').each(function(i, c)
+        {
+            // 对象
+            var $element = $(c);
+            
+            // 缓存初始数据
+            $element.data('Tooltip', {
+                index: i,
+                tooltip: null,
+                show_timeout: null,
+                hide_timeout: null
+            });
+                
+
+            // 对象移入移出事件
+            $element.on('mouseenter mouseleave', function (e)
+            {
+                // 获取数据
+                var tooltip_info = $element.data('Tooltip');
+
+                // 鼠标移入
+                if (e.type === 'mouseenter') 
+                {
+                    // 获取元素位置
+                    var
+                        offset = $element.offset(),
+                        ctop = offset.top,
+                        cleft = offset.left;
+
+
+                    // 新建一个DOM（如果未创建 进入）
+                    if (!tooltip_info.tooltip) 
+                    {
+                        tooltip = jQuery('<div>', {
+                            'class': 'ty_Tip',
+                            'css': {
+                                'position': 'absolute',
+                                'display': 'none'
+                            }
+                        })/*.attr('data-index', tooltip_info.index)*/.html('<div class="status_warp" id="status_warp">'+
+                                    '<div class="status_tit">区块' + (tooltip_info.index + 1) + '</div>'+
+                                    '<ul class="status_list">'+
+                                        '<li class="on">'+
+                                            '<p class="txt">快件递!</p>'+
+                                            '<p class="data">2017-04-25 09:04:58</p>'+
+                                        '</li>'+
+                                        '<li>'+
+                                            '<p class="txt">快件已签收,感谢您使用中通快递!</p>'+
+                                            '<p class="data">2017-04-25 09:04:58</p>'+
+                                        '</li>'+
+                                    '</ul>'+
+                                '</div>').appendTo('body');
+
+                        // 赋予工具提示位置
+                        tooltip.css({
+                            top: ctop + 20,
+                            left: cleft - (275/2 - $element.outerWidth()/2)/* cleft - (工具提示宽的 1/2 - 元素宽的 1/2) */
+                        });
+
+                        // 更新数据
+                        tooltip_info.tooltip = tooltip;
+
+                            // 当鼠标进入工具提示的表面
+                            tooltip.mouseenter(function()
+                            {
+                                // 保持工具提示可见
+                                _show($element);
+                            });
+                            
+                            // 当鼠标离开工具提示的表面
+                            tooltip.mouseleave(function()
+                            {
+                                // 隐藏工具提示
+                                _hide($element);
+                            });
+                    };
+
+                    // 显示工具提示
+                    _show($element);
+                }
+
+                // 鼠标移开
+                else if (e.type == 'mouseleave') 
+                {
+                    // 隐藏工具提示
+                    _hide($element);
+                }
+                
+            });
+        });
+
+
+        /**
+         *  (隐藏方法)
+         */
+        var _hide = function($element)
+        {
+            // 获取数据
+            var tooltip_info = $element.data('Tooltip');
+
+            // 清除定时器
+            clearTimeout(tooltip_info.hide_timeout);
+
+            // 隐藏工具提示
+            tooltip_info.hide_timeout = setTimeout(function()
+            {
+                tooltip_info.tooltip.hide();
+            },100);/* 100毫秒后才隐藏 期间进入工具提示表面会被 清除掉 */
+        }
+        
+
+        /**
+         *  (显示方法)
+         */
+        var _show = function($element)
+        {
+            // 获取数据
+            var tooltip_info = $element.data('Tooltip');
+
+            // 鼠标进入工具提示表面 清除定时器
+            clearTimeout(tooltip_info.hide_timeout);
+
+            // 显示工具提示
+            tooltip_info.tooltip.show();
+        }
+    });
+
+(function($)
+{
+    // 插件的构造函数
+    // ==============
+    var Plugin = function(el, options) {
+
+        // // 调用方法
+        this._init(el);
+    }
+    
+    
+    Plugin.prototype._init = function(el)
+    {
+        // 指向 Plugin 类
+        var base = this,
+
+        // 操作的对象对象
+            $element = $(c);
+        
+        // 缓存初始数据
+        $element.data('Tooltip', {
+            index: i,
+            tooltip: null,
+            show_timeout: null,
+            hide_timeout: null
+        });
+
+        // 调用方法
+        base._event($element);
+    }
+
+
+    
+
+
+    /**
+     *  _event, 工具提示绑定的 所有事件
+     */
+    Plugin.prototype._event = function($element)
+    {
+        // 指向 Plugin 类
+        var base = this;
+
+        // 对象移入移出事件
+        $element.on('mouseenter mouseleave', function (e)
+        {
+            // 获取数据
+            var tooltip_info = $element.data('Tooltip');
+
+            // 鼠标移入
+            if (e.type === 'mouseenter') 
+            {
+                // 获取元素位置
+                var
+                    offset = $element.offset(),
+                    ctop = offset.top,
+                    cleft = offset.left;
+
+
+                // 新建一个DOM（如果未创建 进入）
+                if (!tooltip_info.tooltip) 
+                {
+                    tooltip = jQuery('<div>', {
+                        'class': 'ty_Tip',
+                        'css': {
+                            'position': 'absolute',
+                            'display': 'none'
+                        }
+                    })/*.attr('data-index', tooltip_info.index)*/.html('<div class="status_warp" id="status_warp">'+
+                                '<div class="status_tit">区块' + (tooltip_info.index + 1) + '</div>'+
+                                '<ul class="status_list">'+
+                                    '<li class="on">'+
+                                        '<p class="txt">快件递!</p>'+
+                                        '<p class="data">2017-04-25 09:04:58</p>'+
+                                    '</li>'+
+                                    '<li>'+
+                                        '<p class="txt">快件已签收,感谢您使用中通快递!</p>'+
+                                        '<p class="data">2017-04-25 09:04:58</p>'+
+                                    '</li>'+
+                                '</ul>'+
+                            '</div>').appendTo('body');
+
+                    // 赋予工具提示位置
+                    tooltip.css({
+                        top: ctop + 20,
+                        left: cleft - (275/2 - $element.outerWidth()/2)/* cleft - (工具提示宽的 1/2 - 元素宽的 1/2) */
+                    });
+
+                    // 更新数据
+                    tooltip_info.tooltip = tooltip;
+
+                        // 当鼠标进入工具提示的表面
+                        tooltip.mouseenter(function()
+                        {
+                            // 保持工具提示可见
+                            base._show($element);
+                        });
+                        
+                        // 当鼠标离开工具提示的表面
+                        tooltip.mouseleave(function()
+                        {
+                            // 隐藏工具提示
+                            base._hide($element);
+                        });
+                };
+
+                // 显示工具提示
+                base._show($element);
+            }
+
+            // 鼠标移开
+            else if (e.type == 'mouseleave') 
+            {
+                // 隐藏工具提示
+                base._hide($element);
+            }
+            
+        });
+    }
+
+
+    /**
+     *  _hide(), 用于隐藏工具提示
+     */
+    Plugin.prototype._hide = function($element)
+    {
+        // 获取数据
+        var tooltip_info = $element.data('Tooltip');
+
+        // 清除定时器
+        clearTimeout(tooltip_info.hide_timeout);
+
+        // 隐藏工具提示
+        tooltip_info.hide_timeout = setTimeout(function()
+        {
+            tooltip_info.tooltip.hide();
+        },100);/* 100毫秒后才隐藏 期间进入工具提示表面会被 清除掉 */
+
+    }
+
+
+    /**
+     *  _show(), 用于显示工具提示
+     */
+    Plugin.prototype._show = function($element)
+    {
+        // 获取数据
+        var tooltip_info = $element.data('Tooltip');
+
+        // 鼠标进入工具提示表面 清除定时器
+        clearTimeout(tooltip_info.hide_timeout);
+
+        // 显示工具提示
+        tooltip_info.tooltip.show();
+
+    }
+
+    Plugin.defaults = {
+        content: '1'
+    }
+    
+    
+    // 插件定义
+    // ========
+    $.fn.yanTooltip = function(options){
+        return this.each(function()
+        {
+            new $.plugin(this, options);
+        });
+    }
+})(jQuery);
+</script>
+</body>
+
+</html>

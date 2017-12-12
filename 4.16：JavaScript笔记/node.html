@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+
+
+
+
+(function()
+{
+	/* 
+	*********************************
+	************ Array对象 ***********
+	*********************************
+	*/
+
+Array.prototype.filter2 = function(fun /*, thisArg */)
+{
+"user strict";
+
+if (this === void 0 || this === null)
+  throw new TypeError();
+
+var t = Object(this);
+var len = t.length >>> 0;
+if (typeof fun !== "function")
+      throw new TypeError();
+
+var res = [];
+var thisArg = arguments.length >=2 ? arguments[1] : void 0;
+for ( var i = 0; i < len; i++)
+{
+  if (i in t)
+  {
+    var val = t[i];
+
+    if (fun.call(thisArg, val, i ,t))
+      res.push(val);
+  };
+}
+return res;
+};
+
+	var arr = [1,2,3,4];
+	var res = arr.filter2(function(val, i, t){
+		return val > 2;
+	});
+	log(res)
+
+	return;
+
+	/* reduce */
+	var arr = [1,2,3,4];
+	Array.prototype.s = function() {
+		return this.reduce(function(p, c) {
+			return p - c;
+		});
+	}
+	log( arr.s() );
+
+	/* splice */
+	var json = ['name', 'ty', 'age', 23];
+	json.splice(-1);
+	log(json)
+
+	/* delete */
+	var json = ['name', 'ty', 'age', 23];
+	delete json[1];
+	log(json)
+
+
+
+
+
+	function log(c){ console.log(c) };
+})();
+</script>
+</body>
+</html>

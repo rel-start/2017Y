@@ -1,0 +1,72 @@
+.list {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  padding: 30px;
+  transform-style: preserve-3d; }
+  .list:nth-child(1) div {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    margin: 10px auto; }
+    .list:nth-child(1) div:before {
+      content: attr(data-order);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: inline-block;
+      font-size: 3em;
+      font-weight: bold;
+      color: #fff; }
+    .list:nth-child(1) div:nth-child(1) {
+      background-color: #f44336;
+      transform: translate(20px, 20px); }
+    .list:nth-child(1) div:nth-child(2) {
+      background-color: #9c27b0;
+      transform: translate(40px, 40px); }
+    .list:nth-child(1) div:nth-child(3) {
+      background-color: #03a9f4;
+      transform: translate(60px, 60px); }
+    .list:nth-child(1) div:nth-child(4) {
+      background-color: #009688;
+      transform: translate(80px, 80px); }
+    .list:nth-child(1) div:nth-child(5) {
+      background-color: #ff9800;
+      transform: translate(100px, 100px); }
+    .list:nth-child(1) div:nth-child(6) {
+      background-color: #795548;
+      transform: translate(120px, 120px); }
+  .list:nth-child(2) div {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    margin: 10px auto; }
+    .list:nth-child(2) div:before {
+      content: attr(data-order);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: inline-block;
+      font-size: 3em;
+      font-weight: bold;
+      color: #fff; }
+    .list:nth-child(2) div:nth-child(1) {
+      background-color: #f44336;
+      transform: translate(20px, 20px) translateZ(-1px); }
+    .list:nth-child(2) div:nth-child(2) {
+      background-color: #9c27b0;
+      transform: translate(40px, 40px) translateZ(-2px); }
+    .list:nth-child(2) div:nth-child(3) {
+      background-color: #03a9f4;
+      transform: translate(60px, 60px) translateZ(-3px); }
+    .list:nth-child(2) div:nth-child(4) {
+      background-color: #009688;
+      transform: translate(80px, 80px) translateZ(-4px); }
+    .list:nth-child(2) div:nth-child(5) {
+      background-color: #ff9800;
+      transform: translate(100px, 100px) translateZ(-5px); }
+    .list:nth-child(2) div:nth-child(6) {
+      background-color: #795548;
+      transform: translate(120px, 120px) translateZ(-6px); }
+
+/*# sourceMappingURL=z-index.css.map */

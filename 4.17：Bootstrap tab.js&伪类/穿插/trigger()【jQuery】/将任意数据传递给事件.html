@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>trigger demo</title>
+</head>
+<body>
+<p>段落</p>
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function()
+{
+	/*将任意数据传递给事件（第一次操作 需要传递值。后面就不需要？）：*/
+	$('p').click(function(event, a, b)
+	{
+//		alert($(this).text());
+		alert(a+'==='+b);
+	})
+	.trigger('click', ['foo', 'bar']);
+});
+
+
+/*通过事件对象传递任意数据:*/
+var event = jQuery.Event( "logged" );
+event.user = "foo";
+event.pass = "bar";
+$( "body" ).trigger( event );
+
+/*通过事件对象传递数据的替代方法：*/
+$('body').trigger({
+	type: 'looged',
+	user: 'foo',
+	pass: 'bar'
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>虚拟网格</title>
+</head>
+<body>
+<!-- 网格轨迹：行与列 -->
+<style type="text/css">
+  .grid {
+    display: grid;
+    grid-template-columns: 150px 1fr;   /* 两列 */
+    grid-rows: 50px 1fr 50px;           /* 三行 */
+  }
+
+  .grid header {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: #ffc500;
+  }
+
+  .grid nav {
+    grid-column: 1;
+    grid-row: 2;
+    background-color: #fe0;
+  }
+
+  .grid article {
+    grid-column: 2;
+    grid-row: 2;
+    background-color: #5a0dac;
+  }
+
+  .grid footer {
+    grid-column: 2;
+    grid-row: 3;
+    background-color: #358f86;
+  }
+</style>
+<div class="grid">
+  <header>header</header>
+  <nav>nav</nav>
+  <article>article</article>
+  <footer>footer</footer>
+</div>
+
+
+
+<!-- 扩展单元格 -->
+<style type="text/css">
+  .box {
+    display: grid;
+    margin-top: 50px;
+    border: 1px solid #ddd;
+    height: 100vh;
+    grid-template-columns: 24px 120px 24px 120px 24px 120px 24px 120px 24px;
+    grid-template-rows: 1fr 24px 1fr 24px 1fr 24px;
+  }
+
+  .box span:last-child {
+    grid-row: 2/span 2;
+    grid-column: 2/span 3;
+    background-color: #faf;
+  }
+</style>
+<div class="box">
+  <span class="item">1</span>
+  <span class="item">2</span>
+  <span class="item">3</span>
+  <span class="item">4</span>
+  <span class="item">5</span>
+  <span class="item">6</span>
+  <span class="item">7</span>
+  <span class="item">8</span>
+  <span class="item">9</span>
+  <span class="item">10</span>
+  <span class="item">11</span>
+  <span class="item">12</span>
+  <span class="item">13</span>
+  <span class="item">14</span>
+  <span class="item">15</span>
+  <span class="item">16</span>
+  <span class="item">17</span>
+  <span class="item">18</span>
+  <span class="item">19</span>
+  <span class="item">20</span>
+  <span class="item">21</span>
+  <span class="item">22</span>
+  <span class="item">23</span>
+  <span class="item">24</span>
+  <span class="item">25</span>
+  <span class="item">26</span>
+  <span class="item">27</span>
+</div>
+
+
+<!-- 重复轨道(不管用) -->
+<style type="text/css">
+  .box2 {
+    display: grid;
+    margin-top: 50px;
+    height: 100vh;
+    grid-template-columns: 24px repeat(4, 120px [col-start] 250px [col-end]);
+    grid-template-rows: repeat(3, 1fr [row-start], 24px [row-end]);
+  }
+  .box2 span { border: 1px dotted #aaa; }
+</style>
+<div class="box2">
+  <span class="item">1</span>
+  <span class="item">2</span>
+  <span class="item">3</span>
+  <span class="item">4</span>
+  <span class="item">5</span>
+  <span class="item">6</span>
+  <span class="item">7</span>
+  <span class="item">8</span>
+  <span class="item">9</span>
+  <span class="item">10</span>
+  <span class="item">11</span>
+  <span class="item">12</span>
+  <span class="item">13</span>
+  <span class="item">14</span>
+  <span class="item">15</span>
+  <span class="item">16</span>
+  <span class="item">17</span>
+  <span class="item">18</span>
+  <span class="item">19</span>
+  <span class="item">20</span>
+  <span class="item">21</span>
+  <span class="item">22</span>
+  <span class="item">23</span>
+  <span class="item">24</span>
+  <span class="item">25</span>
+  <span class="item">26</span>
+  <span class="item">27</span>
+</div>
+</body>
+</html>

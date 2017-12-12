@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>线性渐变</title>
+	<style type="text/css">
+		body {
+			display: grid;
+			justify-content: space-evenly;
+			grid-gap: 20px;
+		}
+	</style>
+</head>
+<body>
+
+<!-- 渐变01 -->
+<style type="text/css">
+.linear_gradient_01 {
+	grid-column: 1;
+	grid-row: 1;
+	width: 400px;
+	height: 400px;
+	background: -webkit-linear-gradient(left bottom, red 10%, blue 30%, green 50%);
+	background: -moz-linear-gradient(left bottom, red 10%, blue 30%, green 50%);
+	background: -o-linear-gradient(left bottom, red 10%, blue 30%, green 50%);
+	background: linear-gradient(to right top, red 10%, blue 30%, green 50%);
+	/*IE10+*/
+}
+</style>
+<div class="linear_gradient_01"></div>
+
+<!-- 渐变02 -->
+<style type="text/css">
+.linear_gradient_02 {
+	grid-column: 2;
+	grid-row: 1;
+	width: 400px;
+	height: 400px;
+	background: -webkit-repeating-linear-gradient(left, red 13%, blue 40%, yellow 50%);
+	/*red 0%, 前面加上这个的话 red 从0%开始*/
+}
+</style>
+<div class="linear_gradient_02"></div>
+
+<!-- 渐变03。老式的写法 -->
+<style type="text/css">
+.linear_gradient_03 {		/* 不晓得IE怎么实现 */
+	grid-column: 3;
+	grid-row: 1;
+	width: 400px;
+	height: 400px;
+	background-image: -webkit-gradient(   /* background */
+		linear,
+		0 50%,				/*0(left) 0(top)     好像必须得2个值*/
+		100% 100%,
+		color-stop(0.25, transparent),
+		color-stop(0.25, rgba(255, 0, 0, .6)),
+		color-stop(0.6, rgba(255, 0, 0, .6)),
+		color-stop(0.6, transparent)
+	);
+	background-size: 100px 100px;
+	/*background-repeat: no-repeat;*/
+}
+</style>
+<div class="linear_gradient_03"></div>
+
+<!-- 渐变04 -->
+<style type="text/css">
+.linear_gradient_04 {
+	grid-column: 1;
+	grid-row: 2;
+	width: 400px;
+	height: 400px;
+	background: linear-gradient(30deg, red 10%, blue 30%, green 50%);
+	/*45deg 相当于 left bottom*/
+}
+</style>
+<div class="linear_gradient_04"></div>
+</body>
+</html>

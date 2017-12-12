@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>on() 【jQuery】</title>
+</head>
+<body>
+<a id="a1" href="#">按钮</a>
+<button>按钮2</button>
+	
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function()
+{
+//	.on( events[, selector][, data], handler )
+	
+//	 事件名称和命名空间。例如，"click.myPlugin.simple" （bootstrap里面就用到了）
+	
+	
+	/*降低开销方式*/
+	$('#dataTable tbody tr').on('click', function(){
+		console.log($(this).text());
+	});
+	
+//	事件委托方法仅将一个事件处理程序附加到一个元素,tbody,事件只需要一个层次(从点击t r到tbody )
+	$('#dataTable tbody').on('click', 'tr', function(){
+		console.log($(this).text());
+	});
+//	注意:委派的时间不适用于SVG
+	
+	
+	/*阻止默认事件/冒泡*/
+//	将一个事件处理程序附加到所有所有的"禁用"类的链接，阻止它们被点击时被跟随，同时也阻止事件冒泡。
+//  调用event.preventDefault()来取消浏览器可能对此事件的任何默认操作；例如，click事件的默认操作是跟随链接。并不是所有的浏览器事件都有默认的操作，并不是所有的默认操作都可以被取消。W3C事件规范(https://www.w3.org/TR/DOM-Level-3-Events/#event-types-list)
+	$('#a1').on('click', false);// function(){ return false; }
+	$('body').click(function(){
+		alert('body')
+	});
+	
+	
+	/*将数据传递给处理程序*/
+	function greet(event){
+		alert('Hello ' + event.data.name);
+	}
+//	$('button').on('click', {name: 'cl'}, greet);
+//	$('button').on('click', {name: 'kuan'}, greet);
+	$('button').click({name: 'ty'}, greet);
+});
+</script>
+</body>
+</html>

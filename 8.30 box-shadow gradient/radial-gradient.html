@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>径向渐变</title>
+	<style type="text/css">
+		body {
+			display: grid;
+			justify-content: space-evenly;
+			grid-gap: 20px;
+		}
+	</style>
+</head>
+<body>
+<!-- 示例一： -->
+<!--
+<radial-gradient> = radial-gradient([ [ <shape> || <extent-keyword> ] [ at <position> ]? , | at <position>, ]?<color-stop>[ , <color-stop> ]+)
+
+<shape> = circle(指定圆形的径向渐变) | ellipse(指定椭圆形的径向渐变)
+<extent-keyword> = closest-side | closest-corner | farthest-side | farthest-corner
+closest-size：指定径向渐变的半径长度为从圆心到离圆心最近的边(contain)
+closest-corner：指定径向渐变的半径长度为从圆心到离圆心最近的叫
+farthest-side：指定径向渐变的半径长度为从圆心到离圆心最远的边
+farthest-corner：指定径向渐变的半径长度为从圆心到离圆心最远的角(好像是默认)
+-->
+<style type="text/css">
+.example01 {
+	grid-column: 1;
+	grid-row: 1;
+	width: 300px;
+	height: 200px;
+	background: -webkit-radial-gradient(#ace, #f96, #1e90ff);
+}
+</style>
+<div class="example01"></div>
+
+<!-- 示例二： -->
+<style type="text/css">
+.example02 {
+	grid-column: 2;
+	grid-row: 1;
+	width: 300px;
+	height: 200px;
+	background: -webkit-radial-gradient(#ace 5%, #f96 25%, #1e90ff 50%)
+}
+</style>
+<div class="example02"></div>
+
+<!-- 示例三： -->
+<style type="text/css">
+.example03 {
+	grid-column: 3;
+	grid-row: 1;
+	width: 300px;
+	height: 200px;
+	/*border-radius: 50%;*/
+	background: -webkit-radial-gradient( left bottom, ellipse, #ace 0%, #ace 25%, red 25%, red 50%, #f96 50%, #f96 75%, #1e90ff 75%, #1e90ff 100%);
+}
+.example003 {
+	grid-column: 4;
+	grid-row: 1;
+	width: 300px;
+	height: 200px;
+	/*border-radius: 50%;*/
+	background: -webkit-radial-gradient( left bottom, farthest-corner ellipse, #ace 0%, #ace 25%, red 25%, red 50%, #f96 50%, #f96 75%, #1e90ff 75%, #1e90ff 100%);
+}
+</style>
+<div class="example03"></div>
+<div class="example003"></div>
+
+<!-- 示例四： -->
+<style type="text/css">
+.example04 {
+	grid-column: 1;
+	grid-row: 2;
+	width: 300px;
+	height: 200px;
+	background: -webkit-radial-gradient(left bottom, ellipse, #ace, #f96, #1e90ff);
+}
+
+.example004 {
+	grid-column: 2;
+	grid-row: 2;
+	width: 300px;
+	height: 200px;
+	background: -webkit-radial-gradient(left bottom, farthest-corner ellipse, #ace, #f96, #1e90ff);
+	/* 好像默认是 farthest-corner */
+}
+</style>
+<div class="example04"></div>
+<div class="example004"></div>
+
+<!-- 示例五：椭圆最近边 -->
+<style type="text/css">
+.example05 {
+	grid-column: 3;
+	grid-row: 2;
+	width: 300px;
+	height: 200px;
+	background: -webkit-radial-gradient(closest-side ellipse, #ace, #f96 10%, #1e90ff 50%, #f96);
+}
+</style>
+<div class="example05"></div>
+
+<!-- 示例六：椭圆最远角 -->
+<style type="text/css">
+.example06 {
+	grid-column: 4;
+	grid-row: 2;
+	width: 300px;
+	height: 200px;
+	background: -webkit-radial-gradient(ellipse farthest-corner, #ace, #f96 10%, #1e90ff 50%, #f96);
+}
+</style>
+<div class="example06"></div>
+
+<!-- 示例七：圆最近边 -->
+<style type="text/css">
+.example07 {
+	grid-column: 1;
+	grid-row: 3;
+	width: 300px;
+	height: 200px;
+	background: -webkit-radial-gradient(circle closest-side, #ace, #f96 10%, #1e90ff 50%, #f96);
+}
+</style>
+<div class="example07"></div>
+
+<!-- 示例八：圆最远边 -->
+<style type="text/css">
+.example08 {
+	grid-column: 2;
+	grid-row: 3;
+	width: 300px;
+	height: 200px;
+	background: -webkit-radial-gradient(circle farthest-side, #ace, #f96 10%, #1e90ff 50%, #f96);
+}
+</style>
+<div class="example08"></div>
+
+<!-- 示例九： -->
+<style type="text/css">
+.example09 {
+	grid-column: 3;
+	grid-row: 3;
+	width: 300px;
+	height: 200px;
+	background: -webkit-radial-gradient( closest-side, #ace, #f96, #1e90ff);
+}
+</style>
+<div class="example09"></div>
+
+<!-- 示例十： -->
+<style type="text/css">
+.example10 {
+	grid-column: 4;
+	grid-row: 3;
+	width: 300px;
+	height: 200px;
+	background: -webkit-radial-gradient( contain, #ace, #f96, #1e90ff);
+}
+</style>
+<div class="example10"></div>
+
+<!-- 示例十一： -->
+<style type="text/css">
+.example11 {
+	grid-column: 1;
+	grid-row: 4;
+	width: 300px;
+	height: 200px;
+	background: -webkit-gradient(radial, center center, 0, center center, 150, from(#000), to(#faf));
+	/*可以做任何形状 利用center center 0。          谁的数值大  就什么颜色作为圆*/
+	background: -webkit-radial-gradient(#000, #faf);
+}
+</style>
+<div class="example11"></div>
+
+<!-- 示例十二： -->
+<style type="text/css">
+.example12 {
+	grid-column: 2;
+	grid-row: 4;
+	width: 300px;
+	height: 200px;
+	background: -webkit-gradient(radial, 32% 50%, 0, 66% 50%, 100, from(#000), to(#000));
+}
+</style>
+<div class="example12"></div>
+
+<!-- 示例十三： -->
+<style type="text/css">
+.example13 {
+	grid-column: 3;
+	grid-row: 4;
+	width: 300px;
+	height: 200px;
+	background: -webkit-repeating-radial-gradient(#ace, #ace 5px, #f96 5px, #f96 10px);
+	/*background-image: -webkit-radial-gradient(#ace, #ace 50%, #f96 50%, #f96 100%);   有点挫好不 233333*/
+	/*background-size: 100px 50px;*/
+}
+</style>
+<div class="example13"></div>
+
+<!-- 示例十四： -->
+<style type="text/css">
+.example14 {
+	grid-column: 4;
+	grid-row: 4;
+	width: 300px;
+	height: 200px;
+	/*background: -webkit-repeating-linear-gradient( top left, #ace, #ace 5px, #f96 5px, #f96 10px);*/
+}
+</style>
+<div class="example14"></div>
+
+
+<style type="text/css">
+ul {
+  width: 300px;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+li{
+  width: 150px;
+  height: 80px;
+  margin-bottom: 10px;
+  float: left;
+  margin-right: 5px;
+  background: #ace;
+  /*Controls the size*/
+  background-size: 20px 20px; 
+}
+    
+li.gradient1 {
+  background-image: -webkit-gradient(
+    linear,
+    0 100%, 100% 0,
+    color-stop(.25, rgba(255, 255, 255, .2)), 
+    color-stop(.25, transparent),
+    color-stop(.5, transparent), 
+    color-stop(.5, rgba(255, 255, 255, .2)),
+    color-stop(.75, rgba(255, 255, 255, .2)), 
+    color-stop(.75, transparent),
+    to(transparent)
+    );
+}
+
+li.gradient2 {
+   background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+      transparent 75%, transparent);
+}
+    
+li.gradient3 {
+  background-image: linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+}
+    
+li.gradient4 {
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+}
+    
+li.gradient5 {
+   background-image: 
+                      -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #555), color-stop(.25, transparent), to(transparent)),
+                      -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #555), color-stop(.25, transparent), to(transparent)),
+                      -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #555)), 
+                      -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #555));
+    background-image: -webkit-linear-gradient(45deg, #555 25%, transparent 25%),
+                      -webkit-linear-gradient(-45deg, #555 25%, transparent 25%),
+                      -webkit-linear-gradient(45deg, transparent 75%, #555 25%),
+                      -webkit-linear-gradient(-45deg, transparent 75%, #555 25%);
+    background-image: -moz-linear-gradient(45deg, #555 25%, transparent 25%),
+                      -moz-linear-gradient(-45deg, #555 25%, transparent 25%),
+                      -moz-linear-gradient(45deg, transparent 75%, #555 75%),
+                      -moz-linear-gradient(-45deg, transparent 75%, #555 75%);
+    background-image: -o-linear-gradient(45deg, #555 25%, transparent 25%),
+                      -o-linear-gradient(-45deg, #555 25%, transparent 25%),
+                      -o-linear-gradient(45deg, transparent 75%, #555 75%),
+                      -o-linear-gradient(-45deg, transparent 75%, #555 75%);
+    background-image: linear-gradient(45deg, #555 25%, transparent 25%),
+                      linear-gradient(-45deg, #555 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, #555 25%),
+                      linear-gradient(-45deg, transparent 75%, #555 25%);
+}
+    
+li.gradient6 {
+   background-image:
+  	-webkit-gradient(
+	  	linear,
+	  	0 0, 0 100%,    /*左上 到 左下 */
+	  	color-stop(.5, transparent),
+	  	color-stop(.5, rgba(200, 0, 0, .5)),
+	  	to(rgba(200, 0, 0, .5))
+  	),
+    -webkit-gradient(
+	    linear,
+	    0 0, 100% 0,   /* 左上 到 右上 */
+	    color-stop(.5, transparent),
+	    color-stop(.5, rgba(200, 0, 0, .5)),
+	    to(rgba(200, 0, 0, .5))
+    ); 
+    background-image: -webkit-linear-gradient( top, transparent 50%, rgba(200, 0, 0, .5) 50% ),
+    			      -webkit-linear-gradient( left, transparent 50%, rgba(200, 0, 0, .5) 50% );
+
+}
+
+li.gradient7 {
+	width: 500px;
+	background-color: red;
+	background-image: -webkit-linear-gradient(15deg, #fff 15px, transparent 15px),
+				      -webkit-linear-gradient(-15deg, #fff 15px, transparent 15px);
+	background-image: linear-gradient(75deg, #fff 15px, transparent 15px),   /* 90 - 15 */
+				      linear-gradient(105deg, #fff 15px, transparent 15px);   /* 90 + 15 */
+	background-size: 500px 80px;
+}
+</style>
+<ul>
+   <li class="gradient gradient1"></li>
+   <li class="gradient gradient2"></li>
+   <li class="gradient gradient3"></li>
+   <li class="gradient gradient4"></li>
+   <li class="gradient gradient5"></li>
+   <li class="gradient gradient6"></li>
+   <li class="gradient gradient7"></li>
+</ul>
+
+<!-- 用css实现自定义虚线边框  https://juejin.im/post/5954cc43f265da6c2f0a970f -->
+<style type="text/css">
+.dashed {
+    padding: 1em;
+    border: 2px solid transparent;
+    background: linear-gradient(white,white) padding-box,
+    repeating-linear-gradient(-45deg,#ccc 0, #ccc 0.4em,white 0,white 0.6em);
+}
+</style>
+<div class="dashed"></div>
+</body>
+</html>

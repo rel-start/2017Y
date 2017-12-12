@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>http://www.w3cplus.com/css3/introduction-into-css3-grid-layout.html</title>
+  <style type="text/css">
+    section {
+      display: grid;
+      grid-template-columns: 150px 1fr 200px;
+      grid-template-rows: 50px 1fr 50px;
+    }
+
+    section header {
+      grid-column: 2;
+      grid-row: 1;
+      background-color: #bef56e;
+    }
+
+    section nav {
+      grid-column: 1;
+      grid-row: 2;
+      background-color: #238d43;
+    }
+
+    section article {
+      grid-column: 2;
+      grid-row: 2;
+      background-color: #00bd39;
+    }
+
+    section aside {
+      grid-column: 3;
+      grid-row: 2;
+      background-color: #37de6a;
+    }
+
+    section footer {
+      grid-column: 2;
+      grid-row: 3;
+      background-color: #ff867a;
+    }
+  </style>
+</head>
+<body>
+<section>
+  <header>Title</header>
+  <nav>Menu</nav>
+  <article>Content</article>
+  <aside>Notes</aside>
+  <footer>Footer</footer>
+</section>
+</body>
+</html>

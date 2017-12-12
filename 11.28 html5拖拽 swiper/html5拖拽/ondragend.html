@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .droptarget {
+      float: left;
+      width: 100px;
+      height: 35px;
+      margin: 15px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <p ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true" id="dragtarget">拖动我!</p>
+  </div>
+  <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <p id="demo"></p>
+
+
+  <script>
+    function dragStart(event) {
+      event.dataTransfer.setData("Text", event.target.id);
+      document.getElementById("demo").innerHTML = "开始拖动 p 元素";
+    }
+    function dragEnd(event){
+      document.getElementById("demo").innerHTML = " 完成 p 元素拖动";
+    }
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+    function drop(event) {
+      event.preventDefault();
+      var data = event.dataTransfer.getData("Text");
+      event.target.appendChild(document.getElementById(data));
+    }
+  </script>
+</body>
+
+</html>

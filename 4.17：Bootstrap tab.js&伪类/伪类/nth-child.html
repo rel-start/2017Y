@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>nth-child</title>
+<style type="text/css">
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-size: 14px; font-family: '微软雅黑'; background-color: #fff; }
+
+/* nth-child(n) [系列] */
+.nc p:first-child { background: wheat; }
+.nc p:last-child { background: red; }
+.nc p:nth-child(4) { background: black; color: #fff; }
+.nc p:nth-last-child(1) { background: green; }
+.nc h1:only-child { color: red; }
+</style>
+</head>
+<body>
+	<!-- nth-child(n) [系列] -->
+	<div class="nc">
+		<h1>This is a heading</h1>
+		<p>The first paragraph.</p>
+		<p>The second paragraph.</p>
+		<p>The third paragraph.</p>
+		<p>The fourth paragraph.</p>
+		<div style="margin-top: 50px;">
+			<p>The third paragraph.</p>
+			<p>The fourth paragraph.</p>
+		</div>
+	</div>
+
+</body>
+</html>

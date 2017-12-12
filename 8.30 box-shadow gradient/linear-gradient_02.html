@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>线性渐变</title>
+	<style type="text/css">
+		body {
+			display: grid;
+			justify-content: space-evenly;
+			grid-gap: 20px;
+		}
+	</style>
+</head>
+<body>
+
+<!-- 一、线性渐变在Mozilla下的应用 -->
+<style type="text/css">
+.linear_gradient_01 {
+	grid-column: 1;
+	grid-row: 1;
+	width: 300px;
+	height: 200px;
+	background: -moz-linear-gradient(to top, #ccc, #000);
+}
+</style>
+<div class="linear_gradient_01"></div>
+
+<!-- 二、线性渐变在Webkit下的应用 -->
+<style type="text/css">
+.linear_gradient_02 {
+	grid-column: 2;
+	grid-row: 1;
+	width: 300px;
+	height: 200px;
+	background: -webkit-linear-gradient(0deg, #ccc, #000);
+	background: -moz-linear-gradient(45deg, #ccc, #000);
+	/*background: -o-linear-gradient(270deg, #ccc, #000);*/
+	background: linear-gradient(0deg, #ccc, #000);
+}
+</style>
+<div class="linear_gradient_02"></div>
+
+<style type="text/css">
+.linear_gradient_03 {
+	grid-column: 1;
+	grid-row: 2;
+	width: 300px;
+	height: 200px;
+	background: -webkit-linear-gradient(top, #ccc 50%, #000 80%);
+}
+</style>
+<div class="linear_gradient_03"></div>
+
+<!-- 老式写法04 -->
+<style type="text/css">
+.linear_gradient_04 {
+	grid-column: 2;
+	grid-row: 2;
+	width: 300px;
+	height: 200px;
+	background: -webkit-gradient(
+		linear,
+		center top,
+		center bottom,
+		from(#ccc),
+		to(#000)
+	);
+}
+</style>
+<div class="linear_gradient_04"></div>
+
+<!-- 老式写法05：这个比较合适 -->
+<style type="text/css">
+.linear_gradient_05 {
+	grid-column: 3;
+	grid-row: 2;
+	width: 300px;
+	height: 200px;
+	background: -webkit-gradient(
+		linear,
+		center top,		/*0(left) 0(top) 50%(center)     好像必须得2个值*/
+		center bottom,								   /* 好像必须得2对 */
+		color-stop(0, #ccc),
+		color-stop(1, #000)
+	);
+}
+</style>
+<div class="linear_gradient_05"></div>
+
+<!-- 老式写法06 -->
+<style type="text/css">
+.linear_gradient_06 {
+	grid-column: 4;
+	grid-row: 2;
+	width: 300px;
+	height: 200px;
+	background-image: -webkit-gradient(   /* background */
+		linear,
+		0 50%,				/*0(left) 0(top)     好像必须得2个值   前面是左右  后面的是上下*/  
+		100% 100%,								 /* 好像必须得2对 */
+		color-stop(0.25, transparent),
+		color-stop(0.25, rgba(255, 0, 0, .6)),
+		color-stop(0.6, rgba(255, 0, 0, .6)),
+		color-stop(0.6, transparent)
+	);
+	background-size: 100px 100px;
+	/*background-repeat: no-repeat;*/
+}
+</style>
+<div class="linear_gradient_06"></div>
+
+<!-- 四、线性渐变在Trident (IE)下的应用 -->
+<style type="text/css">
+.linear_gradient_07 {
+	grid-column: 1;
+	grid-row: 3;
+	width: 300px;
+	height: 200px;
+	background: linear-gradient(to bottom, #1471da 0%, red 50%, #96c7ff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#1471da, endColorstr=#96c7ff);
+	/*-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#1471da, endColorstr=#96c7ff)";*/
+}
+</style>
+<div class="linear_gradient_07"></div>
+</body>
+</html>

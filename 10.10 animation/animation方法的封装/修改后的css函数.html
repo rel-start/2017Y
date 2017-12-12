@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    #box { height: 100px; opacity: .5; background-color: red; }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+
+// 默认css()能设置的带px 的样式。只写了部分
+var normalAttr = [
+  'width',
+  'height',
+  'left',
+  'top',
+  'bottom',
+  'right',
+  'marginLeft',
+  'marginTop',
+  'marginBottom',
+  'marginRight'
+];
+
+function css(ele, attr, val){
+
+  // 获取样式值。只有 attr 数据类型为'string' 并且 val 不填写的时候
+  if (typeof attr === 'string' && typeof val === 'undefined') {
+    // 获取计算后的样式
+    var ret = getComputedStyle(ele)[attr];
+    
+    // 下面那个 if判断的三元表达式形式
+    // return indexOf(normalAttr, attr) !== -1 ? parseFloat(ret) : ret * 1 === ret * 1 ? ret*1 : ret;
+  
+    // 如果是 normalAttr 数组内部的样式，获取去掉单位后的值
+    if (indexOf(normalAttr, attr) !== -1) {
+      return parseFloat(ret);
+    }
+    // 非 normalAttr 数组内部样式。
+    else {
+      // 如果获取类似 opacity 得到的值转为数字。
+      // 而类似 background-color 不转换
+      return ret * 1 === ret * 1 ? ret * 1 : ret;
+    }
+  }
+  
+  // 批量设置
+  if (typeof attr === 'object') {
+    for (var key in attr) {
+      setAttr(key, attr[key]);
+    }
+    return;
+  }
+
+  // 单一样式设置
+  function setAttr(attr, val) {
+    // 是 normalAttr 数组内部的样式，就 + px
+    if (indexOf(normalAttr, attr) !== -1) {
+      ele.style[attr] = val + 'px';
+    }
+    // 非 normalAttr 数组内部样式。直接设置为 val
+    else {
+      ele.style[attr] = val;
+    }
+    return;
+  }
+
+  // 单一样式设置 调用一次
+  setAttr(attr, val);
+}
+
+
+function indexOf(arr, item){
+  for (var i=0, len=arr.length; i<len; i++) {
+    if (arr[i] === item) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+css(box, 'opacity', 1);
+css(box, 'width', 200);
+
+css(box, {
+  height: 100,
+  marginTop: 50
+});
+
+// console.log( css(box, 'width') );
+</script>
+</body>
+</html>

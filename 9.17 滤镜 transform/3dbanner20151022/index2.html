@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#box { position: relative; perspective: 1200px; width: 470px; height: 150px; margin: 50px auto; background: url(images/0.jpg) no-repeat; }
+			#box .pag1 { position: absolute; top: 0; right: 0; width: 50%; height: 100%; transform-style: preserve-3d; transition: 1s all ease; z-index: 2; transform-origin: left center; }
+			#box .pag1 span { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+			.front { background: url(images/0.jpg) no-repeat right top; transform: translateZ(0.1px) }
+			.back { background: url(images/1.jpg) no-repeat left top; transform: translateZ(-0.1px) scaleX(-1); }
+			.pag2 { position: absolute; right: 0; top: 0; width: 50%; height: 100%; background: url(images/1.jpg) no-repeat right top; z-index: 1; }
+		</style>
+	</head>
+	<body>
+	 	<div style="text-align:center; padding-top:40px">点击查看效果</div>
+		<div id="box">
+			<div class="pag1">
+				<span class="front"></span>
+				<span class="back"></span>
+			</div>
+			<div class="pag2"></div>
+		</div>
+
+		<script>
+			var oBox = document.getElementById('box');
+			var oPag1 = oBox.querySelector('.pag1');
+			var oFront = oPag1.querySelector('.front');
+			var oBack = oPag1.querySelector('.back');
+			var oPag2 = oBox.querySelector('.pag2');
+
+			var index = 0;
+			var bReady = true;
+			oBox.onclick = function () {
+				if (!bReady) return;
+				bReady = false;
+
+				oPag1.style.transition = '1s';
+				oPag1.style.transform = 'rotateY(-180deg)';
+				index++;
+				oPag1.addEventListener('transitionend', function () {
+					oPag1.style.transform = '';
+					oPag1.style.transition = 'none';
+
+					oFront.style.backgroundImage = oBox.style.backgroundImage = 'url(images/'+index % 5+'.jpg)';
+					oBack.style.backgroundImage = oPag2.style.backgroundImage = 'url(images/'+(index + 1) % 5+'.jpg)';
+
+					bReady = true;
+				}, false);
+			};
+		</script>
+	</body>
+</html>

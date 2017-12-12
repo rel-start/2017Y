@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>网格合并 与 移位</title>
+</head>
+<body>
+<!-- 网格01 -->
+<style type="text/css">
+  body { background-color: #eee; }
+  [class*='merge_'] { margin-top: 50px; }
+  .merge_01 { display: grid; grid-template-columns:repeat(5, 1fr); grid-template-rows:repeat(4, minmax(100px, auto)); grid-gap: 10px; background-color: #ddd; }
+  .merge_01 span { background-color: #fff; }
+  .merge_01 span:nth-child(3) { grid-column-start: 2; grid-column-end: 4; grid-row-start: 1; grid-row-end: 2; }  
+</style>
+<div class="merge_01">
+  <span>1</span>
+  <span>2</span>
+  <span>3</span>
+  <span>4</span>
+  <span>5</span>
+  <span>6</span>
+  <span>7</span>
+  <span>8</span>
+  <span>9</span>
+  <span>10</span>
+  <span>11</span>
+  <span>12</span>
+  <span>13</span>
+  <span>14</span>
+  <span>15</span>
+  <span>16</span>
+  <span>17</span>
+  <span>18</span>
+  <span>19</span>
+  <span>20</span>
+</div>
+
+
+<!-- 网格02 -->
+<style type="text/css">
+  .merge_02 { display: grid; grid-template-columns:repeat(5, 1fr); grid-template-rows:repeat(4, minmax(100px, auto)); grid-gap: 10px; background-color: #ddd; }
+  .merge_02 span { background-color: #fff; }
+  .merge_02 span:nth-child(1) { grid-column: 5/6; grid-row: 4/5; }
+</style>
+<div class="merge_02">
+  <span>1</span>
+  <span>2</span>
+  <span>3</span>
+  <span>4</span>
+  <span>5</span>
+  <span>6</span>
+  <span>7</span>
+  <span>8</span>
+  <span>9</span>
+  <span>10</span>
+  <span>11</span>
+  <span>12</span>
+  <span>13</span>
+  <span>14</span>
+  <span>15</span>
+  <span>16</span>
+  <span>17</span>
+  <span>18</span>
+  <span>19</span>
+  <span>20</span>
+</div>
+
+
+<!-- 网格03 -->
+<style type="text/css">
+  .merge_03 { display: grid; grid-template-columns:repeat(5, 1fr); grid-template-rows:repeat(4, minmax(100px, auto)); grid-gap: 10px; background-color: #ddd; }
+  .merge_03 span { background-color: #fff; }
+  .merge_03 span:nth-child(1) { grid-column: 4/span 2; grid-row: 3/span 2; }
+  /*.merge_03 span:nth-child(n+17) { background-color: red; }*/
+  .merge_03 span:nth-child(n+18) { display: none; } /* 第18个开始 */
+</style>
+<div class="merge_03">
+  <span>1</span>
+  <span>2</span>
+  <span>3</span>
+  <span>4</span>
+  <span>5</span>
+  <span>6</span>
+  <span>7</span>
+  <span>8</span>
+  <span>9</span>
+  <span>10</span>
+  <span>11</span>
+  <span>12</span>
+  <span>13</span>
+  <span>14</span>
+  <span>15</span>
+  <span>16</span>
+  <span>17</span>
+  <span>18</span>
+  <span>19</span>
+  <span>20</span>
+</div>
+
+
+<!-- 网格04 -->
+<style type="text/css">
+  .merge_04 { display: grid; height: 500px; grid-template-columns: repeat(2, 200px); grid-template-rows: repeat(2, 100px); justify-content: space-between; align-content: space-evenly; background-color: #ddd; }
+  .merge_04 span { background-color: #fff; }
+</style>
+<div class="merge_04">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+</body>
+</html>

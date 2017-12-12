@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>https://www.w3cplus.com/css/3d-transform-and-z-index.html</title>
+	<link rel="stylesheet" type="text/css" href="css/z-index.css">
+</head>
+<body>
+<!--
+	在CSS中可以使用z-index和transform可以改变元素的堆叠顺序。但也可能会导致一些奇怪的情况，比如具有较大的z-index的元素并不总是位于具有较低z-index元素的上方。比如，在一些情况之下，同时使用z-index和transform会让z-index失效等。
+
+	1、CSS中会产生新的层情况还有很多种：
+	  - 当一个元素位于HTML文档的最外层（<html>元素）
+	  - 当一个元素被定位了并且拥有一个z-index值（不为auto）
+	  - 当一个元素被设置了opacity，transforms，filters，css-regions，paged media等属性
+	  - flex item，也就是父元素的display设置了flex或者inline-flex值，早期的box值不行
+	  - grid item，也就是父元素的display设置了grid或者inline-grid值
+	  - isolation: isolate
+	  - 元素的mix-blend-mode值不为normal
+	  - 元素的overflow-scrolling值不为touch
+	  - 元素的filter值不为none
+	  - 元素的perspective值不为none
+	  - 元素的montion-path值不为none
+	
+	2、如何控制z轴
+	前面也说了，控制z是通过z-index和transform来实现的。先简单的了解一下这两种控制z轴的方法。
+
+	通过z-index控制z轴，需要配合position属性，且position的属性值为relative、absolute、fixed和sticky时。并且给z-index显式的设置数值，数值越大，其层级越高。简单点说，数值越高，元素越在顶上。
+-->
+
+<!--
+	transform可以通过它的translateZ()来改变元素的层叠顺序，其值越大，越在顶层，离屏幕越近。不过通过transform: translateZ()改变元素z轴的层级，必须在元素的父元素中显示的设置transform-style: preserve-3d或者在transform中显示的设置perspective()。如下所示：
+-->
+
+<div class="list">	
+	<div data-order="1"></div>
+	<div data-order="2"></div>
+	<div data-order="3"></div>
+	<div data-order="4"></div>
+	<div data-order="5"></div>
+	<div data-order="6"></div>
+</div>
+
+<div class="list">	
+	<div data-order="1"></div>
+	<div data-order="2"></div>
+	<div data-order="3"></div>
+	<div data-order="4"></div>
+	<div data-order="5"></div>
+	<div data-order="6"></div>
+</div>
+</body>
+</html>

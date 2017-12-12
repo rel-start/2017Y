@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>网格布局</title>
+</head>
+<body>
+<style type="text/css">
+  body { margin: 0; padding: 50px 50px 200px 50px; }
+  table { border-collapse: collapse; }
+  [class*='grid_'], [class*='table_'] { margin-top: 50px; }
+
+  .flex { display: flex; height: 500px; border: 1px solid #ddd; }
+  .flex a { flex: 1; height: 100px; margin-top: 10%; background-color: #faf; }
+  .flex a:nth-child(even) { background-color: #afa; }
+</style>
+<div class="flex">
+  <a href="">1</a>
+  <a href="">2</a>
+  <a href="">3</a>
+  <a href="">4</a>
+  <a href="">5</a>
+</div>
+
+<!-- 网格01 -->
+<style type="text/css">
+  .grid_01 { display: grid; grid-template-columns: 100px; border: 1px solid red; } /* 好像是所有项目 width: 100px; */
+  .grid_01 a:nth-child(even) { background-color: #faf; }
+  .grid_01 a:nth-child(odd) { background-color: #afa; }
+</style>
+<div class="grid_01">
+  <a href="">1</a>
+  <a href="">2</a>
+  <a href="">3</a>
+  <a href="">4</a>
+  <a href="">5</a>
+</div>
+
+<!-- 网格02 -->
+<style type="text/css">
+  .grid_02 { display: grid; grid-template-rows: 100px; border: 1px solid #111; }
+  /* 第一列高度为100px */
+  .grid_02 span:nth-child(even) { background-color: #faf; }
+  .grid_02 span:nth-child(odd) { background-color: #afa; }
+</style>
+<div class="grid_02">
+  <span>01</span>
+  <span>02</span>
+  <span>03</span>
+  <span>04</span>
+  <span>05</span>
+  <span>06</span>
+</div>
+
+
+<!-- 网格03 -->
+<style type="text/css">
+  .grid_03 { display: grid; grid-template-columns: 100px 200px 300px 200px; }
+  /*写4个值 一行排列4个元素。每列宽度 分别为 100px 200px 300px 200px*/
+  .grid_03 em:nth-child(even) { background-color: #faf; }
+  .grid_03 em:nth-child(odd) { background-color: #afa; }
+</style>
+<div class="grid_03">
+  <em>01</em>
+  <em>02</em>
+  <em>03</em>
+  <em>04</em>
+  <em>05</em>
+  <em>06</em>
+  <em>07</em>
+</div>
+
+
+<!-- 网格04 -->
+<style type="text/css">
+  .grid_04 { display: grid; grid-template-columns: repeat(4, 100px); }
+  /*一行4个元素 宽度都为 100px*/
+  .grid_04 span:nth-child(even) { background-color: #faf; }
+  .grid_04 span:nth-child(odd) { background-color: #afa; }
+</style>
+<div class="grid_04">
+  <span>span1</span>
+  <span>span2</span>
+  <span>span3</span>
+  <span>span4</span>
+  <span>span5</span>
+</div>
+
+
+<!-- 网格05 -->
+<style type="text/css">
+  .grid_05 { display: grid; grid-template-columns: repeat(4, 100px) 400px; }
+  /*一行5个元素 前4列宽度为 100px、第5列宽度为 400px */
+  .grid_05 span:nth-child(even) { background-color: #faf; }
+  .grid_05 span:nth-child(odd) { background-color: #afa; }
+</style>
+<div class="grid_05">
+  <span>span1</span>
+  <span>span2</span>
+  <span>span3</span>
+  <span>span4</span>
+  <span>span5</span>
+</div>
+
+
+<!-- 网格06 -->
+<style type="text/css">
+  .grid_06 { display: grid; grid-template-columns: repeat(4, auto); }
+  /*除内容，剩余空间相同。有点像表格(有点区别的) 内容增加这列会变大*/
+  .grid_06 span:nth-child(even) { background-color: #faf; }
+  .grid_06 span:nth-child(odd) { background-color: #afa; }
+
+  .table_06 { width: 100%; }
+  .table_06 td:nth-child(even) { background-color: #faf; }
+  .table_06 td:nth-child(odd) { background-color: #afa; }
+
+</style>
+<div class="grid_06">
+  <span>wenben1222</span>
+  <span>wenben2</span>
+  <span>wenben3</span>
+  <span>wenben4</span>
+  <span>wenben5</span>
+  <span>wenben6</span>
+  <span>wenben7</span>
+</div>
+<table class="table_06">
+  <tr>
+    <td>td1111111</td>
+    <!-- td的默认属性：display: table-cell; vertical-align: middle; -->
+    <td>td2</td>
+    <td>td3</td>
+    <td>td4</td>
+    <td>td5</td>
+    <td>td6</td>
+    <td>td7</td>
+  </tr>
+</table>
+
+
+<!-- 网格07 -->
+<style type="text/css">
+  .grid_07 { display: grid; grid-template-columns: repeat(3, 1fr) minmax(100px,auto); }
+  /*第4列宽度为100+(一点点) 前面3列平分剩下的宽度  1fr(1份)*/
+  .grid_07 span:nth-child(even) { background-color: #faf; }
+  .grid_07 span:nth-child(odd) { background-color: #afa; }
+</style>
+<div class="grid_07">
+  <span>01</span>
+  <span>02</span>
+  <span>03</span>
+  <span>04</span>
+  <span>05</span>
+  <span>06</span>
+  <span>07</span>
+</div>
+
+
+<!-- 网格08 -->
+<style type="text/css">
+  .grid_08 { display: grid; grid-template-rows: repeat(2, 100px); }
+  /*只有前面2列 高度为100px。repeat(99999, 100px)就会给他99999个行？*/
+  .grid_08 span:nth-child(even) { background-color: #faf; }
+  .grid_08 span:nth-child(odd) { background-color: #afa; }
+</style>
+<div class="grid_08">
+  <span>01</span>
+  <span>02</span>
+  <span>03</span>
+  <span>04</span>
+  <span>05</span>
+  <span>06</span>
+  <span>07</span>
+</div>
+
+
+<!-- 网格09 -->
+<style type="text/css">
+  .grid_09 { display: grid; grid-template-rows: minmax(100px, auto)  minmax(100px, auto); }
+  /*只有2列高度为100px 如果内容高度大于100px。由内容撑开高度*/
+  .grid_09 span:nth-child(even) { background-color: #faf; }
+  .grid_09 span:nth-child(odd) { background-color: #afa; }
+</style>
+<div class="grid_09">
+  <span>01<br><br><br><br><br><br><br><br><br><br><br><br></span>
+  <span>02</span>
+  <span>03</span>
+  <span>04</span>
+  <span>05</span>
+  <span>06</span>
+  <span>07</span>
+</div>
+
+
+<!-- 网格10 -->
+<style type="text/css">
+  .grid_10 { display: grid; height: 700px; grid-template-rows: minmax(100px, auto) repeat(3, 1fr); }
+  /*第一行 100px 后面3行平分下高度*/
+  .grid_10 span:nth-child(even) { background-color: #faf; }
+  .grid_10 span:nth-child(odd) { background-color: #afa; }
+</style>
+<div class="grid_10">
+  <span>01</span>
+  <span>02</span>
+  <span>03</span>
+  <span>04</span>
+  <span>05</span>
+  <span>06</span>
+  <span>07</span>
+</div>
+
+
+<!-- 网格11 -->
+<style type="text/css">
+  .grid_11 { display: grid; grid-template-rows: minmax(100px, auto) repeat(3, minmax(100px, auto)); }
+  .grid_11 span:nth-child(even) { background-color: #faf; }
+  .grid_11 span:nth-child(odd) { background-color: #afa; }
+</style>
+<div class="grid_11">
+  <span>01</span>
+  <span>02</span>
+  <span>03</span>
+  <span>04<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></span>
+</div>
+
+
+<!-- 网格12(间隙) -->
+<style type="text/css">
+  .grid_12 { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, minmax(100px, auto)); grid-gap: 10px 30px; }/* grid-row-gap: 10px; grid-column-gap: 30px; */
+  .grid_12 span:nth-child(even) { background-color: #faf; }
+  .grid_12 span:nth-child(odd) { background-color: #afa; }
+</style>
+<div class="grid_12">
+  <span>01</span>
+  <span>02</span>
+  <span>03</span>
+  <span>04</span>
+  <span>05</span>
+  <span>06</span>
+  <span>07</span>
+</div>
+
+
+<!-- 网格13 -->
+<style type="text/css">
+  .grid_13 { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows:auto, minmax(100px, auto); grid-gap: 10px 30px; }
+  .grid_13 span:nth-child(even) { background-color: #faf; }
+  .grid_13 span:nth-child(odd) { background-color: #afa; }
+</style>
+<div class="grid_13">
+  <span>01</span>
+  <span>02</span>
+  <span>03</span>
+  <span>04<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></span>
+  <span>05</span>
+  <span>06</span>
+  <span>07</span>
+</div>
+
+
+<!-- 网格14 -->
+<style type="text/css">
+  .grid_14 { display: grid; grid-template-columns: minmax(50px, max-content) 1fr; grid-template-rows:100px; }
+  .grid_14 span:nth-child(even) { background-color: #faf; }
+  .grid_14 span:nth-child(odd) { background-color: #afa; padding-right: 10px; }
+</style>
+<div class="grid_14">
+  <span>0111111111111111</span>
+  <span>02</span>
+  <span>03</span>
+  <span>04<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></span>
+  <span>05</span>
+  <span>06</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+  <span>07</span>
+</div>
+<!--
+    grid-gap
+        设置行间距：
+        如果只给一个值，那么行与行之间的间距 和 列与列之间的间距都是一样的 （单元格之间的间距都是一样的）。
+        如果给两个只，
+            第一个值表示行与行之间的间距
+            第二个值表示列与列之间的间距
+        grid-row-gap     grid-column-gap
+      
+-->
+
+
+
+</body>
+</html>

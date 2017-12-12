@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>valid\invalid [有效的元素\无效]</title>
+<style type="text/css">
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-size: 14px; font-family: '微软雅黑'; background-color: #fff; }
+
+/* valid\invalid [有效的元素\无效] */
+.iv input { background: #fff; }
+.iv input:valid { background: wheat; }
+.iv input:invalid { border: 2px solid red; }
+</style>
+</head>
+<body>
+	<!-- valid\invalid [无效的元素\有效] -->
+	<div class="iv">
+		<input type="email" />
+		<input type="number" min="0" max="10" />
+	</div>
+</body>
+</html>

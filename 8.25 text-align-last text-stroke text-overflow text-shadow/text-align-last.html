@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body { line-height: 1.6; }
+	</style>
+</head>
+<body>
+<!--
+text-align-last描述：
+	text-align-last这个属性主要用来设置一个块中的最后一行的对齐方式。
+	1、一个块的最后一行
+	2、<br>标签断行的最后一行
+
+text-align-last: auto(默认) | start | end | left | right | center | justify | inherit;
+text-align-last其默认值是auto, 而且其职能运用于块元素上，或者说块元素的断行内(空格)。对于行内元素来说是无效的
+-->
+
+<!-- 案例01
+text-align-last的使用 -->
+<style type="text/css">
+	.case_01 p {
+		text-align-last: center;
+		background-color: #faf;
+		padding: 5px;
+		color: #fff;
+	}
+
+	.case_01 span {
+		text-align-last: center;
+		background-color: #cc8400;
+		color: #fff;
+		padding: 5px;
+	}
+</style>
+<div class="case_01">
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus mauris, blandit vitae auctor id, rhoncus id eros. Nullam sit amet nulla ac sapien eleifend ultrices. Curabitur ac dictum metus. Pellentesque ullamcorper dolor sit amet mi imperdiet egestas. Nam eu tellus sed nibh tincidunt rutrum eu sed augue. Cras vestibulum elementum tortor in gravida. Sed augue risus, tempor in justo non, fermentum faucibus nibh.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus mauris, blandit vitae auctor id, rhoncus id eros. Nullam sit amet nulla ac sapien eleifend ultrices. Curabitur ac dictum metus. Pellentesque ullamcorper dolor sit amet mi imperdiet egestas. <br />Nam eu tellus sed nibh tincidunt rutrum eu sed augue. Cras vestibulum elementum tortor in gravida. Sed augue risus, tempor in justo non, fermentum faucibus nibh.</p>
+	<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus mauris, blandit vitae auctor id, rhoncus id eros. Nullam sit amet nulla ac sapien eleifend ultrices. Curabitur ac dictum metus. Pellentesque ullamcorper dolor sit amet mi imperdiet egestas. Nam eu tellus sed nibh tincidunt rutrum eu sed augue. Cras vestibulum elementum tortor in gravida. Sed augue risus, tempor in justo non, fermentum faucibus nibh.</span>
+</div>
+
+
+<!-- 属性值介绍 -->
+<!-- auto(默认) -->
+<style type="text/css">
+	.box_02 { text-align: center; }
+	.box_02 figure { display: inline-block; margin: 15px; padding: 10px; border-radius: 5px; background-color: #eee; width: 300px; }
+	.box_02 figcaption { font-size: 12px; margin-top: 10px;/* direction: rtl; unicode-bidi: bidi-override;*/ text-align: right; text-align-last: auto; }
+</style>
+<div class="box_02">
+	<figure>
+	    <img src="https://www.w3cplus.com/sites/default/files/blogs/2016/1606/text-align-last-demo.jpg" alt=""  width="300" />
+	    <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation.</figcaption>
+	</figure>
+	<figure>
+	    <img src="https://www.w3cplus.com/sites/default/files/blogs/2016/1606/text-align-last-demo.jpg" alt=""  width="300" />
+	    <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation.</figcaption>
+	</figure>
+</div>
+
+<!-- start、end (与 direction 属性有关) -->
+<style type="text/css">
+	.box_03 { text-align: center; }
+	.box_03 figure { display: inline-block; margin: 15px; padding: 10px; border-radius: 5px; background-color: #eee; width: 300px; }
+	.box_03 figcaption { font-size: 12px; margin-top: 10px; direction: rtl; text-align: right; text-align-last: start; }
+</style>
+<div class="box_03">
+	<figure>
+	    <img src="https://www.w3cplus.com/sites/default/files/blogs/2016/1606/text-align-last-demo.jpg" alt=""  width="300" />
+	    <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation.</figcaption>
+	</figure>
+	<figure>
+	    <img src="https://www.w3cplus.com/sites/default/files/blogs/2016/1606/text-align-last-demo.jpg" alt=""  width="300" />
+	    <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation.</figcaption>
+	</figure>
+</div>
+
+<!-- left、right、center -->
+<style type="text/css">
+	.box_04 { text-align: center; }
+	.box_04 figure { display: inline-block; margin: 15px; padding: 10px; border-radius: 5px; background-color: #eee; width: 300px; }
+	.box_04 figcaption { font-size: 12px; margin-top: 10px;/* direction: rtl; text-align: left;*/ text-align-last: center; }
+</style>
+<div class="box_04">
+	<figure>
+	    <img src="https://www.w3cplus.com/sites/default/files/blogs/2016/1606/text-align-last-demo.jpg" alt=""  width="300" />
+	    <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation.</figcaption>
+	</figure>
+	<figure>
+	    <img src="https://www.w3cplus.com/sites/default/files/blogs/2016/1606/text-align-last-demo.jpg" alt=""  width="300" />
+	    <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation.</figcaption>
+	</figure>
+</div>
+
+<!-- justify（火狐/ie中间好像要有个空格 而且ie字体不能为0） -->
+<style type="text/css">
+	.box_05 { text-align: center; }
+	.box_05 figure { display: inline-block; margin: 15px; padding: 10px; border-radius: 5px; background-color: #eee; width: 300px; }
+	.box_05 figcaption { font-size: 12px; margin-top: 10px;/* direction: rtl;*/ text-align: right; text-align-last: justify; }
+</style>
+<div class="box_05">
+	<figure>
+	    <img src="https://www.w3cplus.com/sites/default/files/blogs/2016/1606/text-align-last-demo.jpg" alt=""  width="300" />
+	    <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation.</figcaption>
+	</figure>
+	<figure>
+	    <img src="https://www.w3cplus.com/sites/default/files/blogs/2016/1606/text-align-last-demo.jpg" alt=""  width="300" />
+	    <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation.</figcaption>
+	</figure>
+</div>
+</body>
+</html>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>https://www.w3cplus.com/css3/css3-3d-transform.html</title>
+  <link rel="stylesheet" type="text/css" href="3d_transform.css">
+  <style type="text/css">
+    body {
+      display: grid;
+      grid-gap: 20px;
+      justify-content: space-evenly;
+      padding-bottom: 200px;
+    }
+
+    .container:hover { transform: rotateY(60deg); }
+
+    .container img {
+      position: absolute;
+      margin-left: -35px;
+      margin-top: -50px;
+    }
+
+    .container img:nth-child(1) {
+      z-index: 1;
+      opacity: .6;
+    }
+  </style>
+</head>
+<body>
+
+<!--
+三维变换使用基于二维变换的相同属性，如果您熟悉二维变换，你们发现3D变换的功能和2D变形的功能相当蕾西。CSS3中的3D变形主要包括以下几种功能函数：
+
+1. 3D位移：CSS3中的3D位移主要包括translateZ()和translate3d()两个功能函数；
+2. 3D旋转：CSS3中的3D旋转主要包括rotateX()、rotateY()、rotateZ()和rotate3d()四个功能函数；
+3. 3D缩放：CSS3中的3D缩放主要包括scaleZ()和scale3d()两个功能函数；
+4. 3D矩阵：CSS3中的3D变形中和2D变形一样也有一个3D矩阵功能函数matrix3d()；
+-->
+
+<!-- 一、CSS3 3D位移
+======================================================-->
+<!--
+  （√）基本语法：translate3d(tx, ty, tz)
+  
+  其属性值取值说明如下：
+    - tx：代表横向坐标位置向量的长度；
+    - ty：代表纵向坐标位移向量的长度；
+    - tz：代表Z轴位移向量的长度。此值不能是一个百分比值，如果取值为百分比值，将会认为无效值；
+
+-->
+<style type="text/css">
+.translate {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 300px;
+  margin: 15px;
+  background-image: url(bg.jpg);
+
+  perspective: 1200px;
+}
+
+.translate .container {
+  position: absolute; top: 50%; left: 50%;
+  transform-style: preserve-3d;
+  transition: 1s;
+}
+
+.translate.s1 { grid-column: 1; grid-row: 1; }
+.translate.s2 { grid-column: 2; grid-row: 1; }
+
+.translate.s1 img:nth-child(2) {
+  z-index: 2;
+  transform: translate3d(0, 0, 200px);   /* 放大 */
+  /*transform: translateZ(200px);*/
+}
+.translate.s2 img:nth-child(2) {
+  z-index: 2;
+  /*transform: translate3d(30px, 30px, -200px);  缩小 */
+  transform: translateZ(-200px);
+}
+</style>
+<div class="translate s1">
+  <div class="container">
+    <img src="card_09(8-29).png" width="70" height="100">
+    <img src="card_09(8-29).png" width="70" height="100">
+  </div>
+</div>
+<div class="translate s2">
+  <div class="container">
+    <img src="card_09(8-29).png" width="70" height="100"> <!-- z-index: 1; 显示在前面 -->
+    <img src="card_09(8-29).png" width="70" height="100"> <!-- z-index: 2; 显示在后面 transform: translate3d(30px, 30px, -200px); -->
+  </div>
+</div>
+<!--
+效果再次证明了translateZ()函数仅让元素在Z轴进行位移，当其值越大时，元素离观看者越近，视觉上元素放大(最大为 perspcetive值)，反之元素缩小。
+
+translateZ()函数在实际使用中等同于translate3d(0,0,tz)。仅从视觉效果上看，tanslateZ()和translate3d(0,0,0,tz)函数功能非常类似于二维空间的scale()缩放函数，但实际上完全不同。translateZ()和translate3d(0,0,0,tz)变形是发生在Z轴上，而不是X轴和Y轴。当使用3D变形，能够在 Z轴上移动一个元素确实有很大的好处，比如说在创建一个3D立方体的盒子指示。
+-->
+
+<!-- 一、CSS3 2D缩放
+======================================================-->
+<style type="text/css">
+.scale2d {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 300px;
+  margin: 15px;
+  background-image: url(bg.jpg);
+
+  perspective: 1200px;
+}
+
+.scale2d .container1 {
+  position: absolute; top: calc(50% - 50px); left: calc(50% - 35px);
+  width: 70px; height: 100px; 
+  background: -webkit-linear-gradient(top left, #fff 5%, yellow 10%, green);
+  border-top-right-radius: 10px;
+}
+
+.scale2d.s1 { grid-column: 1; grid-row: 7; }
+.scale2d.s2 { grid-column: 2; grid-row: 7; }
+.scale2d.s3 { grid-column: 3; grid-row: 7; }
+
+.scale2d.s2 .container1 {
+  /*transform: scale(-1,1);*/
+  transform: rotateX(180deg);
+}
+.scale2d.s3 .container1 {
+  /*transform: scale(-1,-1);*/
+  transform: rotate(180deg);
+}
+</style>
+<div class="scale2d s1">
+  <div class="container1"> </div>
+</div>
+<div class="scale2d s2">
+  <div class="container1"> </div>
+</div>
+<div class="scale2d s3">
+  <div class="container1"> </div>
+</div>
+
+<!-- 一、CSS3 3D缩放
+======================================================-->
+<!--
+  CSS3 3D变形中的缩放主要有scaleZ()和scale3d()两种函数，当scale3d()中X轴和Y轴同时为1，即scale3d(1,1,sz)，其效果等同于scaleZ(sz)。通过使用3D缩放函数，可以让元素在Z轴上按比例缩放。默认值为1，当值大于1时，元素放大，反之小于1大于0.01时，元素缩小。其使用语法如下：
+
+  （√）scale3d(sx, sy, sz)
+  
+  其属性值取值说明如下：
+    - sx：横向缩放比例；
+    - sy：纵向缩放比例；
+    - sz：Z轴缩放比例；
+
+  （√）scaleZ(s)
+
+  其取值说明如下：
+    - s：指定元素每个点在Z轴的比例；
+
+  scaleZ(-1)定义了一个原点在Z轴的对称点（按照元素的变换原点）。
+
+  scaleZ()和scale3d()函数单独使用时没有任何效果，需要配合其他的变形函数一起使用才会有效果。下面我们来看一个实例，为了能看到scaleZ()函数的效果，我们添加了一个rotateX(45deg)功能：
+-->
+<style type="text/css">
+.scale {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 300px;
+  margin: 15px;
+  background-image: url(bg.jpg);
+
+  perspective: 1200px;
+}
+
+.scale .container {
+  position: absolute; top: 50%; left: 50%;
+  transform-style: preserve-3d;
+  transition: 1s;
+}
+
+.scale.s1 { grid-column: 1; grid-row: 2; }
+.scale.s2 { grid-column: 2; grid-row: 2; }
+.scale.s3 { grid-column: 3; grid-row: 2; }
+
+.scale.s1 img:nth-child(2) {
+  opacity: 1;
+  z-index: 2;
+  transform: scaleZ(5) rotateX(45deg);
+}
+
+.scale.s2 img:nth-child(2) {
+  opacity: 1;
+  z-index: 2;
+  transform: scaleZ(.25) rotateX(45deg);
+}
+
+.scale.s3 img:nth-child(2) {
+  opacity: 1;
+  z-index: 2;
+  transform: scaleZ(-3) rotateX(45deg);
+}
+</style>
+<div class="scale s1">
+  <div class="container">
+    <img src="card_09(8-29).png" width="70" height="100">
+    <img src="card_09(8-29).png" width="70" height="100">
+  </div>
+</div>
+<div class="scale s2">
+  <div class="container">
+    <img src="card_09(8-29).png" width="70" height="100">
+    <img src="card_09(8-29).png" width="70" height="100">
+  </div>
+</div>
+<div class="scale s3">
+  <div class="container">
+    <img src="card_09(8-29).png" width="70" height="100">
+    <img src="card_09(8-29).png" width="70" height="100">
+  </div>
+</div>
+
+
+
+<!-- 一、CSS3 3D旋转
+======================================================-->
+<!--
+  到目前为止，我们已经讨论了如何让一个元素在平面上进行顺时针或逆时针旋转。在三维变形中，我们可以让元素在任何轴旋转。为此，CSS3新增三个旋转函数：rotateX()、rotateY()和rotateZ()。
+
+  rotate3d(x, y, z, a)中取值说明：
+    - x：是一个0到1之间的数值，主要用来描述元素围绕X轴旋转的矢量值；
+    - y：是一个0到1之间的数值，主要用来描述元素围绕Y轴旋转的矢量值；
+    - z：是一个0到1之间的数值，主要用来描述元素围绕Z轴旋转的矢量值；
+    - a：是一个角度值，主要用来指定元素在3D空间旋转的角度，如果其值为正值，元素顺时针旋转，反之元素逆时针旋转；
+
+  上面介绍的三个旋转函数功能等同：
+    - rotateX(a) 函数功能等同于 rotate3d(1,0,0,a)
+    - rotateY(a) 函数功能等同于 rotate3d(0,1,0,a)
+    - rotateZ(a) 函数功能等同于 rotate3d(0,0,1,a)
+
+  3D旋转的运用：
+-->
+<style type="text/css">
+.rotate {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 300px;
+  margin: 15px;
+  background-image: url(bg.jpg);
+
+  perspective: 1200px;
+}
+
+.rotate .container {
+  position: absolute; top: 50%; left: 50%;
+  transform-style: preserve-3d;
+  transition: 1s;
+}
+
+.rotate.s1 { grid-column: 1; grid-row: 3; }
+.rotate.s2 { grid-column: 2; grid-row: 3; }
+.rotate.s3 { grid-column: 1; grid-row: 4; }
+.rotate.s4 { grid-column: 2; grid-row: 4; }
+.rotate.s5 { grid-column: 3; grid-row: 4; }
+
+.rotate.s1 img:nth-child(2) {
+  z-index: 2;
+  transform: rotateX(45deg);
+}
+
+.rotate.s2 img:nth-child(2) {
+  z-index: 2;
+  transform: rotateY(45deg);
+}
+
+.rotate.s3 img:nth-child(2) {
+  z-index: 2;
+  transform: rotateZ(45deg);
+}
+
+.rotate.s4 img:nth-child(2) {
+  z-index: 2;
+  transform: rotate3d(1, 1, 1, 45deg);   /* 与.s5有区别，但没理解（好像是改变2个值的时候有区别） */
+}
+
+.rotate.s5 img:nth-child(2) {
+  z-index: 2;
+  transform: rotate3d(.1, 1, 1, 45deg)
+  /*transform: rotateZ(45deg) rotateY(45deg) rotateX(45deg);*/
+}
+</style>
+<div class="rotate s1">
+  <div class="container">
+    <img src="card_09(8-29).png" width="70" height="100">
+    <img src="card_09(8-29).png" width="70" height="100">
+  </div>
+</div>
+<div class="rotate s2">
+  <div class="container">
+    <img src="card_09(8-29).png" width="70" height="100">
+    <img src="card_09(8-29).png" width="70" height="100">
+  </div>
+</div>
+<div class="rotate s3">
+  <div class="container">
+    <img src="card_09(8-29).png" width="70" height="100">
+    <img src="card_09(8-29).png" width="70" height="100">
+  </div>
+</div>
+<div class="rotate s4">
+  <div class="container">
+    <img src="card_09(8-29).png" width="70" height="100">
+    <img src="card_09(8-29).png" width="70" height="100">
+  </div>
+</div>
+<div class="rotate s5">
+  <div class="container">
+    <img src="card_09(8-29).png" width="70" height="100">
+    <img src="card_09(8-29).png" width="70" height="100">
+  </div>
+</div>
+
+<!-- 一、CSS3 3D矩阵
+======================================================-->
+<!--
+  代码表示就是：
+  （√）matrix3d(sx, 0, 0, 0, 0, sy, 0, 0, 0, 0, sz, 0, 0, 0, 0, 1);
+-->
+
+
+
+<!-- 案例1 -->
+<style type="text/css">
+.wrapper {
+  grid-column: 1;
+  grid-row: 5;
+  display: inline-block;
+  width: 310px;
+  height: 100px;
+  vertical-align: top;
+  margin: 1em 1.5em 2em 0;
+  cursor: pointer;
+  position: relative;
+  font-family: Tahoma, Arial;
+  -webkit-perspective: 4000px;
+     -moz-perspective: 4000px;
+      -ms-perspective: 4000px;
+       -o-perspective: 4000px;
+          perspective: 4000px;
+}
+
+.wrapper .item {
+  height: 100px;
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+       -o-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform .6s;
+     -moz-transition: -moz-transform .6s;
+      -ms-transition: -ms-transform .6s;
+       -o-transition: -o-transform .6s;
+          transition: transform .6s;
+}
+
+.wrapper .item .img {
+  display: block;
+  width: 100%;
+  height: 100px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  border-radius: 3px;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.3);
+  -webkit-transform: translateZ(50px);
+     -moz-transform: translateZ(50px);
+      -ms-transform: translateZ(50px);
+       -o-transform: translateZ(50px);
+          transform: translateZ(50px);
+  -webkit-transition: all .6s;
+     -moz-transition: all .6s;
+      -ms-transition: all .6s;
+       -o-transition: all .6s;
+          transition: all .6s;
+  backface-visibility: hidden;
+}
+.wrapper .item .information {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 80px;
+  width: 290px;
+  text-align: left;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 12px;
+  text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+  box-shadow: none;
+  background: rgb(236,241,244);
+  background: -webkit-linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+  background: -ms-linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+  background: linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+  -webkit-transform: rotateX(-90deg) translateZ(50px);
+     -moz-transform: rotateX(-90deg) translateZ(50px);
+      -ms-transform: rotateX(-90deg) translateZ(50px);
+       -o-transform: rotateX(-90deg) translateZ(50px);
+          transform: rotateX(-90deg) translateZ(50px);
+  -webkit-transition: all .6s;
+     -moz-transition: all .6s;
+      -ms-transition: all .6s;
+       -o-transition: all .6s;
+          transition: all .6s;
+  backface-visibility: hidden;
+}
+
+.wrapper .item:hover {
+  -webkit-transform: translateZ(-50px) rotateX(95deg);
+  -moz-transform: translateZ(-50px) rotateX(95deg);
+  -ms-transform: translateZ(-50px) rotateX(95deg);
+  -o-transform: translateZ(-50px) rotateX(95deg);
+  transform: translateZ(-50px) rotateX(95deg);
+}
+
+.wrapper .item:hover img {
+  box-shadow: none;
+  border-radius: 15px;
+}
+
+.wrapper .item:hover .information {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+</style>
+<div class="wrapper">
+  <div class="item">
+    <div class="img"></div>
+    <span class="information">
+      <strong>Contact Form</strong> The easiest way to add a contact form to your shop. </span>
+  </div>
+</div>
+
+
+<style type="text/css">
+.lti {
+  grid-column: 2;
+  grid-row: 5;
+  width: 300px;
+  height: 100px;
+  perspective: 300px;
+}
+
+.lti .ltiItem {
+  position: relative;
+  height: 200px;
+  transform-style: preserve-3d;
+  background-color: rgba(0,0,0,.5);
+  transition: .6s;
+}
+
+.lti .ltiItem .img { position: absolute; top: 0; display: block; width: 300px; height: 100px; background-color: orange;
+}
+.lti .ltiItem .des {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 300px;
+  height: 100px;
+  background: -webkit-linear-gradient(top , rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+  transform: translateZ(-100px) rotateX(-90deg);
+  transform-origin: bottom center;
+  backface-visibility: hidden;
+}
+
+.lti .ltiItem:hover {
+  transform: rotateX(90deg);
+  transform-origin: center 50px -50px;
+}
+</style>
+<div class="lti">
+  <div class="ltiItem">
+    <dfn class="img">正面</dfn>
+    <dfn class="des">描述</dfn>
+  </div>
+</div>
+
+<style type="text/css">
+.lti2 {
+  grid-column: 3;
+  grid-row: 5;
+  width: 300px;
+  height: 100px;
+}
+
+.lti2 .ltiItem {
+  position: relative;
+  height: 200px;
+  transform-style: preserve-3d;
+  background-color: rgba(0,0,0,.5);
+  transition: .6s;
+  transform: perspective(300px) translateZ(-50px);
+}
+
+.lti2 .ltiItem .img { position: absolute; top: 0; display: block; width: 300px; height: 100px; background-color: orange;
+  transform: translateZ(50px);
+
+}
+.lti2 .ltiItem .des {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 300px;
+  height: 100px;
+  background: -webkit-linear-gradient(top , rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+.lti2 .ltiItem:hover {
+  transform: perspective(300px) translateZ(-50px) rotateX(90deg);
+  transform-origin: center 50px;
+}
+</style>
+<div class="lti2">
+  <div class="ltiItem">
+    <dfn class="img">正面</dfn>
+    <dfn class="des">描述</dfn>
+  </div>
+</div>
+
+<!-- 立方体 -->
+<style type="text/css">
+/* .box {
+  display: flex;
+  justify-content: space-evenly;
+  grid-column: 1/span 3;
+  grid-row: 6;
+  perspective: 300px;
+  perspective-origin: 50px 50px;
+}
+.box .cube {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(0,0,0,.5);
+  transform-style: preserve-3d;
+  transform: perspective(300px) translateZ(-50px);
+  transform-origin: 50px 50px;
+  transition: 1s;
+}
+
+.cube:hover {
+  transform: perspective(300px) translateZ(-50px) rotateY(180deg);
+}
+
+.cube:nth-child(2):hover {
+  transform: perspective(300px) translateZ(-50px) rotate3d(1,1,1, 179deg);
+}
+
+.cube:nth-child(3):hover {
+  transform: perspective(300px) translateZ(-50px) rotateY(180deg) scale3d(1, 1, 2);
+}
+.box .item {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+  background-color: rgba(255,0,0,.7);
+  border: 3px solid #000;
+}
+.box .item:nth-child(1) {
+  transform: translateZ(-50px);
+}
+.box .item:nth-child(2) {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+.box .item:nth-child(3) {
+  transform: rotateY(90deg) translateZ(50px);
+}
+.box .item:nth-child(4) {
+  transform: rotateX(90deg) translateZ(50px);
+}
+.box .item:nth-child(5) {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+.box .item:nth-child(6) {
+  transform: translateZ(50px);
+} */
+</style>
+<div class="box">
+  <div class="cube">
+    <div class="item">1</div>
+    <div class="item">2</div> 
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+  </div>
+
+  <div class="cube">
+    <div class="item">1</div>
+    <div class="item">2</div> 
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+  </div>
+
+  <div class="cube">
+    <div class="item">1</div>
+    <div class="item">2</div> 
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+  </div>
+
+  <div class="cube">
+    <div class="item">1</div>
+    <div class="item">2</div> 
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+  </div>
+</div>
+</body>
+</html><!-- （√） -->

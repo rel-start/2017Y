@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文本溢出</title>
+</head>
+<body>
+<!-- 修剪文本 clip -->
+<style type="text/css">
+	.clip { width: 100px; text-overflow: clip; white-space: nowrap; overflow: hidden; }
+</style>
+<p class="clip">text-overflow属性指定当文本溢出包含它的元素，应该发生什么。</p>
+
+<!-- 省略号代替 ellipsis -->
+<style type="text/css">
+	.ellipsis { width: 100px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+</style>
+<p class="ellipsis">text-overflow属性指定当文本溢出包含它的元素，应该发生什么。</p>
+
+<!-- 代替文本 string 不管用-->
+<style type="text/css">
+	.string { width: 100px; text-overflow: 'eee'; white-space: nowrap; overflow: hidden; }
+</style>
+<p class="string">text-overflow属性指定当文本溢出包含它的元素，应该发生什么。</p>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>.closest() 例子1</title>
+  <style>
+  	li { margin: 3px; padding: 3px; background: #eee; }
+  	li.hilight { background: yellow; }
+  </style>
+</head>
+<body>
+<ul>
+	<li><b>点击我</b></li>
+	<li>你也可以<b>点击我</b></li>
+</ul>
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(document).bind('click', function(e)
+{// e.target  兼容: ie6+
+	$(e.target).closest('li').toggleClass('hilight');
+})
+</script>
+</body>
+</html>

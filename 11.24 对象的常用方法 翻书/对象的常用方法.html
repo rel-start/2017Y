@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+
+<body>
+  <script>
+    // ---------------------------------------
+    // Object.is(a, b); 判断a 和 b 是不是写的一样的（基本数据类型），如果不是同一个对象，都是false
+    // console.log(Object.is(undefined, undefined));
+    // console.log(Object.is(null, null));
+    // console.log(Object.is(true, true));
+    // console.log(Object.is('abc', 'abc'));
+    // console.log(Object.is(123, 123));
+
+    // // 特例
+    // console.log(Object.is(+0, -0));
+    // console.log(Object.is(NaN, NaN));
+    // console.log(Object.is(Infinity, Infinity));
+
+
+    // -----------------------------------------
+    // Object.keys(obj)：返回给定对象的所有可枚举属性的字符串数组。
+    // function Point() {
+    //   this.name = 'point';
+    // }
+    // Point.prototype.defaults = {};
+
+    // // for (let key in new Point()) {
+    // //   console.log(key);   // 'name' \n 'defaults'
+    // // }
+
+    // console.log(Object.keys(new Point()));  // ["name"]
+
+
+
+    // -----------------------------------------
+    // Object.values(obj)：返回一个包含对象自身的所有可枚举属性键值的数组。
+    // var ret = Object.values({ a: 1, b: 2 }); // [1, 2]
+    // console.log(typeof ret[0]);   // number
+
+
+    // -----------------------------------------
+    // Object.create(obj)：在指定原型对象上添加新属性后的对象。这个方法不建议批量调用，耗性能
+    // let nul = Object.create(null);
+    // console.log(nul);     // 完全空的对象，没有原型
+
+    // let obj = {};
+    // let ret = Object.create(obj, { // 借用obj的原型成为新对象，并添加属性
+    //   p: {
+    //     value: 22,
+    //     writable: false, // 不可写
+    //     enumerable: true, // 枚举
+    //     configurables: true // 可配置
+    //   } 
+    // });
+    // ret.p = 33;
+    // console.log(ret.p);   // 22
+
+
+    // -----------------------------------------
+    // Object.getOwnPropertyNames(obj)：方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性但不包括Symbol值作为名称的属性）组成的数组。
+    var my_obj = Object.create({}, {
+      getFoo: {
+        value: 33,
+        enumerable: false
+      }
+    });
+    my_obj.foo = 1;
+
+    console.log(Object.getOwnPropertyNames(my_obj));  // ["getFoo", "foo"]
+    console.log(Object.keys(my_obj));                 // ["foo"]
+  </script>
+</body>
+
+</html>

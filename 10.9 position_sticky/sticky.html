@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>http://www.cnblogs.com/coco1s/p/6402723.html</title>
+  <link rel="stylesheet" type="text/css" href="sticky.css">
+</head>
+<body>
+<!--
+  生效规则：
+    position:sticky 的生效是由一定的限制的，总结如下：
+      1、须指定 top, right, bottom 或 left四个阀值其中之一, 才可使粘性定位生效。否则其行为与相对定位相同。
+        - 并且 top 和 bottom 同时设置使, top 生效的优先级高, left 和 right 同时设置时, left 的优先级高。
+
+      2、设定为 position:sticky 元素的任意父节点的 overflow 属性必须是 visible|auto，否则 position:sticky 不会生效。这里需要解释一下：
+        - 如果 position:sticky 元素的任意父节点定位设置为 overflow: hidden, 其父容器无法进行滚动, 所以 position:sticky 元素也不会有滚动然后固定的情况。
+      
+      3、达到设定的阀值。也就是设定了 position:sticky 的元素表现为 relative 还是 fixed 是根据元素是否打到设定的阀值决定的。
+
+
+-->
+<div class="container">
+    <div class="sticky-box"><h2>内容1</h2></div>
+    <div class="sticky-box"><h2>内容2</h2></div>
+    <div class="sticky-box"><h2>内容3</h2></div>
+    <div class="sticky-box"><h2>内容4</h2></div>
+</div>
+
+</body>
+</html>

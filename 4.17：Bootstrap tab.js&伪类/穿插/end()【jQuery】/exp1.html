@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>.end()【jQuery】</title>
+  <style>
+  	p, div { margin: 1px; padding: 1px; font-size: 16px; font-weight: 700; }
+  	div { color: blue; }
+  	b { color: red; }
+  </style>
+</head>
+<body>
+
+<p>
+	Hi there <span>how</span> are you <span>doing</span>?
+</p>
+
+<p>
+	This <span>span</span> is one of
+  several <span>spans</span> in this
+  <span>sentence</span>.
+</p>
+<div>
+  Tags in jQuery object initially: <b></b>
+</div>
+ 
+<div>
+  Tags in jQuery object after find: <b></b>
+</div>
+ 
+<div>
+  Tags in jQuery object after end: <b></b>
+</div>
+
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+	
+	
+	console.log($('p').get().html())
+jQuery.fn.showTags = function(n)
+{
+	var tags = this.map(function()
+	{
+		return this.tagName;
+	}).get().join(',');
+	
+	$('b:eq('+ n +')').text(tags);
+	return this;
+};
+
+
+/*选择所有段落,在其中查找跨度元素,并将选择还原回段落*/
+$('p').showTags(0)
+  .find('span').showTags(1).css('background', 'yellow')
+  .end()
+  .showTags(2).css('font-style', 'italic');
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<ul id="box">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+</ul>
+
+<script>
+
+// 偏函数（Partial Functions）
+// ========================================================================
+// bind()的另一个最简单的用法是使一个函数拥有预设的初始参数。这些参数（如果有的话）作为bind()的第二个参数跟在this（或其他对象）后面，之后它们会被插入到目标函数的参数列表的开始位置，传递给绑定函数的参数会跟在它们的后面。
+// function list(){
+//   return Array.prototype.slice.call(arguments);
+// }
+
+// var list1 = list(1,2,3);  // [1,2,3]
+
+// // 与预设的主导参数创建一个函数
+// var leadingThirtysevenList = list.bind(undefined, 37);
+
+// var list2 = leadingThirtysevenList();           // [37]
+// var list3 = leadingThirtysevenList(1, 2, 3);    // [37, 1, 2, 3]
+// console.log(list1, list2, list3);
+
+
+
+
+// 配合 setTimeout
+// ======================================================================
+// 在默认情况下，使用 window.setTimeout() 时，this 关键字会指向 window （或全局）对象。当使用类的方法时，需要 this 引用类的实例，你可能需要显式地把 this 绑定到回调函数以便继续使用实例。
+
+// function LateBloomer(){
+//   this.petalCount = Math.ceil(Math.random() * 12) + 1;
+// }
+
+// // 延迟1秒后宣布开花
+// LateBloomer.prototype.bloom = function (){
+//   window.setTimeout(this.declare.bind(this), 1000);	// 把 this 重新指向 LateBloomer类
+// };
+
+// LateBloomer.prototype.declare = function (){
+//   console.log('I am a beautiful flower with ' +  this.petalCount + ' petals!');
+// };
+
+// var flower = new LateBloomer();
+// flower.bloom();      // 1秒钟后，调用'declare'方法
+
+
+
+
+// 快捷调用
+// =================================================
+// var lis = box.querySelectorAll('li');
+// var slice = Array.prototype.slice;
+// // lis.length = 4;    // 类数组 length 不能修改
+// // console.log(lis.length);
+
+// // var lisArr = slice.apply(lis);
+// // console.log(lisArr);
+// // lisArr.length = 3;
+// // console.log(lisArr);
+
+// var unboundSlice = Array.prototype.slice;
+// var slice = Function.prototype.apply.bind(unboundSlice);
+
+// var lisArr2 = slice(lis);
+// console.log(lisArr2);
+// lisArr2.length = 3;
+// console.log(lisArr2);
+</script>
+</body>
+</html>

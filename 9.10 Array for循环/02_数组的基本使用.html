@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body class="box1 box2">
+<script>
+
+  /*
+    声明一个数组：[],
+    数组里面的每一项，隔开，最后一项后面不能加 ,
+    数组里面可以储存任何类型的数据
+    想使用数组里面的数据可以通过下标的方式
+    length 属性 代表数组的长度，是可读可写的
+  */
+
+  // var arr = [0, 1, 2, 3, 4];
+
+  // var arr1 = [
+  //   0,
+  //   1,
+  //   2,
+  //   3,
+  //   4
+  // ];
+  // console.log(arr, arr1);
+  // console.log(typeof document.body.classList);
+
+
+  // ================================================
+  // 数组里面可以存储任意类型的数据，包括数组本身。
+  // var arr = ['a', 123, function (){}, ['1', 'hello']];
+  
+  // var arr = ['a', 'b', 'c', 'd'];
+  // console.log(arr);
+
+  // 数组也是一个对象
+
+  // 如何使用数组里面的数据
+  // console.log(arr['0']);
+  // console.log(arr[0]);
+
+  // 可以通过下标（索引值）的方式去获取数组中对应的数据
+  // console.log(arr[2]);
+
+
+  // ====================================================
+  // 数组的属性 length，代表数组的长度
+  // var arr = ['a', 'b', 'c', 'd'];
+
+  // console.log(arr.length);
+  // console.log(arr[0]);  // 数组的第一个
+  // console.log(arr[arr.length - 1]);  // 数组的最后一个
+
+  // arr.length = 2;   // 数组的length属性不仅仅可以读取还可以修改，给予的值小于 原数组 会裁减掉多余的位数
+
+  // arr.length = 10;   // 给予的值小于 原数组 ['a', 'b', 'c', 'd', undefined*6]
+  // console.log(arr);   
+
+
+
+  // =====================================================
+  // var arr = [3, 2, ['a', ['b']], 1];
+
+  // console.log(arr[2][0]);     // a
+  // console.log(arr[2][1][0]);  // b
+</script>
+</body>
+</html>

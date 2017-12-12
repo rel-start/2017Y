@@ -1,0 +1,31 @@
+
+// 当出现多个参数的时候，使用时，参数必须按原定顺序传参，并且不能少参数（最后一个可以不传）
+
+.border(@width:1px, @style:solid, @color: #f00) {
+	border: @width @style @color;
+	-moz-border: @width @style @color;
+	-webkit-border: @width @style @color;
+}
+
+.box {
+	.border;
+}
+
+.main {
+	.border(10px,dotted,green);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

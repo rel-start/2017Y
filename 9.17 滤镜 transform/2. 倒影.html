@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>http://www.w3cplus.com/css3/css3-box-reflect.html</title>
+  <style type="text/css">
+    body {display: flex; justify-content: space-evenly; }
+    img { vertical-align: top; border: 0; }
+  </style>
+</head>
+<body>
+<!--
+  box-reflect: none | <direction> <offset>? <mask-box-image>?
+
+  1、none: 此值为 box-reflect 默认值, 表示无倒影;
+  2、<direction>: 此值表示 box-reflect 生成倒影的方向, 主要包括以下几个值: 
+
+    - above: 表示生成的倒影在对象(原图)的上方;
+    - below: 下方;
+    - left:  左侧;
+    - right: 右侧;
+
+  3、<offset>: 用来设置生成倒影与对象(原图)之间的间距(可以为负值), 其取值可以是 px em rem vh vw %...
+  4、<mask-box-image>: 用来设置倒影的遮罩效果, 可以是背景图片, 也可以是渐变生成的背景图像
+    蒙版：纯色的区域显示，透明区域隐藏
+-->
+<!-- 案例01 -->
+<style type="text/css">
+.reflect_01 {
+  -webkit-box-reflect: below 1em -webkit-linear-gradient(bottom, red, transparent 30%);
+}
+</style>
+<div class="reflect_01">
+  <img src="img/ml0001-3515xk.jpg">
+</div>
+
+
+
+<!-- 案例02 -->
+<!--
+  只能使用线性渐变给生成的倒影添加遮罩效果, 而径向渐变到目前还无任何效果。另外有一点需要注意, 给生成的倒影添加遮罩效果的时候, 如果没有设置显式的间距 <offset> 将会让 box-reflect 失效。也就是, 当 box-reflect 属性中的 <mask-box-image> 属性值出现时, 必须显式的设置 <offset> 值, 如果不需要间距, 将其设置为0
+-->
+<style type="text/css">
+.reflect_02 {
+  /*-webkit-box-reflect: below 1em -webkit-radial-gradient(circle, red, transparent 30%);*/
+  -webkit-box-reflect: below 0 url(img/dog.png);  /* 遮罩图片大小好像不能控制 */
+}
+</style>
+<div class="reflect_02">
+  <img src="img/ml0001-3515xk.jpg">
+</div>
+
+
+<!-- 火狐浏览器下的倒影 -->
+<style type="text/css">
+.moz_reflect {
+  position: relative;
+  width: 600px;
+}
+.moz_reflect:after {
+  position: absolute; bottom: -410px;
+  content: '';
+  display: block;
+  background: -moz-element(#moz-reflect) no-repeat; /*  这里必须是id */
+  width: inherit;
+  height: 400px;
+  -moz-transform: scaleY(-1);
+  /*-moz-transform: rotateX(180deg);   x轴旋转180° */
+}
+</style>
+<div class="moz_reflect" id="moz-reflect">
+  <img src="img/ml0001-3515xk.jpg">
+</div>
+</body>
+</html>

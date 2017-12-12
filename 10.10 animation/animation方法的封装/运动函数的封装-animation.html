@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  .box {
+    width: 80px;
+    height: 80px;
+    background-color: rgb(54,90,222);
+  }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+
+
+  <script src="./tool-2017.10.10..js"></script>
+  <script>
+   var box = document.querySelector('.box');
+
+  
+
+
+  document.onclick = function (){
+    animation({
+      el: box,
+      attrs: {
+        'marginLeft': 500,
+        'marginTop': 100
+      },
+      cb(){
+        console.log(this)
+      }
+    });
+  };
+
+
+  // function animation(props){
+  //   // 运动的元素
+  //   var el = props.el;
+
+  //   // 如果在运动中，就跳出方法。只有在运动完成才能在此调用
+  //   if (el.animation) return;
+
+    
+  //   var
+  //       // 运动样式对象。默认是{} 防止报错
+  //       attrs = props.attrs || {},
+  //       // 总时间。默认400ms
+  //       d = props.duration || 400,
+  //       // 回调函数
+  //       cb = props.cb,
+  //       // 运动曲线
+  //       fx = props.fx || 'easeOut',
+  //       // 起始位置, 总路程
+  //       b = {}, c = {};
+
+  //   for (var key in attrs) {
+  //     // 获取开始位置的键值对
+  //     b[key] = css(el, key);
+  //     // 获取总路程的键值对
+  //     c[key] = attrs[key] - b[key];
+  //   }
+
+  //   // 运动开始时间
+  //   var startTime = Date.now();
+
+  //   (function fn(){
+  //     el.animation = window.requestAnimationFrame(fn);
+
+  //     // 已用时间
+  //     var t = Date.now() - startTime;
+      
+  //     // 元素限制在终点
+  //     if (t > d) {
+  //       t = d;
+  //       // 清除动画帧
+  //       window.cancelAnimationFrame(el.animation);
+  //       // 清除元素上的动画帧编号
+  //       el.aniamtion = null;
+  //     }
+
+      
+  //     for (var key in attrs) {
+  //       // 设置当前位置
+  //       var pos = Tween[fx](t, b[key], c[key], d);
+  //       css(el, key, pos);
+  //     }
+
+  //     // 回调函数调用。this指向元素对象
+  //     if (typeof cb === 'function' && t === d) {
+  //       cb.call(el);
+  //     }
+  //   })();
+  // }
+
+
+  // function animation(el, attrs, duration, fx){
+  //   if (el.timer) return;
+
+  //   var b = {}, c = {};
+  //   for (var key in attrs) {
+  //     b[key] = css(el, key);
+  //     c[key] = attrs[key] - b[key];
+  //   }
+
+  //   var d = duration || 2000;
+  //   var fx = fx || 'easeOut';
+
+  //   var startTime = Date.now();
+
+  //   (function fn(){
+  //     el.timer = window.requestAnimationFrame(fn);
+
+  //     var t = Date.now() - startTime;
+
+  //     if (t > d) {
+  //       t = d;
+  //       window.cancelAnimationFrame(el.timer);
+  //       el.timer = null;
+  //     }
+
+
+  //     for (var key in attrs) {
+  //       var pos = Tween[fx](t, b[key], c[key], d);
+  //       css(el, key, pos);
+  //     }
+  //   })();
+  // }
+
+
+  // function animation(el, attr, val){
+  //   if (el.timer) return;
+
+  //   var b = css(el, attr);
+  //   var c = val - b;
+  //   var d = 2000;
+  //   var fx = 'easeOut';
+
+
+  //   var startTime = Date.now();
+
+  //   (function fn(){
+  //     el.timer = window.requestAnimationFrame(fn);
+
+  //     var t = Date.now() - startTime;
+
+  //     if (t > d) {
+  //       t = d;
+  //       window.cancelAnimationFrame(el.timer);
+  //       el.timer = null;
+  //     }
+
+  //     var s = Tween[fx](t, b, c, d);
+
+  //     css(el, 'marginLeft', s);
+  //   })();
+  // }
+  </script>
+</body>
+</html>

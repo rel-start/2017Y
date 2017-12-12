@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>text-justify实现两端对齐2</title>
+	<style type="text/css">
+		body { margin: 0; font: 14px '微软雅黑'; }
+		ul { margin: 0; padding: 0; list-style: none; }
+		img { vertical-align: top; border: 0; }
+		dfn, em { font-style: normal; }
+		
+		.wrap { width: 1180px; line-height: 0; margin: 100px auto; text-align: justify; background-color: #faf; overflow: hidden; font-size: 0; }/*  font-size: 0; IE下size必须>0 */
+		.wrap .item { display: inline-block; width: 300px; height: 200px; line-height: 1.4; margin-top: 20px; border: 1px solid #ddd; vertical-align: top; }
+		.wrap .justify_fix{/*  display: inline-block; width: 100%; */ display: inline-block; width: 300px; height: 0; vertical-align: top; font-size: 0; overflow: hidden; background-color: blue; *zoom: 1; }
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<dfn class="item">1</dfn> <dfn class="item">2</dfn> <!-- 首尾标签留空(或换行) -->
+	<dfn class="item">3</dfn>
+	<dfn class="item">4</dfn>
+	<dfn class="item">5</dfn>
+	<dfn class="item">6</dfn>
+	<dfn class="item">7</dfn>
+	<dfn class="item">8</dfn>
+
+	<dfn class="justify_fix">&nbsp;</dfn>
+	<dfn class="justify_fix">&nbsp;</dfn>
+	<dfn class="justify_fix">&nbsp;</dfn>
+</div>
+
+
+<style type="text/css">
+	.box{ width: 50%; line-height: 0; padding: 20px 20px 0; margin: 20px auto; background-color: #f0f3f9; text-align: justify; }
+	.list{ width: 120px; display: inline-block; line-height: 1.4; padding-bottom: 20px; text-align: center; vertical-align: top; }
+	.list em { display: block; width: 98px; margin: 0 auto; }
+	.left_fix{ height: 0; padding: 0; overflow: hidden; }
+</style>
+<div class="box">
+    <span class="list">
+    	<img src="mm9.jpg" />
+    	<em>发动机撒开了飞机萨洛里的</em>
+    </span>
+    <span class="list">
+    	<img src="mm9.jpg" />
+    	<em>发动机撒开了飞机萨洛里的</em>
+    </span>
+    <span class="list">
+    	<img src="mm9.jpg" />
+    	<em>发动机撒开了飞机萨洛里的</em>
+    </span>
+    <span class="list">
+    	<img src="mm9.jpg" />
+    	<em>发动机撒开了飞机萨洛里的</em>
+    </span>
+    <span class="list">
+    	<img src="mm9.jpg" />
+    	<em>发动机撒开了飞机萨洛里的</em>
+    </span>
+    <span class="list">
+    	<img src="mm9.jpg" />
+    	<em>发动机撒开了飞机萨洛里的</em>
+    </span>
+    <span class="list">
+    	<img src="mm9.jpg" />
+    	<em>发动机撒开了飞机萨洛里的</em>
+    </span>
+    <span class="list">
+    	<img src="mm9.jpg" />
+    	<em>发动机撒开了飞机萨洛里的</em>
+    </span>
+    <span class="list">
+    	<img src="mm9.jpg" />
+    	<em>发动机撒开了飞机萨洛里的</em>
+    </span>
+
+
+    <span class="list left_fix">&nbsp;</span>
+    <span class="list left_fix">&nbsp;</span>
+    <span class="list left_fix">&nbsp;</span>
+    <span class="list left_fix">&nbsp;</span>
+    <span class="list left_fix">&nbsp;</span>
+</div>
+
+</body>
+</html>

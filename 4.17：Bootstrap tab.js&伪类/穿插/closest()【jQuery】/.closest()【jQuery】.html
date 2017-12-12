@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>.closest()【jQuery】</title>
+</head>
+<body>
+<!--
+					.closest()										.parents()
+	===========================  |  ======================================================
+	  开始于当前元素								 |	开始于父元素
+	---------------------------  |  ------------------------------------------------------
+	在DOM树中向上遍历，知道找到了         |  向上遍历DOM树到文档的根元素，每个祖先元素加入到临时集合，如果
+	与提供的选择器相匹配的元素			 |  提供一个选择器，则会使用该选择器在集合中进行过滤
+	---------------------------  |  ------------------------------------------------------
+	返回包含0个或一个元素的jQuery   |  返回包含0个，一个或多个元素的jQuery对象
+	对象													 |
+-->
+	
+	
+<ul id="one" class="level_1">
+	<li class="item_i">I</li>
+	<li id="ii" class="item_ii">II</li>
+	
+	
+	<ul class="level_2">
+		<li class="item_a">A</li>
+		
+		<li class="item_b">B
+			<ul class="level_3">
+				<li class="item_1">1</li>
+				<li class="item_2">2</li>
+				<li class="item_3">3</li>
+			</ul>
+		</li>
+		
+		<li class="item_c">C</li>
+	</ul>
+	
+	
+	<li class="item_iii">III</li>
+</ul> 
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+//$('li.item_a').closest('ul').css('background', 'red');
+//$('li.item_a').closest('li').css('background', 'red');
+
+
+var listItemII = document.getElementById('item_ii');
+$('li.item_a').closest('ul', listItemII)
+.css('background-color', 'red');
+
+$('li.item_a').closest('#one', listItemII)// 这里有问题
+  .css('background-color', 'green');
+</script>
+</body>
+</html>

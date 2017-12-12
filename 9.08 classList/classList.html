@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>classList属性 中方法的</title>
+	<style type="text/css">	
+		.btn { display: inline-block; width: 50px; line-height: 30px; text-align: center; color: #333; }
+		.backblue { background-color: blue; color: #fff; } 
+		.w200 { width: 200px; }
+		.h300 { height: 300px; line-height: 300px; }
+	</style>
+</head>
+<body>
+<span class="btn backblue w200 h300">fdasfds</span>
+
+<!-- IE10+ -->
+<script>
+	var btn = document.querySelector('.btn');
+
+	var classList = btn.classList;
+	// class属性返回元素的类名，作为DOMTokenList对象
+	console.log(classList);
+	// 获取长度
+	console.log(classList.length);
+	console.log(classList.value)
+
+	// 添加一个或多个类名
+	// classList.add('orange', 'white');   'orange white'不可行
+	// classList.add('h300'); // 已有类名不会再添加
+
+	// 溢出元素中一个或多个类名
+	// classList.remove('h300', 'w200');
+	// classList.remove('orange');  // 移出不存在类名不会报错
+
+	// 切换类名
+	// classList.toggle('h300', false);   // 移出类名
+	// classList.toggle('orange', true);  // 太难极爱类名
+
+	// 判断指定类名是否存在。true-存在
+	// console.log(classList.contains('btn'));
+	// console.log(classList.contains('btn1'));
+
+	// 通过索引值获取 classList 中的类名。索引值从0开始
+	// console.log(classList.item(2)); // w200
+	// console.log(classList.item(5)); // btn
+	// 如果索引值在区间范围外则返回null
+
+
+</script>
+</body>
+</html>

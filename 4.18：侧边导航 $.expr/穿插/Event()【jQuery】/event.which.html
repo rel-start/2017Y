@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.which</title>
+</head>
+<body>
+
+<!-- event.which：对于键或鼠标事件，此属性只是按下的特定键或按钮 -->
+<input id="one" type="text" />
+<div id="log"></div>
+
+
+<input id="two" type="text" />
+<div id="area"></div>
+
+
+<p id="msg"></p>
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+// 适用的时间类型主要有键盘事件：keypress、keydown、keyup，以及鼠标事件：mouseup、mousedown，报告1 左键，2中间和3右键。
+// 按键的映射代码值：http://www.365mini.com/page/jquery-event-which.htm
+
+// exp1 记录哪个键被压抑
+/*$('input#one').on('keydown', function(event)
+{
+  $('#log').html(event.type + ':' + event.which);
+});*/
+
+
+// exp2 记录鼠标按键被按下
+/*$('input#two').on('mousedown', function(event)
+{
+  $('#area').html(event.type + ':' + event.which);
+});*/
+
+
+// exp3
+/*$(document).on('keydown mousedown', function(e)
+{
+  var msg = '';
+  if(e.type === 'mousedown')// 鼠标按下事件
+  {
+    var map = {1: '左键', 2: '中键', 3: '右键'};
+    msg = '你按下了鼠标[' + map[e.which] + ']键';
+  }
+  else
+  {// 键盘按下事件
+    if(e.which >= 65 && event.which <= 90)
+    {
+      msg = '你按下了键盘[' + String.fromCharCode(e.which) + ']键';
+    };
+  }
+  
+  if(msg) $('#msg').prepend(msg + '<br/>');
+});*/
+
+$(document).on({
+  keydown: function(e) {
+    if(e.which >= 65 && e.which <= 90)
+    {
+      this.msg = '你按下了键盘[' + String.fromCharCode(e.which) + ']键';
+    };
+    if(msg) $('#msg').prepend(this.msg + '<br/>');
+    
+  },
+  mousedown: function(e) {
+    var map = {1: '左键', 2: '中键', 3: '右键'};
+    this.msg = '你按下了鼠标[' + map[e.which] + ']键';
+    if(msg) $('#msg').prepend(this.msg + '<br/>');
+  }
+  
+});
+</script>
+</body>
+</html>

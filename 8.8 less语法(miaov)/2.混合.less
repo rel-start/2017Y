@@ -1,0 +1,40 @@
+
+// 混合 将一个定义好的class A引入到另一个class B中，从而简单实现class B继承class A中的所有属性
+
+.border {
+	border: 1px solid #00a1d6;
+}
+
+.clear {
+	*zoom: 1;
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+.box {
+	width: 100px;
+	height: 100px;
+	.clear;
+	.border;
+}
+
+.item {
+	width: 100px;
+	height: 100px;
+	margin: 10px;
+	span {
+		a {
+			em {
+				.border;
+			}
+		}
+	}
+}
+
+
+
+
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<!-- .word_wrap 与 word-break 的区别 -->
+<style type="text/css">
+.word_wrap { display: inline-block; vertical-align: top; width: 300px; height: 300px; border: 1px solid #ddd; word-wrap: break-word; } 
+.word-break { display: inline-block; vertical-align: top; width: 300px; height: 300px; border: 1px solid #ddd; word-break: break-all; }
+</style>
+<div class="word_wrap">
+	Allows lines to be broken file:///C:/Users/drug/Desktop/Daily%20activities/2017Y/8.25%20text-align-last%20text-overflow%20text-shadow/word-wrap.html sssssssssssssssssssssssssssssssssssssssssss if an otherwise unbreakable string is too long to fit. Currently mostly supported using the word-wrap property.
+</div>
+<div class="word-break">
+	Allows lines to be broken file:///C:/Users/drug/Desktop/Daily%20activities/2017Y/8.25%20text-align-last%20text-overflow%20text-shadow/word-wrap.html sssssssssssssssssssssssssssssssssssssssssss if an otherwise unbreakable string is too long to fit. Currently mostly supported using the word-wrap property.
+</div>
+
+
+
+
+<!-- opacity -->
+<style type="text/css">
+.opacity_8 {
+	margin-top: 50px;
+	width: 500px;
+	height: 200px;
+	opacity: .99999;
+	margin-bottom: -50px;
+	background-color: #faf;
+
+}
+.noopacity {
+	width: 300px;
+	height: 100px;
+	border: 1px solid #ddd;
+}
+</style>
+<div class="opacity_8"> </div>
+<div class="noopacity"> </div>
+
+<!-- initial 关键字用于设置 CSS 属性为它的默认值。 -->
+<style type="text/css">
+.inp { line-height: 20px; line-height: initial; }
+.inp2 { font-size: unset; }
+</style>
+<input class="inp" type="text" name="">
+
+<!-- unset 如果该属性是默认继承属性，该值等同于inherit，如果该属性是非继承属性，该值等同于initial -->
+<input class="inp2" type="text" name="">
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		#box {
+			position: relative;
+			width: 1366px;
+			height: 683px;
+			margin: 50px auto;
+			perspective: 1200px;
+			background-repeat: no-repeat;
+		}
+
+		.pag1 {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 50%;
+			height: 100%;
+			transform-style: preserve-3d;
+			z-index: 2;
+			transform-origin: left center;
+		}
+
+		.pag1 span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		.front {
+			background-repeat: no-repeat;
+			background-position: right top;
+			transform: translateZ(1.1px);
+		}
+
+		.back {
+			background-repeat: no-repeat;
+			background-position: left top;
+			transform: translateZ(-1.1px) scale(-1, 1);
+		}
+
+		.pag2 {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 50%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-position: right top;
+			z-index: 1;
+		}
+
+		.move.pag1 {
+			transition: all 1s ease;
+			transform: rotateY(-180deg);
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="box" style="background-image: url('images/1.jpg');">
+		<div class="pag1">
+			<span class="front" style="background-image: url('images/1.jpg');"></span>
+			<span class="back" style="background-image: url('images/2.jpg');"></span>
+		</div>
+		<div class="pag2" style="background-image: url('images/2.jpg');"></div>
+	</div>
+</body>
+
+<script>
+	let imgData = [
+		'images/1.jpg',
+		'images/2.jpg',
+		'images/3.jpg',
+		'images/4.jpg',
+		'images/5.jpg'
+	];
+
+	const oBox = document.getElementById('box'),
+		oPag = oBox.querySelector('.pag1'),
+		oFront = oBox.querySelector('.front'),
+		oBack = oBox.querySelector('.back'),
+		oPag2 = oBox.querySelector('.pag2');
+
+	let index = 0;
+	let bReady = true;
+	
+	oBox.onclick = function (arguments) {
+		if (!bReady) return;
+		bReady = false;
+
+		index++;
+		oPag.classList.add('move');
+
+		oPag.addEventListener('transitionend', function (e) {
+			oPag.classList.remove('move');
+
+			oFront.style.backgroundImage = oBox.style.backgroundImage = `url(${imgData[index % 5]})`;
+			oBack.style.backgroundImage = oPag2.style.backgroundImage = `url(${imgData[(index + 1) % 5]})`;
+
+			bReady = true;
+		});
+	}
+</script>
+
+</html>

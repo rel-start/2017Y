@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.isPropagationStopped()</title>
+</head>
+<body>
+<a id="one">按钮</a>
+<div id="stop-log"></div>
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script>
+  
+//  返回是否在此事件上调用了 event.stopPropagation()
+function propStopped(event) {
+  var msg = "";
+  if(event.isPropagationStopped()) {
+    msg = 'called';
+  }else {
+    msg = 'not called';
+  }
+  
+  $('#stop-log').append('<div>' + msg + '</div>');
+};
+$('#one').click(function(event){
+  propStopped(event);
+  event.stopPropagation();
+  propStopped(event);
+});
+</script>
+</body>
+</html>

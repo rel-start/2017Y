@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>required [必填]</title>
+<style type="text/css">
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-size: 14px; font-family: '微软雅黑'; background-color: #fff; }
+
+/* target [选择器] */
+.tg .list { position: relative; top: 0; left: 0; }
+.tg .list li/*:not(:first-of-type)*/ { position: absolute; background: #fff; }
+.tg .list li:target { z-index: 1; }
+</style>
+</head>
+<body>
+	<!-- target [选择器] -->
+	<div class="tg">
+		<span>
+			<a href="#news1">1</a>
+			<a href="#news2">2</a>
+			<a href="#news3">13</a>
+		</span>
+		
+		<ul class="list">
+			<li id="news2">2fdsafsadf</li>
+			<li id="news3">3fdsafsadf</li>
+			<li id="news1">1fdsafsadf</li>
+		</ul>
+	</div>
+	
+	
+<style>
+.tablist {position:relative;margin:50px auto;min-height:200px;}
+/* this example style begin */
+.tab_content {
+	position: absolute;/*set content box as absolute*/
+	/* content style begin*/
+	width:600px;height:170px;padding:15px;border:1px solid #91a7b4;border-radius:3px;box-shadow:0 2px 3px rgba(0,0,0,0.1);font-size:1.2em;line-height:1.5em;color:#666;background:#fff;
+}
+#tab1:target, #tab2:target, #tab3:target {
+	z-index: 1;
+}
+
+
+/* tabmenu style */
+.tabmenu {position:absolute;top:100%;margin:0;}
+.tabmenu li{display:inline-block;}
+.tabmenu li a {display:block;padding:5px 10px;margin:0 10px 0 0;border:1px solid #91a7b4;border-radius:0 0 5px 5px;background:#e3f1f8;color:#333;text-decoration:none;}
+</style>
+<div class="tablist">
+<ul class="tabmenu">
+    <li><a href="#tab1">标签一</a></li>
+    <li><a href="#tab2">标签二</a></li>
+    <li><a href="#tab3">标签三</a></li>
+</ul>
+<div id="tab1" class="tab_content">欢迎加设计达人Q群：50063010<br />设计达人以原创和分享一些高质量的设计文章为主，希望喜欢！
+<!-- end tab1 content --></div>
+<div id="tab2" class="tab_content"><p>本Tab切换效果纯CSS3制作，无任何JavaScript</p>最新Q群：50063010<br />爱设计，爱分享——设计达人（http://www.shejidaren.com）
+<!-- end tab2 content--></div>
+<div id="tab3" class="tab_content"><p style="font-size:24px;">高质量设计文章分享平台</p><p>欢迎加设计达人Q群：50063010<br />设计达人以原创和分享一些高质量的设计文章为主，希望喜欢</p>
+<!-- end tab3 content--></div>
+</div>
+</body>
+</html>

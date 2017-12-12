@@ -1,0 +1,7 @@
+@rem: 32rem;
+ul { list-style: none; }
+.box li { display: inline-block; padding: 0 20/@rem; background-color: black; color: #fff; }
+.box li:first-child { line-height: 50/@rem; }
+.box li:nth-child(2) { padding: 14/@rem 20/@rem;
+	&:before { content: 'padding: 14 20, line-height:normal'; position: absolute;top: 200px; color: #000; white-space: nowrap; }
+}

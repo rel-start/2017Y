@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>disabled\enabled</title>
+<style type="text/css">
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-size: 14px; font-family: '微软雅黑'; background-color: #fff; }
+
+/* disabled\enabled [禁用\启用] */
+.ds input[type='text']:enabled { background: yellow; }
+.ds input[type='text'] { background: #fff; }
+.ds input[type='text']:disabled { background: #ddd; }
+
+</style>
+</head>
+<body>
+	<!-- disabled\enabled [禁用\启用] -->
+	<div class="ds">
+		<input type="text" disabled />
+		<input type="text" />
+	</div>
+  
+
+</body>
+</html>

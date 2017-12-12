@@ -1,0 +1,22 @@
+
+// 在less 里面 &代表当前的class本身
+
+.box {
+	width: 100px;
+	height: 100px;
+	background-color: #00a1d6;
+
+	&:after {
+		content: '';
+	}
+
+	.main {
+		border: 1px solid #f00;
+	}
+
+	.name {
+		height: 100px;
+	}
+}
+
+

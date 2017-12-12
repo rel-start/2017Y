@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+    ul { margin: 0; padding: 0; list-style: none; }
+    .banner { width: 480px; height: 270px; overflow: hidden; }
+    .box { position: relative; left: 0; width: 9999px; transition: .5s; }
+    .box li { float: left; }
+    .banner .dot:nth-of-type(1):checked ~ .box { left: 0; }
+    .banner label:nth-of-type(2) .dot:checked ~ .box { left: -480px; }
+    .banner .dot:nth-of-type(3):checked ~ .box { left: -960px; }
+	</style>
+</head>
+<body>
+<div class="banner">
+  <input class="dot" type="radio" name="dot">
+  <label><input class="dot" type="radio" name="dot"></label>
+  <input class="dot" type="radio" name="dot">
+  <ul class="box">
+    <li><img src="huv_3066130463_m_601_m1_480_270.jpg"></li>
+    <li><img src="v_113088220_m_601_480_270.jpg"></li>
+    <li><img src="v_50388688_m_601_m1_480_270.jpg"></li>
+  </ul>
+</div>
+</body>
+</html>

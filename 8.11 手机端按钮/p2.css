@@ -1,0 +1,1 @@
+ul{list-style:none}.box li{display:inline-block;padding:0 .625rem;background-color:#000;color:#fff}.box li:first-child{line-height:1.5625rem}.box li:nth-child(2){position:relative;padding:.4375rem .625rem;line-height:1}.box li:nth-child(2):before{content:'padding: 14 20, line-height:1';position:absolute;top:200px;color:#000;white-space:nowrap}

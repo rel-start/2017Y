@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>伪类</title>
+<style type="text/css">
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-size: 14px; font-family: '微软雅黑'; background-color: #fff; }
+
+/* checked [选中] */
+.cd input:checked { display: block; }
+
+/* disabled\enabled [禁用\启用] */
+.ds input[type="text"]:enabled { background: yellow; }
+.ds input[type="text"] { background: #fff; }
+.ds input[type="text"]:disabled { background: #ddd; }
+
+/* empty [没有子节点] */
+p.em:empty { width: 50px; height: 50px; background: red; }
+
+/* nth-of-type(n) [系列] */
+.nt p:first-of-type { background: red; }
+.nt p:last-of-type { background: green; }
+.nt p:nth-of-type(4) { background: blue; }
+.nt p:nth-last-of-type(2) { background: yellow; }
+.nt h1:only-of-type { color: royalblue; }
+
+/* nth-child(n) [系列] */
+.nc p:first-child { background: wheat; }
+.nc p:last-child { background: red; }
+.nc p:nth-child(4) { background: black; color: #fff; }
+.nc p:nth-last-child(1) { background: green; }
+.nc h1:only-child { color: red; }
+
+/* in-range\out-of-range [范围内\范围外] */
+.ir input:in-range { border: 2px solid green; }
+.ir input:out-of-range { color: darkgoldenrod; }
+
+/* invalid\valid [所有无效的元素\有效] */
+.iv input { background: #fff; }
+.iv input:valid { background: wheat; }/*无值也算有效 什么鬼*/
+.iv input:invalid { border: 2px solid red; }
+
+
+/* not(selector) [非] */
+.not *:not(p) { color: yellow; }
+
+
+/* optional [非required] */
+.oa input:optional { background: yellowgreen; }
+
+/* read-only\read-write [只读\只写] */
+.read input:read-only { background: red; }
+.read input:read-write { cursor: copy; }
+
+/* root [根元素] */
+:root { padding: 100px; }
+
+/* required [必填] */
+.re input:required { border-radius: 5px; }
+
+/* target [选择器] */
+.tg { position: relative; }
+.tg .list li/*:not(:first-of-type)*/ { position: absolute; background: #fff; }
+.tg .list li:target { z-index: 1; }
+
+/*未访问过*/
+.tg a::link { font-size: 12px; background: yellow; }
+/*访问过*/
+.tg a::visited { background: #000; }
+/*移上去*/
+.tg a::hover { display: inline-block; width: 100px; height: 100px; color: red; }
+/*正在活动（相当于按下）*/
+.tg a::active { font-size: 20px; }
+
+
+/* focus [具有焦点的元素] */
+.tg a::focus { display: block; width: 50px; height: 50px; }
+
+/* first-letter\first-line [第一个字母\第一行] */
+.fl p::first-line { color: green; }
+.fl p::first-letter { font-size: 20px; color: red; }
+
+/* before\after */ 
+.ba::before { content: '======='; }
+.ba::after { content: '*************'; }
+
+/* lang(it) */
+p:lang(it) { background: yellow; }
+</style>
+</head>
+<body>
+	<!-- checked [选中] -->
+	<div class="cd">
+	  <label><input type="checkbox" name="hobby" checked> 篮球</label>
+	  <label><input type="checkbox" name="hobby"> 羽毛球</label>
+	  <label><input type="radio" name="sex" checked> 男</label>
+	  <label><input type="radio" name="sex"> 女</label>
+  </div>
+  
+  <!-- disabled [禁用] -->
+  <div class="ds">
+	  <input type="text" disabled />
+	  <input type="text" />
+	</div>
+	
+	<!-- empty -->
+	<div class="em">
+		<p class="em"></p>
+		<p class="em">发动机埃里克</p>
+		<p class="em">发动机埃里克</p>
+	</div>
+	
+	<!-- nth-of-type [系列] -->
+	<div class="nt">
+		<h1>This is a heading</h1>
+		<p>The first paragraph.</p>
+		<p>The second paragraph.</p>
+		<p>The third paragraph.</p>
+		<p>The fourth paragraph.</p>
+		<div style="margin-top: 50px;">
+			<p>The third paragraph.</p>
+			<p>The fourth paragraph.</p>
+		</div>
+		<span><p>fdsafsd</p></span>
+	</div>
+	
+	<!-- nth-child [系列] -->
+	<div class="nc">
+		<h1>This is a heading</h1>
+		<p>The first paragraph.</p>
+		<p>The second paragraph.</p>
+		<p>The third paragraph.</p>
+		<p>The fourth paragraph.</p>
+		<div style="margin-top: 50px;">
+			<p>The third paragraph.</p>
+			<p>The fourth paragraph.</p>
+		</div>
+	</div>
+	
+	<!-- in-range\out-of-range [范围内\范围外] -->
+	<div class="ir">
+		<input type="number" value="7" min="5" max="10" />
+		<input type="number" value="13" min="1" max="10" />
+	</div>
+	
+	<!-- invalid [所有无效的元素] -->
+	<div class="iv">
+		<input type="email" />
+		<input type="number" min="0" max="10" />
+	</div>
+	
+	<!-- not(selector) [非] -->
+	<div class="not">
+		<p>附近的萨克vjzk</p>
+		<p>附近的萨克vjzk</p>
+		<div>fdjka</div>
+		<a>啊fjdksal</a>
+	</div>
+	
+	<!-- optional [非required] -->
+	<div class="oa">
+		<input required />
+		<input />
+	</div>
+	
+	<!-- read-only\read-write [只读\只写] -->
+	<div class="read">
+		<input value="tjakl" type="text" readonly />
+		<input value="fjdsak" type="text" />
+	</div>
+	
+	<!-- required [必填] -->
+	<div class="re">
+		<input type="text" required />
+		<input type="text" />
+	</div>
+	
+	<!-- target [选择器] -->
+	<div class="tg">
+		<span>
+			<a href="#news1">1</a>
+			<a href="#news2">2</a>
+			<a href="#news3">13</a>
+		</span>
+		
+		<ul class="list">
+			<li id="news2">2fdsafsadf</li>
+			<li id="news3">3fdsafsadf</li>
+			<li id="news1">1fdsafsadf</li>
+		</ul>
+	</div>
+	
+	
+	<style>
+	.tablist {position:relative;margin:50px auto;min-height:200px;}
+	/* this example style begin */
+	.tab_content {
+		position: absolute;/*set content box as absolute*/
+		/* content style begin*/
+		width:600px;height:170px;padding:15px;border:1px solid #91a7b4;border-radius:3px;box-shadow:0 2px 3px rgba(0,0,0,0.1);font-size:1.2em;line-height:1.5em;color:#666;background:#fff;
+	}
+	#tab1:target, #tab2:target, #tab3:target {
+		z-index: 1;
+	}
+	
+	
+	/* tabmenu style */
+	.tabmenu {position:absolute;top:100%;margin:0;}
+	.tabmenu li{display:inline-block;}
+	.tabmenu li a {display:block;padding:5px 10px;margin:0 10px 0 0;border:1px solid #91a7b4;border-radius:0 0 5px 5px;background:#e3f1f8;color:#333;text-decoration:none;}
+	</style>
+	<div class="tablist">
+    <ul class="tabmenu">
+        <li><a href="#tab1">标签一</a></li>
+        <li><a href="#tab2">标签二</a></li>
+        <li><a href="#tab3">标签三</a></li>
+    </ul>
+    <div id="tab1" class="tab_content">欢迎加设计达人Q群：50063010<br />设计达人以原创和分享一些高质量的设计文章为主，希望喜欢！
+    <!-- end tab1 content --></div>
+    <div id="tab2" class="tab_content"><p>本Tab切换效果纯CSS3制作，无任何JavaScript</p>最新Q群：50063010<br />爱设计，爱分享——设计达人（http://www.shejidaren.com）
+    <!-- end tab2 content--></div>
+    <div id="tab3" class="tab_content"><p style="font-size:24px;">高质量设计文章分享平台</p><p>欢迎加设计达人Q群：50063010<br />设计达人以原创和分享一些高质量的设计文章为主，希望喜欢</p>
+    <!-- end tab3 content--></div>
+	</div>
+
+ <!-- first-letter [第一个字母] -->
+<div class="fl" style="margin-top: 150px;">
+	<p style="width: 300px;">发生发神经啊发生发神经啊发生发神经啊发生发神经啊发生发神经啊发生发神经啊</p>
+</div>
+
+
+<style>/* link hover */
+	
+	
+	/*lvha*/
+	#b1:link {
+		color: green;
+	}
+	#b1:visited {
+		color: yellow;
+	}
+	#b1:hover {
+		color: red;
+	}
+	#b1:active { /*相当于按下的时候*/
+		color: blue;
+	}
+	
+</style>
+<a id="b1" href="#" style="margin-top: 50px; display: block;">按钮2</a>
+
+
+/* before\after */ 
+<div class="ba">
+	发生大幅度三
+</div>
+
+<p lang="it">发生大幅度三发生大幅度三</p>
+
+
+
+
+<!-- 浮动 -->
+<style>
+	.clearfix { *zoom:1;}
+	.clearfix:after { display: block; content: "$"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
+	
+	.box li { float: left; width: 100px; list-style: none; margin-left: 10px; }
+	
+	
+	.xin { width: 500px; *height: 500px; background: red; }
+</style>
+<ul class="box clearfix">
+	<li>发生大幅度三发生大幅度三发生大幅度三发生大幅度三发生大幅度三发生大幅度三</li>
+	<li>发生大幅度三发生大幅度三发生大幅度三发生大幅度三发生大幅度三发生大幅度三</li>
+	<li>发生大幅度三发生大幅度三发生大幅度三发生大幅度三发生大幅度三发生大幅度三</li>
+	<li>发生大幅度三发生大幅度三发生大幅度三发生大幅度三发生大幅度三发生大幅度三</li>
+</ul>
+
+<div class="xin">fsadfa</div>
+fadsfasd
+</body>
+</html>

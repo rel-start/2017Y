@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>进度条</title>
+</head>
+<body>
+<style type="text/css">
+	.progress {
+		border-radius: 5px;
+		overflow: hidden;
+		height: 20px;
+		background-color: #f5f5f5;
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.1);
+	}
+	
+	.progress_bar {
+		width: 50%;
+		height: inherit;
+		background-color: #000;
+	}
+
+	.progress_striped {
+		background-image: -webkit-linear-gradient(45deg, transparent 35% ,rgba(255, 255, 255, .3) 35%, rgba(255, 255, 255, .3) 65%, transparent 65% );
+		background-image: linear-gradient(45deg, transparent 35% ,rgba(255, 255, 255, .3) 35%, rgba(255, 255, 255, .3) 65%, transparent 65% );
+		background-size: 40px 20px;
+	}
+
+	.progress_striped.animate {
+		animation: mymove 1s linear infinite;
+	}
+
+	@keyframes mymove {
+		0% { background-position: 40px 0; }
+		100% { background-position: 0 0; }
+	}
+</style>
+	<div class="progress">
+		<div class="progress_bar progress_striped animate"></div>
+	</div>
+</body>
+</html>

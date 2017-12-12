@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多背景</title>
+</head>
+<body>
+<!-- 案例01：方法一 -->
+<style type="text/css">
+.multipleBg {
+	width: 500px;
+	height: 300px;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	border: 20px solid rgba(104, 104, 142,0.5);
+	border-radius: 10px;
+	background-image: url(img/lt.png), url(img/rt.png), url(img/lb.png), url(img/rb.png), url(img/fill.jpg);
+	background-position: left top, right top, left bottom, right bottom;
+	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat;
+	background-origin: border-box, border-box, border-box, border-box, padding-box;
+	background-clip: border-box, border-box, border-box, border-box, padding-box;
+	background-size: cover, 100px 100px, 100px 100px, 100px 100px;
+}
+</style>
+<div class="multipleBg">我使用了五张背景图片。制作这样的效果</div>
+
+<!-- 案例01：方法二 -->
+<style type="text/css">
+	.border_image {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 500px;
+		height: 300px;
+		margin-top: 50px;
+		border-radius: 10px;
+		border: 20px solid rgba(104, 104, 142,0.5);
+		background-image: url(img/fill.jpg);
+	}
+	.border_image:before {
+		position: absolute;
+		width: inherit;
+		height: inherit;
+		border: 20px solid transparent; 
+		border-image: url(img/border_image.png) 127 100/127px 100px round;
+		content: '';
+		display: block;
+	}
+</style>
+<div class="border_image">我使用了五张背景图片。制作这样的效果</div>
+
+<!-- 案例02 -->
+<style type="text/css">
+.card {
+	margin-top: 50px;
+	margin-bottom: 200px;
+	width: 120px;
+	height: 100px;
+	padding: 20px 20px 40px;
+	border: 1px solid #ddd;
+	background-image: url(img/09.png), url(img/08.png), url(img/07.png);
+	background-position: 0 0, 10px 10px, 20px 20px;
+	background-repeat: no-repeat;
+	background-origin: content-box;
+}
+</style>
+<div class="card"></div>
+
+<!-- CSS3 repeat -->
+<style type="text/css">
+.repeat_round {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 20px;
+	margin-bottom: 50px;
+	width: 200px;
+	height: 200px;
+	background-image: url(img/09.png);
+	background-repeat: round;
+}
+.repeat_space {
+	display: inline-block;
+	vertical-align: top;
+	width: 200px;
+	height: 200px;
+	background-image: url(img/09.png);
+	background-repeat: space;
+}
+</style>
+<div class="repeat_round"></div>
+<div class="repeat_space"></div>
+</body>
+</html>

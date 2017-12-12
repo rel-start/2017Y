@@ -1,0 +1,91 @@
+
+.menu {
+	background: #414956;
+	box-shadow: 0 20px 50px #333;
+	-webkit-box-shadow: 0 20px 50px #333;
+}
+.menu .menu_header,
+.menu .menu_footer { height: 50px; padding-left: 22px; line-height: 50px; font-weight: 700; color: #fff; }
+.menu .filterinput { width: 90%; height: 30px; border: 1px solid #fff; text-indent: 1em; font-weight: 700; color: #fff; background-color: transparent; border-radius: 15px; }
+
+
+.menu ul li { position: relative; overflow: hidden; }
+.menu ul li a { position: relative; display: block; padding: 14px 22px; font-size: 13px; color: #f0f0f0; overflow: hidden;
+	-webkit-transition: color .2s linear, background-color .2s linear;
+	-moz-transition: color .2s linear, background-color .2s linear;
+	-ms-transition: color .2s linear, background-color .2s linear;
+	-o-transition: color .2s linear, background-color .2s linear;
+	transition: color .2s linear, background-color .2s linear;
+}
+.menu>ul>li:hover>a,
+.menu>ul>li.on>a { color: #fff; background-color: #3B424D; }
+.menu>ul>li>a { border-bottom: 1px dashed #3B424D; }
+.menu>ul>li>a>i { width: 34px; font-size: 16px; line-height: 19px; }
+
+/*submenu_indicator*/
+.menu .submenu_indicator { position: absolute; right: 22px; font-size: 20px; line-height: 19px;
+	-webkit-transition: transform .3s linear;
+	-moz-transition: transform .3s linear;
+	-ms-transition: transform .3s linear;
+	-o-transition: transform .3s linear;
+	transition: transform .3s linear;
+}
+.menu .submenu_indicator__minus > .submenu_indicator {
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+/*submenu*/
+.menu ul li .menu_label { position: absolute; top: 14px; right: 18px; min-width: 20px; height: 18px; padding-right: 1px; line-height: 18px; font-size: 12px; font-weight: 700; background: #fff; border-radius: 100%; text-align: center; }
+.menu ul ul.submenu { display: none; }
+.menu ul ul.submenu li .menu_label { top: 13px; }
+.menu ul ul.submenu { background: #383838; }
+.menu ul ul.submenu li a { border-left: 6px solid transparent; font-size: 12px;
+	-webkit-transition: border .2s linear;
+	-moz-transition: border .2s linear;
+	-ms-transition: border .2s linear;
+	-o-transition: border .2s linear;
+	transition: border .2s linear;
+}
+.menu ul ul.submenu li:hover > a { border-left-color: #414956; }
+.menu ul ul.submenu>li>a { padding-left: 30px; }
+.menu ul ul.submenu>li>ul.submenu>li>a { padding-left: 45px; }
+
+
+/*触感*/
+.ink { position: absolute; display: block; background: rgba(255,255,255,.3); border-radius: 100%;
+	-webkit-transform: scale(0);
+	-moz-transform: scale(0);
+	-ms-transform: scale(0);
+	-o-transform: scale(0);
+	transform: scale(0);
+}
+.animate_ink {
+	-webkit-animation: area .5s linear;
+	-moz-animation: area .5s linear;
+	-ms-animation: area .5s linear;
+	-o-animation: area .5s linear;
+	animation: area .5s linear;
+}
+@-webkit-keyframes area{
+	100% { opacity: 0; transform: scale(2.5); }
+}
+
+@-moz-keyframes area{
+	100% { opacity: 0; transform: scale(2.5); }
+}
+
+@-ms-keyframes area{
+	100% { opacity: 0; transform: scale(2.5); }
+}
+
+@-o-keyframes area{
+	100% { opacity: 0; transform: scale(2.5); }
+}
+
+@keyframes area{
+	100% { opacity: 0; transform: scale(2.5); }
+}

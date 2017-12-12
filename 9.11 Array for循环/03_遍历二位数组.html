@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  // 一维数组
+  // var arr1 = [1, 2, 3, 4];
+
+  // // 二维数组（非对称和对称）
+  // var arr1 = [    // 非对称二维数组
+  //   ['a', 'b', 'c'],
+  //   ['d', 'e'],
+  //   [1, 2, 3, 4, 5, 6]
+  // ];
+
+  // var arr2 = [    // 对称二维数组
+  //   [1, 2, 3],
+  //   [4, 5, 6],
+  //   [7, 8, 9]
+  // ];
+
+  // for (var i=0; i<arr1.length; i++) {
+  //   // console.log(arr1[i]);   // 每一个又是一个数组
+  //   for (var j=0; j<arr1[i].length; j++) {
+  //     console.log(arr1[i][j]);
+  //   }
+  // };
+
+  // 第几次循环就循环几次
+  var arr3 = [
+    [1],      // 第一次循环 1
+    [2, 3],   // 第二次循环 2
+    [4, 5, 6] // 第三次循环 3
+  ];
+  for (var i=0; i<arr3.length; i++) {
+    for (var j=0; j<=i; j++) {
+      console.log(arr3[i][j]);
+    }
+  };
+</script>
+</body>
+</html>

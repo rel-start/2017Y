@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    #box { height: 100px; opacity: .5; background-color: red; }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+
+// 默认css()能设置的带px 的样式。只写了部分
+var normalAttr = [
+  'width',
+  'height',
+  'left',
+  'top',
+  'bottom',
+  'right',
+  'marginLeft',
+  'marginTop',
+  'marginBottom',
+  'marginRight'
+];
+
+function css(ele, attr, val){
+
+  // 获取样式
+  if (typeof attr === 'string' && typeof val === 'undefined') {
+    var ret = getComputedStyle(ele)[attr];
+
+    // 如果是 normalAttr 数组内部的样式
+    if (indexOf(normalAttr, attr) !== -1) {
+      return parseFloat(ret);
+    }
+    // 非 normalAttr 数组内部的样式
+    else {
+      // 如果是类似 opacity 转为数字
+      // 而类似 background-color 不转
+      return ret * 1 === ret * 1 ? ret * 1 : ret;
+    }
+  }
+
+  // 批量设置
+  if (typeof attr === 'object') {
+    for (var key in attr) {
+      setAttr(key, attr[key]);
+    }
+    return;
+  }
+
+  // 设置单一样式
+  function setAttr(attr, val){
+    // 如果是 normalAttr 数组内部的样式 + px
+    if (indexOf(normalAttr, attr) !== -1) {
+      ele.style[attr] = val + 'px';
+    }
+    // 非 normalAttr 数组内部的样式, 就直接设置
+    else {
+      ele.style[attr] = val;
+    }
+    return;
+  }
+
+  setAttr(attr, val);
+}
+
+function indexOf(arr, val) {
+  for (var i=0,len=arr.length; i<arr.length; i++) {
+    if (arr[i] === val) {
+      return i;
+    }
+  }
+
+  return -1;
+}
+
+// console.log( css(box, 'background-color') );
+// css(box,'width', 50);
+// css(box,'opacity', 1);
+// css(box,'background-color', '#333');
+
+css(box, {
+  width: 30,
+  height: 200,
+  'background-color': '#f60'
+});
+</script>
+</body>
+</html>

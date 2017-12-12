@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      position: absolute;
+      left: 200px;
+      top: 200px;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script src="./tool-2017.10.10.js"></script>
+  <script>
+    var box = document.querySelector('#box');
+
+
+
+    //     function transform(el, attr, val) {
+    //       // el元素身上挂一个_transform对象。用于保存添加或修改的2D、3D变化
+    //       el._transform = el._transform || {};
+
+    //       // 只传入2个参数。那么就是读取该attr属性值
+    //       if (typeof val === 'undefined') return el._transform[attr];
+
+
+    //       // _transform对象写入 attr 属性并且值为 val
+    //       // 如果是复合样式那么就需要拆分
+    //       if (indexOf(val, ',') !== -1) {
+    //         // 将形参 val 转为数组便于操作
+    //         var arr = val.split(',');
+
+    //         if (attr !== 'skew' && attr !== 'rotate') {
+    //           // 如果数组的长度 = 1
+    //           if (arr.length === 1) {          
+    //             el._transform[attr+'Y'] = arr[0];
+    //           }
+    //           // 如果数组 0 1 2位置有内容。那么分别就代表 X Y Z
+    //           if(arr[0]) el._transform[attr+'X'] = arr[0];
+    //           if(arr[1]) el._transform[attr+'Y'] = arr[1];
+    //           if(arr[2]) el._transform[attr+'Z'] = arr[2];
+    //         } else if (attr === 'skew') {
+    //           // ======================================CSS3怎麽寫？？？
+    //         }
+
+    //       } else {
+    //         el._transform[attr] = val;
+    //       }
+    // console.log(el._transform);
+
+    //       // 储存操作过的2D、3D变化
+    //       var str = '';
+
+    //       // 相对于_transform对象的每次变化。
+    //       // 都要重新求次str。并重新给元素行内设置transfrom 
+    //       for (var key in el._transform) {
+    //         var value = el._transform[key];
+
+    //         // 如果形参 val 带单位直接，那么就不用补单位了
+    //         if (value * 1 !== value * 1) {
+    //           str += `${key}(${value})`;
+    //         }
+    //         // 直接传数字的情况，需补上单位
+    //         else {
+    //           switch (key) {
+    //             case 'translateX':
+    //             case 'translateY':
+    //             case 'translateZ':
+    //               str += `${key}(${value}px) `;
+    //               break;
+    //             case 'rotate':
+    //             case 'rotateX':
+    //             case 'rotateY':
+    //             case 'rotateZ':
+    //             case 'skewX':
+    //             case 'skewY':
+    //               str += `${key}(${value}deg) `;
+    //               break;
+    //             default:
+    //               str += `${key}(${value})`;
+    //           }
+    //         }
+    //       }
+
+    //       // 写到行内样式
+    //       el.style.transform = str.trim();
+    //     };
+
+
+
+    // function transform(el, attr, val){
+    //   // 元素身上的 _transform 对象，存储 2D、3D样式
+    //   el._transform = el._transform || {};
+
+    //   // 没有传入val，就当为读取样式
+    //   if (typeof val === 'undefined') return el._transform[attr];
+
+    //   // 储存attr
+    //   el._transform[attr] = val;
+    //   var str = '';
+
+    //   for (var key in el._transform) {
+    //     var value = el._transform[key];
+
+    //     switch (key) {
+    //       case 'translateX':
+    //       case 'translateY':
+    //       case 'translateZ':
+    //         str += `${key}(${value}px) `;
+    //         break;
+    //       case 'rotate':
+    //       case 'rotateX':
+    //       case 'rotateY':
+    //       case 'rotateZ':
+    //       case 'skewX':
+    //       case 'skewY':
+    //         str += `${key}(${value}deg) `;
+    //       default:
+    //         str += `${key}(${value}) `;
+    //     }
+    //   }
+
+    //   el.style.transform = str;
+    // }
+
+
+
+    // transform(box, 'skewY', '100deg');
+    // transform(box, 'skewX', '60deg');
+    // css(box, 'rotate', 140);
+
+    // console.log(css(box, 'translateX'));
+
+    css(box, {
+      translateX: 100,
+      marginLeft: 50
+    });
+
+    document.onclick = function (){
+      animation({
+        el: box,
+        attrs: {
+          translateX: 0,
+          marginLeft: 0
+        }
+      });
+    };
+    
+    console.log(css(box, 'scale'));
+
+  </script>
+</body>
+
+</html>

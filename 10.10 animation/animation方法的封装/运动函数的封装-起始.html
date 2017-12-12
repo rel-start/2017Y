@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  .box {
+    width: 80px;
+    height: 80px;
+    background-color: rgb(54,90,222);
+  }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+
+
+  <script src="./tool-2017.10.10..js"></script>
+  <script>
+   var box = document.querySelector('.box');
+
+   var b = box.offsetLeft;
+   var c = 500 - b;
+   var d = 2000;
+   var fx = 'easeOut';
+
+   document.onclick = function (){
+     if (box.timer) return;
+
+     var startTime = Date.now();
+
+     (function fn(){
+       box.timer = window.requestAnimationFrame(fn);
+
+       var t = Date.now() - startTime;
+
+       if (t > d) {
+         t = d;
+         window.cancelAnimationFrame(box.timer);
+         box.timer = null;
+       }
+
+       var s = Tween[fx](t, b, c, d);
+
+       css(box, 'marginLeft', s);
+     })();
+   };
+  </script>
+</body>
+</html>

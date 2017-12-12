@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		#box {
+			position: relative;
+			width: 1366px;
+			height: 683px;
+			margin: 0 auto;
+			perspective: 1200px;
+			background-repeat: no-repeat;
+		}
+
+		.sideWrap {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		.flip_next .pag1 { transition: all 1s ease 500ms; transform: rotateY(-180deg); }
+		.flip_prev .pag1 { transition: all 1s ease 500ms; transform: rotateY(180deg); }
+
+		.pag1 {
+			position: absolute;
+			top: 0;
+			width: 50%;
+			height: 100%;
+			transform-style: preserve-3d;
+			z-index: 2;
+		}
+		.pag1.right { right: 0; transform-origin: left center; }
+		.pag1.left { left: 0; transform-origin: right center; }
+
+		.pag1 span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		.front {
+			background-repeat: no-repeat;
+			transform: translateZ(1.1px);
+		}
+		.front.right { background-position: right top; }
+		.front.left { background-position: left top; }
+
+		.back {
+			background-repeat: no-repeat;
+			transform: translateZ(-1.1px) scale(-1, 1);
+		}
+		.back.right { background-position: left top; }
+		.back.left { background-position: right top; }
+
+		.pag2 {
+			position: absolute;
+			top: 0;
+			width: 50%;
+			height: 100%;
+			background-repeat: no-repeat;
+			z-index: 1;
+		}
+		.pag2.right { right: 0; background-position: right top; }
+		.pag2.left { left: 0;	background-position: left top; }
+
+		.prev,
+		.next {
+			position: absolute;
+			top: calc(50% - 25px);
+			width: 50px;
+			height: 50px;
+			background-color: rgba(255, 255, 255, .6);
+			z-index: 9;
+		}
+
+		.next { right: 10px; }
+		.prev { left: 10px; }
+	</style>
+
+</head>
+
+<body>
+	<div id="box">
+		<span class="prev"></span>
+		<span class="next"></span>
+	</div>
+</body>
+
+<script>
+	let imgData = [
+		'images/1.jpg',
+		'images/2.jpg',
+		'images/3.jpg',
+		'images/4.jpg',
+		'images/5.jpg'
+	];
+	let len = imgData.length;
+
+	class BookBlock {
+		constructor(ele, opts) {
+			// 幻灯片的容器
+			this.$el = ele.nodeType && ele.nodeType === 1 ? ele : document.querySelector(ele);
+			// 幻灯片索引
+			this.index = 0;
+			this.prevIndex = 0;
+			this.bRead = true;
+
+			this.init();
+			this._initEvent();
+		}
+
+		_initEvent() {
+			this.$el.querySelector('.next').onclick = () => { this.next(); };
+			this.$el.querySelector('.prev').onclick = () => { this.prev(); };
+		}
+
+		// 初始化结构
+		init() {
+			this.$el.style.backgroundImage = `url(${imgData[0]})`;
+		}
+
+		// 添加切换
+		addSide(dir) {
+			let { index, prevIndex } = this;
+			const sideWrap = document.createElement('div');
+			sideWrap.className = 'sideWrap';
+
+			sideWrap.innerHTML = `<div class="pag1 ${dir}">
+							<span class="front ${dir}" style="background-image: url(${imgData[prevIndex]});"></span>
+							<span class="back ${dir}" style="background-image: url(${imgData[index]});"></span>
+						</div>
+						<div class="pag2 ${dir}" style="background-image: url(${imgData[index]});"></div>`;
+			return sideWrap;
+		}
+
+		// 下一张
+		next() {
+			if (!this.bRead) return;
+			this.bRead = false;
+			
+			this.index = ++this.index > len -1 ? 0 : this.index;
+
+			this.flipPage('right', 'flip_next');
+		}
+
+		// 上一张
+		prev() {
+			if (!this.bRead) return;
+			this.bRead = false;
+			this.index = --this.index < 0 ? len - 1 : this.index;
+
+			this.flipPage('left', 'flip_prev');
+		}
+
+		// 翻书效果
+		flipPage(dir, clas) {
+			let { $el, addSide, bRead } = this;
+			const sideWrap = addSide.call(this, dir);
+			const oPag = sideWrap.querySelector('.pag1');
+
+			$el.appendChild(sideWrap);
+
+			setTimeout(() => {
+				this.$el.querySelector('.sideWrap').classList.add(clas);
+
+				oPag.addEventListener('transitionend', () => {
+					oPag.classList.remove(clas);
+
+					this.$el.style.backgroundImage = `url(${imgData[this.index]})`;
+
+					this.$el.removeChild(sideWrap);
+					this.prevIndex = this.index;
+					this.bRead = true;
+				});
+			}, 1000 / 60)
+		}
+	};
+
+	new BookBlock('#box');
+</script>
+
+</html>
